@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "904006621832",
+    "project_id": "beautysupport-7df1b",
+    "storage_bucket": "beautysupport-7df1b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904006621832:android:3bd672bdbf724f05e59d3d",
+        "android_client_info": {
+          "package_name": "com.example.beuty_support"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQ89qNvXyISMpP8EBEw_R0MmKVwR7dZfQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

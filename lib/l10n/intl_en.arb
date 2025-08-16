@@ -1,0 +1,239 @@
+{
+  "@@locale": "en",
+  "onboardingWelcomeText": "Discover the best beauty centers near you",
+  "@onboardingWelcomeText": {
+    "description": "Welcome text for the onboarding screen"
+  },
+  "register": "Register",
+  "@register": {
+    "description": "Label for the register button"
+  },
+  "login": "Login",
+  "@login": {
+    "description": "Label for the login button"
+  },
+  "createAccount": "Create an account",
+  "@createAccount": {
+    "description": "Text for creating a new account"
+  },
+  "welcomeBack": "Welcome back",
+  "@welcomeBack": {
+    "description": "Welcome message for returning users"
+  },
+  "loginText": "Log in to your account",
+  "@loginText": {
+    "description": "Text for the login screen"
+  },
+  "email": "Email",
+  "@email": {
+    "description": "Label for the email field"
+  },
+  "password": "Password",
+  "@password": {
+    "description": "Label for the password field"
+  },
+  "forgotPassword": "Forgot your password?",
+  "@forgotPassword": {
+    "description": "Text for the forgot password link"
+  },
+  "rememberMe": "Remember me",
+  "@rememberMe": {
+    "description": "Label for the remember me checkbox"
+  },
+  "dontHaveAccount": "Don't have an account? ",
+  "@dontHaveAccount": {
+    "description": "Prompt for users without an account"
+  },
+  "createNewAccount": "Create your new account",
+  "@createNewAccount": {
+    "description": "Text for creating a new account"
+  },
+  "fullName": "Full name",
+  "@fullName": {
+    "description": "Label for the full name field"
+  },
+  "orContinueWith": "Or continue with",
+  "@orContinueWith": {
+    "description": "Text for alternative login options"
+  },
+  "alreadyHaveAccount": "Already have an account? ",
+  "@alreadyHaveAccount": {
+    "description": "Prompt for users who already have an account"
+  },
+  "search": "Search",
+  "@search": {
+    "description": "Label for the search function"
+  },
+  "beautySupport": "Beauty Support",
+  "@beautySupport": {
+    "description": "App title"
+  },
+  "centers": "Centers",
+  "@centers": {
+    "description": "Label for beauty centers"
+  },
+  "center": "Center",
+  "@center": {
+    "description": "Singular label for a beauty center"
+  },
+  "noCenters": "No centers available",
+  "@noCenters": {
+    "description": "Message when no centers are available"
+  },
+  "addCenter": "Add center",
+  "@addCenter": {
+    "description": "Label for adding a new center"
+  },
+  "centerName": "Center name",
+  "@centerName": {
+    "description": "Label for the center name field"
+  },
+  "centerLocation": "Center location",
+  "@centerLocation": {
+    "description": "Label for the center location field"
+  },
+  "centerPhoneNumber": "Center phone number",
+  "@centerPhoneNumber": {
+    "description": "Label for the center phone number field"
+  },
+  "centerDescription": "Center description",
+  "@centerDescription": {
+    "description": "Label for the center description field"
+  },
+  "centerImage": "Center image",
+  "@centerImage": {
+    "description": "Label for the center image field"
+  },
+  "myProfile": "My profile",
+  "@myProfile": {
+    "description": "Label for the user profile section"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Label for the settings menu"
+  },
+  "updateUsername": "Update username",
+  "@updateUsername": {
+    "description": "Label for updating the username"
+  },
+  "changePassword": "Change password",
+  "@changePassword": {
+    "description": "Label for changing the password"
+  },
+  "currentPassword": "Current password",
+  "@currentPassword": {
+    "description": "Label for the current password field"
+  },
+  "newPassword": "New password",
+  "@newPassword": {
+    "description": "Label for the new password field"
+  },
+  "confirmPassword": "Confirm password",
+  "@confirmPassword": {
+    "description": "Label for the confirm password field"
+  },
+  "deleteAccount": "Delete account",
+  "@deleteAccount": {
+    "description": "Label for deleting the account"
+  },
+  "aboutApp": "About the app",
+  "@aboutApp": {
+    "description": "Label for the about app section"
+  },
+  "logout": "Log out",
+  "@logout": {
+    "description": "Label for the logout button"
+  },
+  "profileTab": "Profile",
+  "@profileTab": {
+    "description": "Label for the profile tab"
+  },
+  "searchTab": "Search",
+  "@searchTab": {
+    "description": "Label for the search tab"
+  },
+  "resetPassword": "Reset password",
+  "@resetPassword": {
+    "description": "Label for resetting the password"
+  },
+  "newUsername": "New username",
+  "@newUsername": {
+    "description": "Label for the new username field"
+  },
+  "newsTab": "News",
+  "@newsTab": {
+    "description": "Label for the news tab"
+  },
+  "homeTab": "Home",
+  "@homeTab": {
+    "description": "Label for the home tab"
+  },
+  "adminDashboard": "Admin dashboard",
+  "@adminDashboard": {
+    "description": "Label for the admin dashboard"
+  },
+  "adminCenters": "Centers",
+  "@adminCenters": {
+    "description": "Label for admin centers section"
+  },
+  "adminReviews": "Reviews",
+  "@adminReviews": {
+    "description": "Label for admin reviews section"
+  },
+  "pendingReviews": "Pending reviews",
+  "@pendingReviews": {
+    "description": "Label for pending reviews"
+  },
+  "noPendingReviews": "No pending reviews",
+  "@noPendingReviews": {
+    "description": "Message when no reviews are pending"
+  },
+  "subCentersPending": "Pending",
+  "@subCentersPending": {
+    "description": "Label for pending sub-centers"
+  },
+  "subCentersCurrent": "Current",
+  "@subCentersCurrent": {
+    "description": "Label for current sub-centers"
+  },
+  "addNewCenter": "Add new center",
+  "@addNewCenter": {
+    "description": "Label for adding a new center"
+  },
+  "reviews": "Reviews",
+  "@reviews": {
+    "description": "Label for reviews section"
+  },
+  "noReviews": "No reviews yet",
+  "@noReviews": {
+    "description": "Message when no reviews are available"
+  },
+  "writeAReview": "Write a review",
+  "@writeAReview": {
+    "description": "Label for writing a review"
+  },
+  "pending": "Pending",
+  "@pending": {
+    "description": "Label for pending status"
+  },
+  "current": "Current",
+  "@current": {
+    "description": "Label for current status"
+  },
+  "howWasExperience": "How was your experience?",
+  "@howWasExperience": {
+    "description": "Prompt for user experience feedback"
+  },
+  "yourReview": "Your Review",
+  "@yourReview": {
+    "description": "Label for the user's review input field"
+  },
+  "writeSomethingAboutVisit": "Write something about your visit",
+  "@writeSomethingAboutVisit": {
+    "description": "Prompt for writing a review about the visit"
+  },
+  "submitReview": "Submit Review",
+  "@submitReview": {
+    "description": "Label for the submit review button"
+  }
+}

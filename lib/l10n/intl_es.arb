@@ -1,0 +1,239 @@
+{
+  "@@locale": "es",
+  "onboardingWelcomeText": "Descubre los mejores centros de belleza cerca de ti",
+  "@onboardingWelcomeText": {
+    "description": "Texto de bienvenida para la pantalla de incorporación"
+  },
+  "register": "Registrarse",
+  "@register": {
+    "description": "Etiqueta para el botón de registro"
+  },
+  "login": "Iniciar sesión",
+  "@login": {
+    "description": "Etiqueta para el botón de inicio de sesión"
+  },
+  "createAccount": "Crear una cuenta",
+  "@createAccount": {
+    "description": "Texto para crear una nueva cuenta"
+  },
+  "welcomeBack": "Bienvenido de nuevo",
+  "@welcomeBack": {
+    "description": "Mensaje de bienvenida para usuarios que regresan"
+  },
+  "loginText": "Inicia sesión en tu cuenta",
+  "@loginText": {
+    "description": "Texto para la pantalla de inicio de sesión"
+  },
+  "email": "Correo electrónico",
+  "@email": {
+    "description": "Etiqueta para el campo de correo electrónico"
+  },
+  "password": "Contraseña",
+  "@password": {
+    "description": "Etiqueta para el campo de contraseña"
+  },
+  "forgotPassword": "¿Olvidaste tu contraseña?",
+  "@forgotPassword": {
+    "description": "Texto para el enlace de olvido de contraseña"
+  },
+  "rememberMe": "Recuérdame",
+  "@rememberMe": {
+    "description": "Etiqueta para la casilla de recordar"
+  },
+  "dontHaveAccount": "¿No tienes una cuenta? ",
+  "@dontHaveAccount": {
+    "description": "Mensaje para usuarios sin cuenta"
+  },
+  "createNewAccount": "Crea tu nueva cuenta",
+  "@createNewAccount": {
+    "description": "Texto para crear una nueva cuenta"
+  },
+  "fullName": "Nombre completo",
+  "@fullName": {
+    "description": "Etiqueta para el campo de nombre completo"
+  },
+  "orContinueWith": "O continúa con",
+  "@orContinueWith": {
+    "description": "Texto para opciones de inicio de sesión alternativas"
+  },
+  "alreadyHaveAccount": "¿Ya tienes una cuenta? ",
+  "@alreadyHaveAccount": {
+    "description": "Mensaje para usuarios que ya tienen una cuenta"
+  },
+  "search": "Buscar",
+  "@search": {
+    "description": "Etiqueta para la función de búsqueda"
+  },
+  "beautySupport": "Soporte de Belleza",
+  "@beautySupport": {
+    "description": "Título de la aplicación"
+  },
+  "centers": "Centros",
+  "@centers": {
+    "description": "Etiqueta para centros de belleza"
+  },
+  "center": "Centro",
+  "@center": {
+    "description": "Etiqueta singular para un centro de belleza"
+  },
+  "noCenters": "No hay centros disponibles",
+  "@noCenters": {
+    "description": "Mensaje cuando no hay centros disponibles"
+  },
+  "addCenter": "Agregar centro",
+  "@addCenter": {
+    "description": "Etiqueta para agregar un nuevo centro"
+  },
+  "centerName": "Nombre del centro",
+  "@centerName": {
+    "description": "Etiqueta para el campo de nombre del centro"
+  },
+  "centerLocation": "Ubicación del centro",
+  "@centerLocation": {
+    "description": "Etiqueta para el campo de ubicación del centro"
+  },
+  "centerPhoneNumber": "Número de teléfono del centro",
+  "@centerPhoneNumber": {
+    "description": "Etiqueta para el campo de número de teléfono del centro"
+  },
+  "centerDescription": "Descripción del centro",
+  "@centerDescription": {
+    "description": "Etiqueta para el campo de descripción del centro"
+  },
+  "centerImage": "Imagen del centro",
+  "@centerImage": {
+    "description": "Etiqueta para el campo de imagen del centro"
+  },
+  "myProfile": "Mi perfil",
+  "@myProfile": {
+    "description": "Etiqueta para la sección de perfil del usuario"
+  },
+  "settings": "Configuraciones",
+  "@settings": {
+    "description": "Etiqueta para el menú de configuraciones"
+  },
+  "updateUsername": "Actualizar nombre de usuario",
+  "@updateUsername": {
+    "description": "Etiqueta para actualizar el nombre de usuario"
+  },
+  "changePassword": "Cambiar contraseña",
+  "@changePassword": {
+    "description": "Etiqueta para cambiar la contraseña"
+  },
+  "currentPassword": "Contraseña actual",
+  "@currentPassword": {
+    "description": "Etiqueta para el campo de contraseña actual"
+  },
+  "newPassword": "Nueva contraseña",
+  "@newPassword": {
+    "description": "Etiqueta para el campo de nueva contraseña"
+  },
+  "confirmPassword": "Confirmar contraseña",
+  "@confirmPassword": {
+    "description": "Etiqueta para el campo de confirmar contraseña"
+  },
+  "deleteAccount": "Eliminar cuenta",
+  "@deleteAccount": {
+    "description": "Etiqueta para eliminar la cuenta"
+  },
+  "aboutApp": "Acerca de la aplicación",
+  "@aboutApp": {
+    "description": "Etiqueta para la sección acerca de la aplicación"
+  },
+  "logout": "Cerrar sesión",
+  "@logout": {
+    "description": "Etiqueta para el botón de cerrar sesión"
+  },
+  "profileTab": "Perfil",
+  "@profileTab": {
+    "description": "Etiqueta para la pestaña de perfil"
+  },
+  "searchTab": "Buscar",
+  "@searchTab": {
+    "description": "Etiqueta para la pestaña de búsqueda"
+  },
+  "resetPassword": "Restablecer contraseña",
+  "@resetPassword": {
+    "description": "Etiqueta para restablecer la contraseña"
+  },
+  "newUsername": "Nuevo nombre de usuario",
+  "@newUsername": {
+    "description": "Etiqueta para el campo de nuevo nombre de usuario"
+  },
+  "newsTab": "Noticias",
+  "@newsTab": {
+    "description": "Etiqueta para la pestaña de noticias"
+  },
+  "homeTab": "Inicio",
+  "@homeTab": {
+    "description": "Etiqueta para la pestaña de inicio"
+  },
+  "adminDashboard": "Panel de administración",
+  "@adminDashboard": {
+    "description": "Etiqueta para el panel de administración"
+  },
+  "adminCenters": "Centros",
+  "@adminCenters": {
+    "description": "Etiqueta para la sección de centros de administración"
+  },
+  "adminReviews": "Reseñas",
+  "@adminReviews": {
+    "description": "Etiqueta para la sección de reseñas de administración"
+  },
+  "pendingReviews": "Reseñas pendientes",
+  "@pendingReviews": {
+    "description": "Etiqueta para reseñas pendientes"
+  },
+  "noPendingReviews": "No hay reseñas pendientes",
+  "@noPendingReviews": {
+    "description": "Mensaje cuando no hay reseñas pendientes"
+  },
+  "subCentersPending": "Pendiente",
+  "@subCentersPending": {
+    "description": "Etiqueta para subcentros pendientes"
+  },
+  "subCentersCurrent": "Actual",
+  "@subCentersCurrent": {
+    "description": "Etiqueta para subcentros actuales"
+  },
+  "addNewCenter": "Agregar nuevo centro",
+  "@addNewCenter": {
+    "description": "Etiqueta para agregar un nuevo centro"
+  },
+  "reviews": "Reseñas",
+  "@reviews": {
+    "description": "Etiqueta para la sección de reseñas"
+  },
+  "noReviews": "Aún no hay reseñas",
+  "@noReviews": {
+    "description": "Mensaje cuando no hay reseñas disponibles"
+  },
+  "writeAReview": "Escribir una reseña",
+  "@writeAReview": {
+    "description": "Etiqueta para escribir una reseña"
+  },
+  "pending": "Pendiente",
+  "@pending": {
+    "description": "Etiqueta para el estado pendiente"
+  },
+  "current": "Actual",
+  "@current": {
+    "description": "Etiqueta para el estado actual"
+  },
+  "howWasExperience": "¿Cómo fue tu experiencia?",
+  "@howWasExperience": {
+    "description": "Mensaje para retroalimentación sobre la experiencia del usuario"
+  },
+  "yourReview": "Tu Reseña",
+  "@yourReview": {
+    "description": "Etiqueta para el campo de entrada de la reseña del usuario"
+  },
+  "writeSomethingAboutVisit": "Escribe algo sobre tu visita",
+  "@writeSomethingAboutVisit": {
+    "description": "Mensaje para escribir una reseña sobre la visita"
+  },
+  "submitReview": "Enviar Reseña",
+  "@submitReview": {
+    "description": "Etiqueta para el botón de enviar reseña"
+  }
+}

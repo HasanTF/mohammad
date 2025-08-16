@@ -1,0 +1,239 @@
+{
+  "@@locale": "ar",
+  "onboardingWelcomeText": "اكتشف أفضل مراكز التجميل القريبة منك",
+  "@onboardingWelcomeText": {
+    "description": "نص الترحيب لشاشة الإعداد"
+  },
+  "register": "تسجيل",
+  "@register": {
+    "description": "تسمية زر التسجيل"
+  },
+  "login": "تسجيل الدخول",
+  "@login": {
+    "description": "تسمية زر تسجيل الدخول"
+  },
+  "createAccount": "إنشاء حساب",
+  "@createAccount": {
+    "description": "نص لإنشاء حساب جديد"
+  },
+  "welcomeBack": "مرحبًا بعودتك",
+  "@welcomeBack": {
+    "description": "رسالة ترحيب للمستخدمين العائدين"
+  },
+  "loginText": "تسجيل الدخول إلى حسابك",
+  "@loginText": {
+    "description": "نص لشاشة تسجيل الدخول"
+  },
+  "email": "البريد الإلكتروني",
+  "@email": {
+    "description": "تسمية حقل البريد الإلكتروني"
+  },
+  "password": "كلمة المرور",
+  "@password": {
+    "description": "تسمية حقل كلمة المرور"
+  },
+  "forgotPassword": "هل نسيت كلمة المرور؟",
+  "@forgotPassword": {
+    "description": "نص رابط نسيان كلمة المرور"
+  },
+  "rememberMe": "تذكرني",
+  "@rememberMe": {
+    "description": "تسمية مربع اختيار التذكر"
+  },
+  "dontHaveAccount": "ليس لديك حساب؟ ",
+  "@dontHaveAccount": {
+    "description": "مطالبة للمستخدمين بدون حساب"
+  },
+  "createNewAccount": "إنشاء حسابك الجديد",
+  "@createNewAccount": {
+    "description": "نص لإنشاء حساب جديد"
+  },
+  "fullName": "الاسم الكامل",
+  "@fullName": {
+    "description": "تسمية حقل الاسم الكامل"
+  },
+  "orContinueWith": "أو تابع باستخدام",
+  "@orContinueWith": {
+    "description": "نص لخيارات تسجيل الدخول البديلة"
+  },
+  "alreadyHaveAccount": "هل لديك حساب بالفعل؟ ",
+  "@alreadyHaveAccount": {
+    "description": "مطالبة للمستخدمين الذين لديهم حساب"
+  },
+  "search": "بحث",
+  "@search": {
+    "description": "تسمية وظيفة البحث"
+  },
+  "beautySupport": "مراكز التجميل",
+  "@beautySupport": {
+    "description": "عنوان التطبيق"
+  },
+  "centers": "مراكز",
+  "@centers": {
+    "description": "تسمية مراكز التجميل"
+  },
+  "center": "مركز",
+  "@center": {
+    "description": "تسمية مفردة لمركز تجميل"
+  },
+  "noCenters": "لا توجد مراكز متاحة",
+  "@noCenters": {
+    "description": "رسالة عندما لا تكون هناك مراكز متاحة"
+  },
+  "addCenter": "إضافة مركز",
+  "@addCenter": {
+    "description": "تسمية لإضافة مركز جديد"
+  },
+  "centerName": "اسم المركز",
+  "@centerName": {
+    "description": "تسمية حقل اسم المركز"
+  },
+  "centerLocation": "موقع المركز",
+  "@centerLocation": {
+    "description": "تسمية حقل موقع المركز"
+  },
+  "centerPhoneNumber": "رقم هاتف المركز",
+  "@centerPhoneNumber": {
+    "description": "تسمية حقل رقم هاتف المركز"
+  },
+  "centerDescription": "وصف المركز",
+  "@centerDescription": {
+    "description": "تسمية حقل وصف المركز"
+  },
+  "centerImage": "صورة المركز",
+  "@centerImage": {
+    "description": "تسمية حقل صورة المركز"
+  },
+  "myProfile": "ملفي الشخصي",
+  "@myProfile": {
+    "description": "تسمية قسم ملف المستخدم"
+  },
+  "settings": "الإعدادات",
+  "@settings": {
+    "description": "تسمية قائمة الإعدادات"
+  },
+  "updateUsername": "تحديث اسم المستخدم",
+  "@updateUsername": {
+    "description": "تسمية تحديث اسم المستخدم"
+  },
+  "changePassword": "تغيير كلمة المرور",
+  "@changePassword": {
+    "description": "تسمية تغيير كلمة المرور"
+  },
+  "currentPassword": "كلمة المرور الحالية",
+  "@currentPassword": {
+    "description": "تسمية حقل كلمة المرور الحالية"
+  },
+  "newPassword": "كلمة المرور الجديدة",
+  "@newPassword": {
+    "description": "تسمية حقل كلمة المرور الجديدة"
+  },
+  "confirmPassword": "تأكيد كلمة المرور",
+  "@confirmPassword": {
+    "description": "تسمية حقل تأكيد كلمة المرور"
+  },
+  "deleteAccount": "حذف الحساب",
+  "@deleteAccount": {
+    "description": "تسمية حذف الحساب"
+  },
+  "aboutApp": "حول التطبيق",
+  "@aboutApp": {
+    "description": "تسمية قسم حول التطبيق"
+  },
+  "logout": "تسجيل الخروج",
+  "@logout": {
+    "description": "تسمية زر تسجيل الخروج"
+  },
+  "profileTab": "الملف الشخصي",
+  "@profileTab": {
+    "description": "تسمية علامة تبويب الملف الشخصي"
+  },
+  "searchTab": "البحث",
+  "@searchTab": {
+    "description": "تسمية علامة تبويب البحث"
+  },
+  "resetPassword": "إعادة تعيين كلمة المرور",
+  "@resetPassword": {
+    "description": "تسمية إعادة تعيين كلمة المرور"
+  },
+  "newUsername": "اسم المستخدم الجديد",
+  "@newUsername": {
+    "description": "تسمية حقل اسم المستخدم الجديد"
+  },
+  "newsTab": "الأخبار",
+  "@newsTab": {
+    "description": "تسمية علامة تبويب الأخبار"
+  },
+  "homeTab": "الرئيسية",
+  "@homeTab": {
+    "description": "تسمية علامة تبويب الرئيسية"
+  },
+  "adminDashboard": "لوحة تحكم الإدارة",
+  "@adminDashboard": {
+    "description": "تسمية لوحة تحكم الإدارة"
+  },
+  "adminCenters": "مراكز",
+  "@adminCenters": {
+    "description": "تسمية قسم مراكز الإدارة"
+  },
+  "adminReviews": "التقييمات",
+  "@adminReviews": {
+    "description": "تسمية قسم تقييمات الإدارة"
+  },
+  "pendingReviews": "التقييمات المعلقة",
+  "@pendingReviews": {
+    "description": "تسمية التقييمات المعلقة"
+  },
+  "noPendingReviews": "لا توجد تقييمات معلقة",
+  "@noPendingReviews": {
+    "description": "رسالة عندما لا تكون هناك تقييمات معلقة"
+  },
+  "subCentersPending": "معلق",
+  "@subCentersPending": {
+    "description": "تسمية المراكز الفرعية المعلقة"
+  },
+  "subCentersCurrent": "حالي",
+  "@subCentersCurrent": {
+    "description": "تسمية المراكز الفرعية الحالية"
+  },
+  "addNewCenter": "إضافة مركز جديد",
+  "@addNewCenter": {
+    "description": "تسمية لإضافة مركز جديد"
+  },
+  "reviews": "التقييمات",
+  "@reviews": {
+    "description": "تسمية قسم التقييمات"
+  },
+  "noReviews": "لا توجد تقييمات بعد",
+  "@noReviews": {
+    "description": "رسالة عندما لا تكون هناك تقييمات متاحة"
+  },
+  "writeAReview": "كتابة تقييم",
+  "@writeAReview": {
+    "description": "تسمية كتابة تقييم"
+  },
+  "pending": "معلق",
+  "@pending": {
+    "description": "تسمية حالة المعلق"
+  },
+  "current": "حالي",
+  "@current": {
+    "description": "تسمية الحالة الحالية"
+  },
+  "howWasExperience": "كيف كانت تجربتك؟",
+  "@howWasExperience": {
+    "description": "مطالبة بتعليقات تجربة المستخدم"
+  },
+  "yourReview": "تقييمك",
+  "@yourReview": {
+    "description": "تسمية حقل إدخال تقييم المستخدم"
+  },
+  "writeSomethingAboutVisit": "اكتب شيئًا عن زيارتك",
+  "@writeSomethingAboutVisit": {
+    "description": "مطالبة لكتابة تقييم عن الزيارة"
+  },
+  "submitReview": "إرسال التقييم",
+  "@submitReview": {
+    "description": "تسمية زر إرسال التقييم"
+  }
+}
