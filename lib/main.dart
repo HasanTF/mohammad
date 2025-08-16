@@ -43,12 +43,11 @@ void main() async {
   runApp(
     ChangeNotifierProvider(
       create: (_) => LanguageProvider(Locale(languageCode ?? "en")),
-      child: const MyApp(),
-      //  DevicePreview(
-      // enabled: true,
-      // tools: const [...DevicePreview.defaultTools],
-      // builder: (context) => const MyApp(),
-      // ),
+      child: DevicePreview(
+        enabled: true,
+        tools: const [...DevicePreview.defaultTools],
+        builder: (context) => const MyApp(),
+      ),
     ),
   );
 }
