@@ -1,5 +1,6 @@
-import 'package:beuty_support/core/constants/colors.dart';
-import 'package:beuty_support/core/constants/sizes.dart';
+import 'dart:ui';
+
+import 'package:beuty_support/core/constants/themes.dart';
 import 'package:beuty_support/core/widget/language_switcher.dart';
 import 'package:beuty_support/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -12,21 +13,22 @@ class OnboardingScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          const BackgroundImage(),
-          const BackgroundBlackLayer(),
+          // Background image & Black layer
+          Background(),
+
+          // Content
           Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: AppPadding.horizontal,
-              vertical: AppPadding.vertical * 2,
-            ),
-            child: Column(
-              children: [
-                LanguageSwitcher(),
-                WelcomingText(),
-                Spacer(),
-                SignInButton(),
-                CreateAccountText(),
-              ],
+            padding: EdgeInsets.all(Sizes.padding),
+            child: SafeArea(
+              child: Column(
+                children: [
+                  LanguageSwitcher(),
+                  WelcomingText(),
+                  Spacer(),
+                  SignInButton(),
+                  CreateAccountText(),
+                ],
+              ),
             ),
           ),
         ],
@@ -46,7 +48,7 @@ class CreateAccountText extends StatelessWidget {
       },
       child: Text(
         S.of(context).createAccount,
-        style: TextStyle(color: Colors.white70, fontSize: Sizes.small),
+        style: Theme.of(context).textTheme.labelSmall,
       ),
     );
   }
@@ -57,30 +59,15 @@ class SignInButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 56,
-      decoration: BoxDecoration(
-        color: Colors.white.withAlpha(40),
-        borderRadius: BorderRadius.circular(AppBorderRadius.borderR),
-      ),
-      child: TextButton(
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(AppBorderRadius.borderHeavy),
+      child: OutlinedButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/login');
+          Navigator.pushNamed(context, "/login");
         },
-
-        style: TextButton.styleFrom(
-          foregroundColor: Colors.white,
-          overlayColor: Colors.transparent,
-        ),
         child: Text(
           S.of(context).login,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: Sizes.medium,
-            fontWeight: FontWeight.bold,
-            fontFamily: "Delius",
-          ),
+          style: Theme.of(context).textTheme.labelMedium,
         ),
       ),
     );
@@ -93,39 +80,33 @@ class WelcomingText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12),
+      padding: const EdgeInsets.symmetric(vertical: 25),
       child: Text(
         S.of(context).onboardingWelcomeText,
-        style: TextStyle(
-          color: AppColors.cPrimary,
-          fontWeight: FontWeight.bold,
-          fontSize: Sizes.large,
-          fontFamily: "Delius",
-          letterSpacing: 2,
-        ),
+        style: Theme.of(context).textTheme.displayLarge,
       ),
     );
   }
 }
 
-class BackgroundBlackLayer extends StatelessWidget {
-  const BackgroundBlackLayer({super.key});
+class Background extends StatelessWidget {
+  const Background({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Positioned.fill(
-      child: Container(color: Colors.black.withAlpha(200)),
-    );
-  }
-}
-
-class BackgroundImage extends StatelessWidget {
-  const BackgroundImage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned.fill(
-      child: Image.asset('assets/images/onboarding.jpg', fit: BoxFit.cover),
+    return Stack(
+      children: [
+        SizedBox.expand(
+          child: ImageFiltered(
+            imageFilter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+            child: Image.asset(
+              "assets/images/mybadlife.jpeg",
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Container(color: Colors.black54),
+      ],
     );
   }
 }

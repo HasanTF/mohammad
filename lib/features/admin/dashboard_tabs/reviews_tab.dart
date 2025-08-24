@@ -1,8 +1,8 @@
+import 'package:beuty_support/core/constants/themes.dart';
 import 'package:beuty_support/core/widget/review_card.dart';
 import 'package:beuty_support/generated/l10n.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:beuty_support/core/constants/sizes.dart';
 
 class ReviewsTab extends StatelessWidget {
   const ReviewsTab({super.key});
@@ -13,10 +13,7 @@ class ReviewsTab extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: AppPadding.horizontal,
-            vertical: 8,
-          ),
+          padding: EdgeInsets.all(Sizes.padding),
           child: Text(
             S.of(context).pendingReviews,
             style: TextStyle(
@@ -44,10 +41,7 @@ class ReviewsTab extends StatelessWidget {
               }
 
               return ListView.builder(
-                padding: EdgeInsets.symmetric(
-                  vertical: 20,
-                  horizontal: AppPadding.horizontal,
-                ),
+                padding: EdgeInsets.all(Sizes.padding),
                 itemCount: docs.length,
                 itemBuilder: (context, index) {
                   final data = docs[index].data() as Map<String, dynamic>;

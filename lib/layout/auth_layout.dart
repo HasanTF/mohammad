@@ -20,7 +20,7 @@ class AuthLayout extends StatelessWidget {
             if (snapshot.connectionState == ConnectionState.waiting) {
               widget = Center(child: CircularProgressIndicator());
             } else if (snapshot.hasData) {
-              widget = const Tabs();
+              widget = const TabsLayout();
             } else {
               widget = pageInNotConnected ?? const OnboardingScreen();
             }

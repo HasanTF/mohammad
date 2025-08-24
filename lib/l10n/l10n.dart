@@ -102,7 +102,7 @@ abstract class S {
   /// Welcome text for the onboarding screen
   ///
   /// In en, this message translates to:
-  /// **'Discover the best beauty centers near you'**
+  /// **'Discover the best beauty centers\nnear you'**
   String get onboardingWelcomeText;
 
   /// Label for the register button

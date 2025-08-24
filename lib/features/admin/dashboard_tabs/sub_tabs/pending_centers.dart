@@ -1,5 +1,4 @@
-import 'package:beuty_support/core/constants/colors.dart';
-import 'package:beuty_support/core/constants/sizes.dart';
+import 'package:beuty_support/core/constants/themes.dart';
 import 'package:beuty_support/generated/l10n.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -49,10 +48,7 @@ class _PendingCentersState extends State<PendingCenters> {
           children: [
             Expanded(
               child: ListView.builder(
-                padding: EdgeInsets.symmetric(
-                  horizontal: AppPadding.horizontal,
-                  vertical: AppPadding.vertical,
-                ),
+                padding: EdgeInsets.all(Sizes.padding),
                 itemCount: centers.length,
                 itemBuilder: (context, index) {
                   final center = centers[index];
@@ -106,7 +102,7 @@ class _PendingCentersState extends State<PendingCenters> {
                                   Text(
                                     data['centerName'] ?? 'No Name',
                                     style: TextStyle(
-                                      color: AppColors.cPrimary,
+                                      color: AppColors.textPrimary,
                                       fontSize: Sizes.small * 1.3,
                                       fontFamily: "Zain",
                                     ),
@@ -129,7 +125,7 @@ class _PendingCentersState extends State<PendingCenters> {
                                   Text(
                                     data['centerLocation'] ?? '',
                                     style: TextStyle(
-                                      color: AppColors.cLightGrey,
+                                      color: AppColors.textSecondary,
                                       fontSize: Sizes.small * 0.75,
                                     ),
                                   ),
@@ -186,7 +182,7 @@ class _PendingCentersState extends State<PendingCenters> {
                                     "Approve",
                                     style: TextStyle(
                                       color: Colors.green,
-                                      fontSize: Sizes.extraSmall,
+                                      fontSize: Sizes.medium,
                                     ),
                                   ),
                                 ),
@@ -210,8 +206,8 @@ class _PendingCentersState extends State<PendingCenters> {
                                           TextButton(
                                             onPressed: () =>
                                                 Navigator.of(context).pop(true),
-                                            child: const Text(
-                                              "Decline",
+                                            child: Text(
+                                              "Reject",
                                               style: TextStyle(
                                                 color: Colors.red,
                                               ),
@@ -260,7 +256,7 @@ class _PendingCentersState extends State<PendingCenters> {
                                     "Decline",
                                     style: TextStyle(
                                       color: Colors.red,
-                                      fontSize: Sizes.extraSmall,
+                                      fontSize: Sizes.medium,
                                     ),
                                   ),
                                 ),

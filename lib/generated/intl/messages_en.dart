@@ -76,7 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "noReviews": MessageLookupByLibrary.simpleMessage("No reviews yet"),
     "onboardingWelcomeText": MessageLookupByLibrary.simpleMessage(
-      "Discover the best beauty centers near you",
+      "Discover the best beauty centers\nnear you",
     ),
     "orContinueWith": MessageLookupByLibrary.simpleMessage("Or continue with"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),

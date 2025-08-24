@@ -1,14 +1,11 @@
-import 'package:beuty_support/core/constants/colors.dart';
-import 'package:beuty_support/core/constants/sizes.dart';
-import 'package:beuty_support/generated/l10n.dart';
-import 'package:beuty_support/layout/auth_layout.dart';
+import 'dart:ui';
+import 'package:beuty_support/core/constants/themes.dart';
 import 'package:beuty_support/core/services/auth_sevices.dart';
-import 'package:beuty_support/core/widget/custom_button.dart';
 import 'package:beuty_support/core/widget/custom_input_field.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/gestures.dart';
+import 'package:beuty_support/core/widget/my_button.dart';
+import 'package:beuty_support/layout/auth_layout.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -23,7 +20,34 @@ class _SignInScreenState extends State<SignInScreen> {
 
   String errorMessage = "";
   bool isLoading = false;
+  bool rememberMe = false;
 
+  @override
+  void initState() {
+    super.initState();
+    _checkCurrentUser();
+  }
+
+  Future<void> _checkCurrentUser() async {
+    final user =
+        authServices.value.currentUser; // جلب اليوزر الحالي من Firebase
+    if (user != null) {
+      // ✅ إذا المستخدم لسا مسجل دخول → فوت عالتطبيق مباشرة
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const AuthLayout()),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  // Login with email and password function
   void login() async {
     setState(() {
       errorMessage = "";
@@ -57,58 +81,111 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   @override
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          // Background image & Black layer
+          const Background(),
+
+          // Main padding
+          Padding(
+            padding: EdgeInsets.all(Sizes.padding * 2),
+
+            // Content
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Spacer(),
+
+                // Login Text
+                const LoginText(),
+
+                const SizedBox(height: 50),
+
+                // E-Mail & Password Inputfeilds
+                InputFields(
+                  emailController: emailController,
+                  passwordController: passwordController,
+                  errorMessage: errorMessage,
+                  rememberMe: rememberMe,
+                  onRememberMeChanged: (value) {
+                    setState(() {
+                      rememberMe = value;
+                    });
+                  },
+                ),
+
+                const SizedBox(height: 35),
+
+                // Login Button
+                isLoading
+                    ? const Padding(
+                        padding: EdgeInsets.only(bottom: 12.0),
+                        child: Center(child: CircularProgressIndicator()),
+                      )
+                    : MyButton(
+                        onPressed: login,
+                        text: "Login",
+                        backgroundColor: Colors.black87,
+                        textColor: Colors.white,
+                      ),
+
+                // Login Facebook
+                MyButton(
+                  onPressed: () {},
+                  text: "Login with Facebook",
+                  icon: Icons.facebook,
+                  backgroundColor: Colors.white,
+                  textColor: Colors.black87,
+                ),
+
+                // Login Apple
+                MyButton(
+                  onPressed: () {},
+                  text: "Login with Apple",
+                  icon: Icons.apple,
+                  backgroundColor: AppColors.primary,
+                  textColor: Colors.black,
+                ),
+
+                const Spacer(),
+
+                // Sign Up Text
+                const DontHaveAccount(),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
+}
+
+class DontHaveAccount extends StatelessWidget {
+  const DontHaveAccount({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.cWhite,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const TopClipPath(),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: AppPadding.horizontal),
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  minHeight: MediaQuery.of(context).size.height * 0.70,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    const WelcomingText(),
-                    InputFields(
-                      emailController: emailController,
-                      passwordController: passwordController,
-                      errorMessage: errorMessage,
-                    ),
-                    Column(
-                      children: [
-                        isLoading
-                            ? Center(
-                                child: CircularProgressIndicator(
-                                  color: AppColors.cPrimary,
-                                ),
-                              )
-                            : CustomButton(
-                                text: S.of(context).login,
-                                onPressed: login,
-                              ),
-                        const SizedBox(height: 18.0),
-                        SignupText(),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
+    return Row(
+      children: [
+        Text(
+          "Don't have an account?",
+          style: Theme.of(context).textTheme.labelSmall,
         ),
-      ),
+        TextButton(
+          onPressed: () {
+            Navigator.pushNamed(context, "/signup");
+          },
+          child: Text(
+            "SignUp",
+            style: Theme.of(context).textTheme.labelSmall!.copyWith(
+              color: Colors.black54,
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -119,11 +196,15 @@ class InputFields extends StatelessWidget {
     required this.emailController,
     required this.passwordController,
     required this.errorMessage,
+    required this.rememberMe,
+    required this.onRememberMeChanged,
   });
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final String errorMessage;
+  final bool rememberMe;
+  final ValueChanged<bool> onRememberMeChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -131,13 +212,13 @@ class InputFields extends StatelessWidget {
       children: [
         CustomInputField(
           controller: emailController,
-          label: S.of(context).email,
+          label: "E-Mail",
           obscureText: false,
           prefixIcon: const Icon(Icons.email),
         ),
         CustomInputField(
           controller: passwordController,
-          label: S.of(context).password,
+          label: "Password",
           obscureText: true,
           prefixIcon: const Icon(Icons.lock),
         ),
@@ -145,156 +226,66 @@ class InputFields extends StatelessWidget {
           errorMessage,
           style: TextStyle(color: Colors.redAccent, fontSize: Sizes.small),
         ),
-        const RememberMe(),
-      ],
-    );
-  }
-}
-
-class SignupText extends StatelessWidget {
-  const SignupText({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        text: S.of(context).dontHaveAccount,
-        style: TextStyle(
-          color: AppColors.cLightGrey,
-          fontSize: Sizes.extraSmall,
-        ),
-        children: [
-          TextSpan(
-            text: S.of(context).register,
-            style: TextStyle(
-              color: AppColors.cPrimary,
-              fontWeight: FontWeight.bold,
-              decoration: TextDecoration.underline,
-            ),
-
-            recognizer: TapGestureRecognizer()
-              ..onTap = () {
-                Navigator.pushNamed(context, '/signup');
-              },
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class RememberMe extends StatelessWidget {
-  const RememberMe({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
         Row(
           children: [
-            Icon(Icons.check_box, color: AppColors.cPrimary),
-            const SizedBox(width: 8),
-            Text(
-              S.of(context).rememberMe,
-              style: TextStyle(
-                color: AppColors.cLightGrey,
-                fontSize: Sizes.extraSmall,
+            Checkbox(
+              value: rememberMe,
+              onChanged: (value) => onRememberMeChanged(value ?? false),
+              side: const BorderSide(color: Colors.white, width: 2),
+            ),
+            const SizedBox(width: 5),
+            Text("Remember Me", style: Theme.of(context).textTheme.labelSmall),
+            const Spacer(),
+            TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/resetpassword');
+              },
+              child: Text(
+                "Forgot your password?",
+                style: Theme.of(context).textTheme.labelSmall,
               ),
             ),
           ],
         ),
-        InkWell(
-          onTap: () {
-            Navigator.pushNamed(context, "/resetpassword");
-          },
-          child: Text(
-            S.of(context).forgotPassword,
-            style: TextStyle(
-              color: AppColors.cLightGrey,
-              fontSize: Sizes.extraSmall,
-            ),
-          ),
-        ),
       ],
     );
   }
 }
 
-class WelcomingText extends StatelessWidget {
-  const WelcomingText({super.key});
+class LoginText extends StatelessWidget {
+  const LoginText({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          S.of(context).welcomeBack,
-          style: TextStyle(
-            color: AppColors.cPrimary,
-            fontSize: Sizes.large,
-            fontWeight: FontWeight.bold,
-            fontFamily: "Dalius",
-          ),
-        ),
-        Text(
-          S.of(context).loginText,
-          style: TextStyle(
-            color: AppColors.cLightGrey,
-            fontSize: Sizes.small,
-            fontFamily: "Dalius",
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class TopClipPath extends StatelessWidget {
-  const TopClipPath({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipPath(
-      clipper: TopWaveClipper(),
-      child: Container(
-        width: double.infinity,
-        height: 0.25.sh,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/onboarding.jpg"),
-            fit: BoxFit.cover,
-          ),
-        ),
+    return const Text(
+      "Log into\nyour account",
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 28,
+        fontWeight: FontWeight.bold,
       ),
     );
   }
 }
 
-class TopWaveClipper extends CustomClipper<Path> {
+class Background extends StatelessWidget {
+  const Background({super.key});
+
   @override
-  Path getClip(Size size) {
-    Path path = Path();
-
-    path.lineTo(0, size.height * 0.75);
-    path.quadraticBezierTo(
-      size.width * 0.25,
-      size.height,
-      size.width * 0.5,
-      size.height * 0.85,
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        SizedBox(
+          child: ImageFiltered(
+            imageFilter: ImageFilter.blur(sigmaX: 25, sigmaY: 25),
+            child: Image.asset(
+              "assets/images/mybadlife.jpeg",
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Container(color: Colors.black12),
+      ],
     );
-    path.quadraticBezierTo(
-      size.width * 0.75,
-      size.height * 0.70,
-      size.width,
-      size.height * 0.80,
-    );
-    path.lineTo(size.width, 0);
-    path.close();
-
-    return path;
   }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

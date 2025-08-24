@@ -1,17 +1,22 @@
+import 'package:beuty_support/core/constants/themes.dart';
 import 'package:beuty_support/features/auth/user_services/change_password.dart';
 import 'package:beuty_support/features/auth/user_services/delete_account.dart';
 import 'package:beuty_support/features/auth/user_services/update_username.dart';
+import 'package:beuty_support/features/home/tabs/favorite_tab.dart';
+import 'package:beuty_support/features/home/tabs/offers_tab.dart';
+import 'package:beuty_support/features/home/tabs/profile_tab.dart';
 import 'package:beuty_support/features/providers/language_provider.dart';
+import 'package:beuty_support/features/providers/user_provider.dart';
 import 'package:beuty_support/generated/l10n.dart';
 import 'package:beuty_support/layout/auth_layout.dart';
-import 'package:beuty_support/features/home/add_center_screen.dart';
+import 'package:beuty_support/features/home/sub_screens/add_center_screen.dart';
 import 'package:beuty_support/features/admin/admin_dashboard_screen.dart';
 import 'package:beuty_support/features/auth/reset_password.dart';
 import 'package:beuty_support/features/auth/sign_in_screen.dart';
 import 'package:beuty_support/features/auth/sign_up_screen.dart';
 import 'package:beuty_support/features/onboarding/onboarding_screen.dart';
-import 'package:beuty_support/features/home/center_details.dart';
-import 'package:beuty_support/features/home/write_a_review.dart';
+import 'package:beuty_support/features/home/sub_screens/center_details.dart';
+import 'package:beuty_support/features/home/sub_screens/write_a_review.dart';
 import 'package:beuty_support/features/home/tabs_layout.dart';
 import 'package:beuty_support/features/home/tabs/home_tab.dart';
 import 'package:device_preview/device_preview.dart';
@@ -27,22 +32,21 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? languageCode = prefs.getString('languageCode');
 
-  try {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-    debugPrint("✅ Firebase initialized successfully");
-  } catch (e) {
-    debugPrint("❌ Firebase initialization failed: $e");
-  }
-
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => LanguageProvider(Locale(languageCode ?? "en")),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => LanguageProvider(Locale(languageCode ?? "en")),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => UserProvider(), // هذا هو ال UserProvider الجديد
+        ),
+      ],
       child: DevicePreview(
         enabled: true,
         tools: const [...DevicePreview.defaultTools],
@@ -65,6 +69,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: "Beauty Support",
           debugShowCheckedModeBanner: false,
+          theme: buildAppTheme(),
           restorationScopeId: "app",
           locale: Provider.of<LanguageProvider>(context).locale,
           localizationsDelegates: [
@@ -75,21 +80,33 @@ class MyApp extends StatelessWidget {
           ],
           supportedLocales: S.delegate.supportedLocales,
           builder: DevicePreview.appBuilder,
+
           initialRoute: "/",
           routes: {
             "/": (context) => const AuthLayout(),
+
+            // First Screen
             "/onboardingscreen": (context) => const OnboardingScreen(),
+
+            // Auth screens
             "/login": (context) => const SignInScreen(),
             "/signup": (context) => const SignUpScreen(),
+
+            // Tabs
+            "/tabs": (context) => const TabsLayout(),
             "/hometab": (context) => const HomeTab(),
-            "/tabs": (context) => const Tabs(),
+            "/offerstab": (context) => const OffersTab(),
+            "/favoritestab": (context) => const FavoriteTab(),
+            "/profiletab": (context) => const ProfileTab(),
+
+            // Sub-Screens
+            "/admindashboardscreen": (context) => const AdminDashboardScreen(),
             "/centerdetails": (context) => const CenterDetails(),
             "/writeareview": (context) => const WriteAReview(),
             "/resetpassword": (context) => const ResetPassword(),
             "/changepassword": (context) => const ChangePassword(),
             "/updateusername": (context) => const UpdateUsername(),
             "/deleteaccount": (context) => const DeleteAccount(),
-            "/admindashboardscreen": (context) => const AdminDashboardScreen(),
             "/addcenterscreen": (context) => const AddCenterScreen(),
           },
         );

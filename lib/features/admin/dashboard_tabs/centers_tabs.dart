@@ -1,5 +1,4 @@
-import 'package:beuty_support/core/constants/colors.dart';
-import 'package:beuty_support/core/constants/sizes.dart';
+import 'package:beuty_support/core/constants/themes.dart';
 import 'package:beuty_support/features/admin/dashboard_tabs/sub_tabs/current_centers.dart';
 import 'package:beuty_support/features/admin/dashboard_tabs/sub_tabs/pending_centers.dart';
 import 'package:beuty_support/generated/l10n.dart';
@@ -14,24 +13,24 @@ class CentersTabs extends StatelessWidget {
       length: 2,
       child: Column(
         children: [
-          // Custom TabBar at the top (no AppBar)
           TabBar(
             tabs: [
               Tab(text: S.of(context).pending),
-              Tab(text: S.of(context).currentPassword),
+              Tab(text: S.of(context).subCentersCurrent),
             ],
-            labelColor: AppColors.cPrimary,
-            unselectedLabelColor: AppColors.cPrimary,
+            labelColor: Colors.black,
+            unselectedLabelColor: Colors.black45,
             labelStyle: TextStyle(
-              fontSize: Sizes.small,
+              fontSize: Sizes.large,
               fontWeight: FontWeight.w900,
             ),
             unselectedLabelStyle: TextStyle(
-              fontSize: Sizes.small * 0.75,
-              fontWeight: FontWeight.normal,
+              fontSize: Sizes.medium * 0.9,
+              fontWeight: FontWeight.w600,
             ),
-            indicatorColor: AppColors.cPrimary,
-            indicatorWeight: 2,
+            indicatorColor: AppColors.primary,
+            indicatorWeight: 5,
+            dividerHeight: 0,
           ),
 
           const Expanded(

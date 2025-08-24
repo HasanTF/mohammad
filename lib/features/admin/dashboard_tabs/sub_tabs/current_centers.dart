@@ -1,6 +1,5 @@
-import 'package:beuty_support/core/constants/colors.dart';
-import 'package:beuty_support/core/constants/sizes.dart';
-import 'package:beuty_support/core/widget/custom_button.dart';
+import 'package:beuty_support/core/constants/themes.dart';
+import 'package:beuty_support/core/widget/my_button.dart';
 import 'package:beuty_support/generated/l10n.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -50,10 +49,7 @@ class _CentersTabState extends State<CentersTab> {
           children: [
             Expanded(
               child: ListView.builder(
-                padding: EdgeInsets.symmetric(
-                  horizontal: AppPadding.horizontal,
-                  vertical: AppPadding.vertical,
-                ),
+                padding: EdgeInsets.all(Sizes.padding),
                 itemCount: centers.length,
                 itemBuilder: (context, index) {
                   final center = centers[index];
@@ -106,7 +102,7 @@ class _CentersTabState extends State<CentersTab> {
                                   Text(
                                     data['centerName'] ?? 'No Name',
                                     style: TextStyle(
-                                      color: AppColors.cPrimary,
+                                      color: AppColors.textPrimary,
                                       fontSize: Sizes.small * 1.3,
                                       fontFamily: "Zain",
                                     ),
@@ -129,7 +125,7 @@ class _CentersTabState extends State<CentersTab> {
                                   Text(
                                     data['centerLocation'] ?? '',
                                     style: TextStyle(
-                                      color: AppColors.cLightGrey,
+                                      color: AppColors.textPrimary,
                                       fontSize: Sizes.small * 0.75,
                                     ),
                                   ),
@@ -193,12 +189,8 @@ class _CentersTabState extends State<CentersTab> {
             ),
             SafeArea(
               child: Padding(
-                padding: EdgeInsets.only(
-                  left: AppPadding.horizontal,
-                  right: AppPadding.horizontal,
-                  top: AppPadding.vertical,
-                ),
-                child: CustomButton(
+                padding: EdgeInsets.all(Sizes.padding),
+                child: MyButton(
                   text: S.of(context).addNewCenter,
                   onPressed: () {
                     Navigator.pushNamed(context, '/addcenterscreen');

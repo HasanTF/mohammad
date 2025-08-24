@@ -1,5 +1,6 @@
-import 'package:beuty_support/core/constants/colors.dart';
-import 'package:beuty_support/core/constants/sizes.dart';
+import 'package:beuty_support/core/constants/themes.dart';
+import 'package:beuty_support/core/widget/confirmation_dialog.dart';
+import 'package:beuty_support/core/widget/my_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class _CenterDetailsState extends State<CenterDetails> {
 
     if (center == null) {
       return Scaffold(
-        backgroundColor: AppColors.cWhite,
+        backgroundColor: AppColors.background,
         body: const Center(child: Text("Error: No center data provided.")),
       );
     }
@@ -29,40 +30,34 @@ class _CenterDetailsState extends State<CenterDetails> {
     final kHeight = size.height;
 
     return Scaffold(
-      backgroundColor: AppColors.cWhite,
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: AppColors.cWhite,
-        elevation: 1,
-        title: Text(
-          center['centerName'] ?? 'Center Name',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: Sizes.medium,
-            fontWeight: FontWeight.bold,
-            fontFamily: "Delius",
-          ),
-        ),
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              CenterImage(
-                kWidth: kWidth,
-                kHeight: kHeight,
-                imageUrl: center['centerImageUrl'] ?? '',
+      appBar: AppBar(title: Text(center['centerName'] ?? 'Center Name')),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            CenterImage(
+              kWidth: kWidth,
+              kHeight: kHeight,
+              imageUrl: center['centerImageUrl'] ?? '',
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: Sizes.padding),
+              child: Column(
+                children: [
+                  CenterDetal(kWidth: kWidth, data: center),
+                  WriteReviewButton(
+                    kWidth: kWidth,
+                    centerId: center['id'] ?? '',
+                  ),
+                  Reviews(
+                    kWidth: kWidth,
+                    kHeight: kHeight,
+                    centerId: center['id'] ?? '',
+                  ),
+                ],
               ),
-              CenterDetal(kWidth: kWidth, data: center),
-              WriteReviewButton(kWidth: kWidth, centerId: center['id'] ?? ''),
-              Reviews(
-                kWidth: kWidth,
-                kHeight: kHeight,
-                centerId: center['id'] ?? '',
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -162,7 +157,7 @@ class _ReviewsState extends State<Reviews> {
     if (widget.centerId.isEmpty) {
       return Text(
         "Invalid center ID.",
-        style: TextStyle(color: AppColors.cLightGrey),
+        style: TextStyle(color: AppColors.primary),
       );
     }
 
@@ -174,16 +169,7 @@ class _ReviewsState extends State<Reviews> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "Reviews",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: Sizes.medium,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Delius",
-                  shadows: AppShadows.primaryShadow,
-                ),
-              ),
+              Text("Reviews", style: Theme.of(context).textTheme.titleMedium),
               IconButton(
                 icon: Icon(Icons.refresh),
                 onPressed: _refresh,
@@ -209,7 +195,7 @@ class _ReviewsState extends State<Reviews> {
                   children: [
                     Text(
                       "Error loading reviews: ${snapshot.error}",
-                      style: TextStyle(color: AppColors.cLightGrey),
+                      style: TextStyle(color: AppColors.primary),
                     ),
                     SizedBox(height: 8),
                     ElevatedButton(onPressed: _refresh, child: Text("Retry")),
@@ -219,7 +205,7 @@ class _ReviewsState extends State<Reviews> {
               if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                 return Text(
                   "No reviews yet.",
-                  style: TextStyle(color: AppColors.cLightGrey),
+                  style: TextStyle(color: AppColors.primary),
                 );
               }
 
@@ -240,8 +226,14 @@ class _ReviewsState extends State<Reviews> {
                   final date = timestamp.toDate();
 
                   return Container(
-                    padding: EdgeInsets.symmetric(
-                      vertical: widget.kHeight * 0.02,
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          color: AppColors.primary,
+                          width: 2.0,
+                        ),
+                      ),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -249,11 +241,11 @@ class _ReviewsState extends State<Reviews> {
                         Row(
                           children: [
                             CircleAvatar(
-                              radius: 25,
+                              radius: 30,
                               backgroundImage: AssetImage(
                                 "assets/images/avatar.jpg",
                               ),
-                              backgroundColor: AppColors.cPrimary.withAlpha(51),
+                              backgroundColor: AppColors.primary.withAlpha(51),
                             ),
                             SizedBox(width: 18.0),
                             Column(
@@ -261,11 +253,7 @@ class _ReviewsState extends State<Reviews> {
                               children: [
                                 Text(
                                   username,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: Sizes.medium * 0.75,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: Theme.of(context).textTheme.bodyLarge,
                                 ),
                                 Row(
                                   children: List.generate(5, (i) {
@@ -274,47 +262,28 @@ class _ReviewsState extends State<Reviews> {
                                       color: i < rating
                                           ? Colors.amber
                                           : Colors.grey,
-                                      size: 14.0,
+                                      size: 16.0,
                                     );
                                   }),
                                 ),
                                 SizedBox(height: 4),
                                 Text(
                                   comment,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: Sizes.small,
-                                  ),
+                                  style: Theme.of(context).textTheme.bodySmall,
                                 ),
                                 if (_isAdmin)
                                   InkWell(
                                     onTap: () async {
                                       final confirm = await showDialog<bool>(
                                         context: context,
-                                        builder: (context) => AlertDialog(
-                                          title: Text("Confirm Deletion"),
-                                          content: Text(
-                                            "Are you sure you want to delete this review?",
-                                          ),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.of(
-                                                context,
-                                              ).pop(false),
-                                              child: Text("Cancel"),
-                                            ),
-                                            TextButton(
-                                              onPressed: () => Navigator.of(
-                                                context,
-                                              ).pop(true),
-                                              child: Text(
-                                                "Delete",
-                                                style: TextStyle(
-                                                  color: Colors.red,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
+                                        builder: (context) => ConfirmationDialog(
+                                          title: "Confirm Deleting",
+                                          content:
+                                              "Are you sure you want to\ndelete this review?",
+                                          confirmText: "Delete",
+                                          cancelText: "Cancel",
+                                          confirmColor: Colors.red,
+                                          cancelColor: Colors.black,
                                         ),
                                       );
 
@@ -337,7 +306,7 @@ class _ReviewsState extends State<Reviews> {
                         Text(
                           "${date.month}/${date.day}/${date.year}",
                           style: TextStyle(
-                            color: AppColors.cLightGrey,
+                            color: Colors.black87,
                             fontSize: Sizes.small,
                             fontWeight: FontWeight.bold,
                           ),
@@ -367,26 +336,11 @@ class WriteReviewButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: kWidth * 0.05),
-      decoration: BoxDecoration(
-        color: AppColors.cPrimary,
-        borderRadius: BorderRadius.circular(AppBorderRadius.borderR),
-      ),
-      child: TextButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/writeareview', arguments: centerId);
-        },
-        style: TextButton.styleFrom(
-          foregroundColor: Colors.white,
-          overlayColor: Colors.transparent,
-        ),
-        child: Text(
-          'Write a Review',
-          style: TextStyle(fontSize: Sizes.medium, fontWeight: FontWeight.bold),
-        ),
-      ),
+    return MyButton(
+      onPressed: () {
+        Navigator.pushNamed(context, '/writeareview', arguments: centerId);
+      },
+      text: "Write a Review",
     );
   }
 }
@@ -410,12 +364,9 @@ class _CenterDetalState extends State<CenterDetal> {
         children: [
           Text(
             widget.data['centerName'] ?? 'No Name',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: Sizes.medium * 1.1,
-              fontWeight: FontWeight.bold,
-              fontFamily: "Delius",
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyLarge!.copyWith(color: Colors.black),
           ),
           Row(
             children: [
@@ -441,19 +392,19 @@ class _CenterDetalState extends State<CenterDetal> {
               SizedBox(width: 10.0),
               Text(
                 widget.data['centerAddress'] ?? '',
-                style: TextStyle(color: AppColors.cLightGrey, fontSize: 16.0),
+                style: TextStyle(color: AppColors.primary, fontSize: 16.0),
               ),
             ],
           ),
           if (widget.data['centerLocation'] != null)
             Text(
               widget.data['centerLocation'],
-              style: TextStyle(color: AppColors.cLightGrey, fontSize: 16.0),
+              style: TextStyle(color: AppColors.primary, fontSize: 16.0),
             ),
           if (widget.data['centerPhone'] != null)
             Text(
               widget.data['centerPhone'],
-              style: TextStyle(color: AppColors.cLightGrey, fontSize: 16.0),
+              style: TextStyle(color: AppColors.primary, fontSize: 16.0),
             ),
           if (widget.data['centerDescription'] != null)
             Padding(

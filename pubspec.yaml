@@ -22,11 +22,6 @@ dependencies:
   cloud_firestore: ^6.0.0
   firebase_storage: ^13.0.0
 
-  # Image Picker (أحدث نسخ مستقرة)
-  image_picker: ^1.1.2
-  image_picker_for_web: ^3.0.6
-  image_picker_android: ^0.8.12+25
-
   # Localization
   flutter_localizations:
     sdk: flutter
@@ -36,7 +31,10 @@ dependencies:
   # State Managment
   provider: ^6.1.5
 
+  # Others
   dropdown_button2:
+  flutter_feather_icons: ^2.0.0+1
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   intl_utils: ^2.8.11
@@ -52,11 +50,10 @@ flutter:
     - assets/images/
 
   fonts:
-    - family: Delius
+    - family: Inter_18pt
       fonts:
-        - asset: assets/fonts/Delius-Regular.ttf
-    - family: Zain
-      fonts:
-        - asset: assets/fonts/Zain-Bold.ttf
+        - asset: assets/fonts/Inter_18pt-Regular.ttf
+          weight: 400
+
 flutter_intl:
   enabled: true

@@ -1,7 +1,6 @@
-import 'package:beuty_support/core/constants/colors.dart';
-import 'package:beuty_support/core/constants/sizes.dart';
+import 'package:beuty_support/core/constants/themes.dart';
 import 'package:beuty_support/core/services/auth_sevices.dart';
-import 'package:beuty_support/core/widget/custom_button.dart';
+import 'package:beuty_support/core/widget/my_button.dart';
 import 'package:beuty_support/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -80,10 +79,7 @@ class _ResetPasswordState extends State<ResetPassword> {
             child: ConstrainedBox(
               constraints: BoxConstraints(minHeight: constraints.maxHeight),
               child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: AppPadding.horizontal,
-                  vertical: AppPadding.vertical,
-                ),
+                padding: EdgeInsets.all(Sizes.padding),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -100,9 +96,9 @@ class _ResetPasswordState extends State<ResetPassword> {
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: AppColors.cSecondary,
+                        fillColor: AppColors.primary,
                         hintText: S.of(context).email,
-                        hintStyle: TextStyle(color: AppColors.cPrimary),
+                        hintStyle: TextStyle(color: AppColors.primary),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(
                             AppBorderRadius.borderR,
@@ -120,9 +116,9 @@ class _ResetPasswordState extends State<ResetPassword> {
                     ),
                     isLoading
                         ? Center(child: CircularProgressIndicator())
-                        : CustomButton(
-                            text: S.of(context).resetPassword,
+                        : MyButton(
                             onPressed: resetPassword,
+                            text: S.of(context).resetPassword,
                           ),
                   ],
                 ),

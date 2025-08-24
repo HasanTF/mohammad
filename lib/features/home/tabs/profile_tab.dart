@@ -1,13 +1,18 @@
-import 'package:beuty_support/core/constants/colors.dart';
-import 'package:beuty_support/core/constants/sizes.dart';
+import 'dart:ui';
+
+import 'package:beuty_support/core/constants/themes.dart';
 import 'package:beuty_support/core/services/auth_sevices.dart';
+import 'package:beuty_support/core/widget/confirmation_dialog.dart';
 import 'package:beuty_support/core/widget/language_switcher.dart';
+import 'package:beuty_support/core/widget/profile_services.dart';
 import 'package:beuty_support/features/auth/user_services/change_password.dart';
 import 'package:beuty_support/features/auth/user_services/delete_account.dart';
 import 'package:beuty_support/features/auth/user_services/update_username.dart';
+import 'package:beuty_support/features/providers/user_provider.dart';
 import 'package:beuty_support/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfileTab extends StatefulWidget {
   const ProfileTab({super.key});
@@ -20,11 +25,9 @@ class _ProfileTabState extends State<ProfileTab> {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    final kWidth = screenSize.width;
     final kHeight = screenSize.height;
 
     final user = FirebaseAuth.instance.currentUser;
-    final displayName = user?.displayName ?? "User";
     final email = user?.email ?? "Error loading E-Mail";
 
     void logout() async {
@@ -36,90 +39,84 @@ class _ProfileTabState extends State<ProfileTab> {
     }
 
     return Scaffold(
-      backgroundColor: AppColors.cWhite,
-      appBar: AppBar(
-        backgroundColor: AppColors.cWhite,
-        automaticallyImplyLeading: false,
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              S.of(context).myProfile,
-              textAlign: TextAlign.left,
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 5),
-          ],
-        ),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: kWidth * 0.05),
-          child: SizedBox(
-            height: kHeight * 0.75,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                UserDetails(
-                  kHeight: kHeight,
-                  displayName: displayName,
-                  email: email,
-                ),
-                SettingsText(),
-                Services(kHeight: kHeight),
-                InkWell(
-                  onTap: () async {
-                    final shouldLogout = await showDialog<bool>(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        title: Text("Confirm Logout"),
-                        content: Text("Are you sure you want to logout?"),
-                        actions: [
-                          TextButton(
-                            onPressed: () =>
-                                Navigator.of(context).pop(false), // Cancel
-                            child: const Text("Cancel"),
-                          ),
-                          TextButton(
-                            onPressed: () =>
-                                Navigator.of(context).pop(true), // Confirm
-                            child: const Text("Logout"),
-                          ),
-                        ],
+      backgroundColor: AppColors.primary,
+      body: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: MediaQuery.of(context).size.height,
+          ),
+          child: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.all(Sizes.padding),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // My Profile
+                  HeaderText(),
+
+                  SizedBox(height: 10),
+
+                  // User Details Box
+                  UserDetails(kHeight: kHeight, email: email),
+
+                  SizedBox(height: 10),
+
+                  // Settings & Services
+                  Services(kHeight: kHeight),
+
+                  OutlinedButton(
+                    onPressed: () async {
+                      final confirm = await showDialog<bool>(
+                        context: context,
+                        builder: (context) => ConfirmationDialog(
+                          title: "Confirm Logout",
+                          content: "Are you sure you want to logout?",
+                          confirmText: "Logout",
+                          cancelText: "Cancel",
+                          confirmColor: Colors.red,
+                          cancelColor: Colors.black,
+                        ),
+                      );
+
+                      if (confirm == true) {
+                        logout();
+                      }
+                    },
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: Colors.red,
+                      side: BorderSide(
+                        color: Colors.red.withAlpha(100),
+                        width: 1,
                       ),
-                    );
-
-                    if (shouldLogout == true) {
-                      logout(); // Only logout if user confirmed
-                    }
-                  },
-
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 8,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
                       S.of(context).logout,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.red[800],
-                        fontSize: Sizes.small,
-                        fontWeight: FontWeight.w600,
-                      ),
+                      style: TextStyle(color: Colors.red),
                     ),
                   ),
-                ),
-              ],
+                  SizedBox(height: 60),
+                ],
+              ),
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class HeaderText extends StatelessWidget {
+  const HeaderText({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      S.of(context).myProfile,
+      textAlign: TextAlign.center,
+      style: Theme.of(
+        context,
+      ).textTheme.displayLarge!.copyWith(color: Colors.black87),
     );
   }
 }
@@ -132,110 +129,50 @@ class Services extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        InkWell(
+        Text(
+          S.of(context).settings,
+          style: Theme.of(context).textTheme.titleMedium,
+          textAlign: TextAlign.start,
+        ),
+        SizedBox(height: 10),
+        ProfileServices(
+          text: S.of(context).updateUsername,
           onTap: () {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const UpdateUsername()),
             );
           },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  S.of(context).updateUsername,
-                  style: TextStyle(color: Colors.black, fontSize: Sizes.small),
-                ),
-                Icon(Icons.arrow_forward_ios, size: kHeight * 0.03),
-              ],
-            ),
-          ),
         ),
-        InkWell(
+        ProfileServices(
+          text: S.of(context).changePassword,
           onTap: () {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const ChangePassword()),
             );
           },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  S.of(context).changePassword,
-                  style: TextStyle(color: Colors.black, fontSize: Sizes.small),
-                ),
-                Icon(Icons.arrow_forward_ios, size: kHeight * 0.03),
-              ],
-            ),
-          ),
         ),
-        InkWell(
+        ProfileServices(
+          text: S.of(context).deleteAccount,
           onTap: () {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const DeleteAccount()),
             );
           },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  S.of(context).deleteAccount,
-                  style: TextStyle(color: Colors.black, fontSize: Sizes.small),
-                ),
-                Icon(Icons.arrow_forward_ios, size: kHeight * 0.03),
-              ],
-            ),
-          ),
         ),
-        InkWell(
-          onTap: () {},
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  S.of(context).aboutApp,
-                  style: TextStyle(color: Colors.black, fontSize: Sizes.small),
-                ),
-                Icon(Icons.arrow_forward_ios, size: kHeight * 0.03),
-              ],
-            ),
-          ),
+        ProfileServices(
+          text: S.of(context).aboutApp,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const UpdateUsername()),
+            );
+          },
         ),
-      ],
-    );
-  }
-}
-
-class SettingsText extends StatelessWidget {
-  const SettingsText({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          S.of(context).settings,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: Sizes.medium,
-            fontWeight: FontWeight.bold,
-            fontFamily: "Delius",
-            shadows: AppShadows.primaryShadow,
-          ),
-        ),
-        SizedBox(height: 10),
       ],
     );
   }
@@ -245,51 +182,60 @@ class UserDetails extends StatelessWidget {
   const UserDetails({
     super.key,
     required this.kHeight,
-    required this.displayName,
-    required this.email,
+    required this.email, // نحتفظ بالإيميل كما هو
   });
 
   final double kHeight;
-  final dynamic displayName;
-  final dynamic email;
+  final String email;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: AppShadows.primaryShadow,
-        borderRadius: BorderRadius.circular(AppBorderRadius.borderR),
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(kHeight * 0.025),
-        child: Column(
-          children: [
-            LanguageSwitcher(),
-            SizedBox(height: 10),
-            CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage("assets/images/avatar.jpg"),
-              backgroundColor: AppColors.cPrimary.withAlpha(51),
+    final userProvider = Provider.of<UserProvider>(context);
+    final displayName = userProvider.displayName;
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(AppBorderRadius.borderR),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(
+          sigmaX: 20,
+          sigmaY: 20,
+        ), // زيادة الخشونة للغباشية
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white38, // شفافية أفتح وأجمل
+            borderRadius: BorderRadius.circular(AppBorderRadius.borderR),
+            border: Border.all(color: Colors.white70, width: 2),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20.0,
+              vertical: 18.0,
             ),
-            SizedBox(height: 15),
-            Text(
-              displayName,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: Sizes.medium,
-                fontWeight: FontWeight.w600,
-              ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                LanguageSwitcher(),
+                const SizedBox(height: 12),
+                CircleAvatar(
+                  radius: 50,
+                  backgroundImage: AssetImage("assets/images/avatar.jpg"),
+                  backgroundColor: AppColors.primary,
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  displayName,
+                  style: Theme.of(context).textTheme.labelLarge,
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  email,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyLarge!.copyWith(color: Colors.black87),
+                ),
+              ],
             ),
-            Text(
-              email,
-              style: TextStyle(
-                color: AppColors.cLightGrey,
-                fontSize: Sizes.small * 0.75,
-                // fontWeight: FontWeight.w600,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

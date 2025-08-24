@@ -54,10 +54,10 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Discover the best beauty centers near you`
+  /// `Discover the best beauty centers\nnear you`
   String get onboardingWelcomeText {
     return Intl.message(
-      'Discover the best beauty centers near you',
+      'Discover the best beauty centers\nnear you',
       name: 'onboardingWelcomeText',
       desc: 'Welcome text for the onboarding screen',
       args: [],

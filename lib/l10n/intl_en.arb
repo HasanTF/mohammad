@@ -1,6 +1,6 @@
 {
   "@@locale": "en",
-  "onboardingWelcomeText": "Discover the best beauty centers near you",
+  "onboardingWelcomeText": "Discover the best beauty centers\nnear you",
   "@onboardingWelcomeText": {
     "description": "Welcome text for the onboarding screen"
   },

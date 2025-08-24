@@ -1,5 +1,5 @@
+import 'package:beuty_support/core/constants/themes.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:beuty_support/core/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:beuty_support/features/providers/language_provider.dart';
@@ -22,28 +22,26 @@ class LanguageSwitcher extends StatelessWidget {
       child: DropdownButton2<Locale>(
         value: currentLocale,
         buttonStyleData: ButtonStyleData(
-          padding: const EdgeInsets.symmetric(horizontal: 25),
+          padding: EdgeInsets.symmetric(horizontal: Sizes.padding),
           decoration: BoxDecoration(
             color: Colors.black.withAlpha(175),
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
-              bottomRight: Radius.circular(5),
-              bottomLeft: Radius.circular(5),
+              topLeft: Radius.circular(AppBorderRadius.borderR),
+              topRight: Radius.circular(AppBorderRadius.borderR),
+              bottomRight: Radius.circular(AppBorderRadius.borderR / 5),
+              bottomLeft: Radius.circular(AppBorderRadius.borderR / 5),
             ),
-            border: Border.all(color: Colors.white.withAlpha(40)),
           ),
         ),
         dropdownStyleData: DropdownStyleData(
-          maxHeight: 200,
           decoration: BoxDecoration(
             color: Colors.black.withAlpha(175),
             borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20),
+              bottomLeft: Radius.circular(AppBorderRadius.borderR),
+              bottomRight: Radius.circular(AppBorderRadius.borderR),
             ),
           ),
-          offset: const Offset(0, 0), // Makes it appear right below the button
+          offset: const Offset(0, 0),
         ),
         iconStyleData: const IconStyleData(
           icon: Icon(Icons.keyboard_arrow_down, color: Colors.white),
@@ -58,14 +56,11 @@ class LanguageSwitcher extends StatelessWidget {
             value: lang['locale'],
             child: Row(
               children: [
-                Text(lang['flag'], style: TextStyle(fontSize: Sizes.small)),
+                Text(lang['flag'], style: TextStyle(fontSize: Sizes.large)),
                 SizedBox(width: Sizes.extraSmall),
                 Text(
                   lang['name'],
-                  style: TextStyle(
-                    fontSize: Sizes.extraSmall,
-                    color: Colors.white,
-                  ),
+                  style: TextStyle(fontSize: Sizes.small, color: Colors.white),
                 ),
               ],
             ),

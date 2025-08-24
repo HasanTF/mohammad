@@ -1,5 +1,4 @@
-import 'package:beuty_support/core/constants/colors.dart';
-import 'package:beuty_support/core/constants/sizes.dart';
+import 'package:beuty_support/core/constants/themes.dart';
 import 'package:flutter/material.dart';
 
 class CustomInputField extends StatefulWidget {
@@ -8,6 +7,7 @@ class CustomInputField extends StatefulWidget {
   final TextInputType keyboardType;
   final bool obscureText;
   final Widget? prefixIcon;
+  final Function(String)? onChanged; // Added onChanged callback
 
   const CustomInputField({
     super.key,
@@ -16,6 +16,7 @@ class CustomInputField extends StatefulWidget {
     this.keyboardType = TextInputType.text,
     this.obscureText = false,
     this.prefixIcon,
+    this.onChanged, // Added to constructor
   });
 
   @override
@@ -39,42 +40,39 @@ class _CustomInputFieldState extends State<CustomInputField> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: TextField(
-        controller: widget.controller,
-        keyboardType: widget.keyboardType,
-        obscureText: _obscure,
-        style: TextStyle(color: AppColors.cPrimary),
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: AppColors.cSecondary,
-          labelText: widget.label,
-          labelStyle: TextStyle(color: AppColors.cPrimary),
-          prefixIcon: widget.prefixIcon != null
-              ? IconTheme(
-                  data: IconThemeData(
-                    color: AppColors.cPrimary,
-                    size: Sizes.medium,
-                  ),
-                  child: widget.prefixIcon!,
-                )
-              : null,
-          suffixIcon: widget.obscureText
-              ? IconButton(
-                  icon: Icon(
-                    _obscure ? Icons.visibility_off : Icons.visibility,
-                    color: AppColors.cPrimary,
-                  ),
-                  onPressed: _toggleVisibility,
-                )
-              : null,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(AppBorderRadius.borderR),
-            borderSide: BorderSide.none,
+    return Column(
+      children: [
+        TextField(
+          style: TextStyle(
+            fontSize: 14,
+            color: Colors.white,
+            fontWeight: FontWeight.w600,
+          ),
+          controller: widget.controller,
+          keyboardType: widget.keyboardType,
+          obscureText: _obscure,
+          onChanged: widget.onChanged, // Pass onChanged to TextField
+          decoration: InputDecoration(
+            labelText: widget.label,
+            prefixIcon: widget.prefixIcon != null
+                ? IconTheme(
+                    data: IconThemeData(color: Colors.white, size: Sizes.large),
+                    child: widget.prefixIcon!,
+                  )
+                : null,
+            suffixIcon: widget.obscureText
+                ? IconButton(
+                    icon: Icon(
+                      _obscure ? Icons.visibility_off : Icons.visibility,
+                      color: Colors.white,
+                      size: Sizes.large,
+                    ),
+                    onPressed: _toggleVisibility,
+                  )
+                : null,
           ),
         ),
-      ),
+      ],
     );
   }
 }

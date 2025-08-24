@@ -1,7 +1,7 @@
-import 'package:beuty_support/core/constants/sizes.dart';
+import 'package:beuty_support/core/constants/themes.dart';
 import 'package:beuty_support/core/services/auth_sevices.dart';
-import 'package:beuty_support/core/widget/custom_button.dart';
 import 'package:beuty_support/core/widget/custom_input_field.dart';
+import 'package:beuty_support/core/widget/my_button.dart';
 import 'package:beuty_support/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -64,64 +64,54 @@ class _DeleteAccountState extends State<DeleteAccount> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          S.of(context).deleteAccount,
-          style: TextStyle(
-            color: Colors.redAccent,
-            fontSize: Sizes.large,
-            fontWeight: FontWeight.bold,
-            fontFamily: "Delius",
+      appBar: AppBar(title: Text(S.of(context).deleteAccount)),
+      body: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: MediaQuery.of(context).size.height * 0.85,
           ),
-        ),
-      ),
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          return SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(minHeight: constraints.maxHeight),
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: AppPadding.horizontal,
-                  vertical: AppPadding.vertical,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Image.asset(
-                      "assets/images/DeletingAccountIcon.png",
-                      fit: BoxFit.contain,
-                      width: 200,
-                      height: 200,
-                    ),
-                    InputFields(
-                      controllerEmail: _controllerEmail,
-                      controllerPassword: _controllerPassword,
-                    ),
-                    if (errorMessage.isNotEmpty)
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Text(
-                          errorMessage,
-                          style: TextStyle(
-                            color: Colors.redAccent,
-                            fontSize: Sizes.small,
+          child: IntrinsicHeight(
+            child: Padding(
+              padding: EdgeInsets.all(Sizes.padding),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Image.asset(
+                    "assets/images/DeletingAccountIcon.png",
+                    fit: BoxFit.contain,
+                    width: MediaQuery.of(context).size.width * 0.35,
+                    height: MediaQuery.of(context).size.width * 0.35,
+                  ),
+                  Column(
+                    children: [
+                      InputFields(
+                        controllerEmail: _controllerEmail,
+                        controllerPassword: _controllerPassword,
+                      ),
+                      if (errorMessage.isNotEmpty)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Text(
+                            errorMessage,
+                            style: TextStyle(
+                              color: Colors.redAccent,
+                              fontSize: Sizes.small,
+                            ),
                           ),
                         ),
-                      ),
-                    isLoading
-                        ? Center(child: CircularProgressIndicator())
-                        : CustomButton(
-                            text: S.of(context).deleteAccount,
-                            onPressed: deleteAccount,
-                          ),
-                  ],
-                ),
+                    ],
+                  ),
+                  isLoading
+                      ? Center(child: CircularProgressIndicator())
+                      : MyButton(
+                          text: S.of(context).deleteAccount,
+                          onPressed: deleteAccount,
+                        ),
+                ],
               ),
             ),
-          );
-        },
+          ),
+        ),
       ),
     );
   }

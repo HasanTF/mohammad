@@ -10,7 +10,7 @@ class SEn extends S {
 
   @override
   String get onboardingWelcomeText =>
-      'Discover the best beauty centers near you';
+      'Discover the best beauty centers\nnear you';
 
   @override
   String get register => 'Register';

@@ -1,9 +1,8 @@
-import 'package:beuty_support/core/constants/colors.dart';
-import 'package:beuty_support/core/constants/sizes.dart';
+import 'package:beuty_support/core/constants/themes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class ReviewCard extends StatelessWidget {
+class ReviewCard extends StatefulWidget {
   final String username;
   final int rating;
   final String comment;
@@ -19,48 +18,79 @@ class ReviewCard extends StatelessWidget {
     required this.docId,
   });
 
-  Future<void> _approveReview(BuildContext context) async {
+  @override
+  State<ReviewCard> createState() => _ReviewCardState();
+}
+
+class _ReviewCardState extends State<ReviewCard> {
+  Future<void> _approveReview() async {
     try {
+      // Approving Reviews
       await FirebaseFirestore.instance
           .collection('centerReviews')
-          .doc(docId)
+          .doc(widget.docId)
           .update({'status': 'approved'});
 
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            backgroundColor: Colors.green,
-            content: Text("Review approved successfully"),
-          ),
-        );
-      }
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.green,
+          content: Text("Review approved successfully"),
+        ),
+      );
     } catch (error) {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Failed to approve review: $error")),
-        );
-      }
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Failed to approve review: $error")),
+      );
     }
   }
 
-  Future<void> _declineReview(BuildContext context) async {
-    try {
-      await FirebaseFirestore.instance
-          .collection('pendingReviews')
-          .doc(docId)
-          .delete();
+  Future<void> _declineReview(String rejectionMessage) async {
+    final reviewRef = FirebaseFirestore.instance
+        .collection('centerReviews')
+        .doc(widget.docId);
 
-      if (context.mounted) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text("Review declined and deleted")));
-      }
+    try {
+      // Rejecting with rejection message
+      await reviewRef.update({
+        'status': 'rejected',
+        'rejectionMessage': rejectionMessage,
+        'updatedAt': Timestamp.now(),
+      });
+
+      final reviewSnapshot = await reviewRef.get();
+      final userId = reviewSnapshot['userId'];
+
+      // Notifying user for rejection + إضافة reviewId
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
+          .collection('notifications')
+          .add({
+            'message': "تم رفض مراجعتك: $rejectionMessage",
+            'reviewId': widget.docId, // 👈 مهم جداً
+            'timestamp': Timestamp.now(),
+            'read': false,
+          });
+
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          backgroundColor: Colors.green,
+          content: Text("Review declined. The user has been notified."),
+        ),
+      );
     } catch (e) {
-      if (context.mounted) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text("Failed to decline review: $e")));
-      }
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.red,
+          content: Text("Failed to decline review: $e"),
+        ),
+      );
     }
   }
 
@@ -69,7 +99,7 @@ class ReviewCard extends StatelessWidget {
     return FutureBuilder<DocumentSnapshot>(
       future: FirebaseFirestore.instance
           .collection('centers')
-          .doc(centerId)
+          .doc(widget.centerId)
           .get(),
       builder: (context, snapshot) {
         String centerName = " ";
@@ -80,10 +110,7 @@ class ReviewCard extends StatelessWidget {
         }
 
         return Container(
-          padding: EdgeInsets.symmetric(
-            vertical: AppPadding.vertical / 2,
-            horizontal: AppPadding.horizontal,
-          ),
+          padding: EdgeInsets.all(Sizes.padding),
           margin: EdgeInsets.only(bottom: 15.0),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -100,99 +127,108 @@ class ReviewCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CircleAvatar(
-                radius: 30,
+                radius: 35,
                 backgroundImage: AssetImage("assets/images/avatar.jpg"),
-                backgroundColor: AppColors.cPrimary.withAlpha(51),
+                backgroundColor: AppColors.secondary.withAlpha(51),
               ),
-              SizedBox(width: 18.0),
-
+              SizedBox(width: 15.0),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      username,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: Sizes.medium * 0.75,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      widget.username,
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     SizedBox(height: 2),
                     Text(
                       centerName,
-                      style: TextStyle(
-                        color: AppColors.cPrimary,
-                        fontSize: Sizes.small,
-                        fontWeight: FontWeight.w500,
-                      ),
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     Row(
                       children: List.generate(5, (i) {
                         return Icon(
                           Icons.star,
-                          color: i < rating ? Colors.amber : Colors.grey,
+                          color: i < widget.rating ? Colors.amber : Colors.grey,
                           size: 14.0,
                         );
                       }),
                     ),
                     SizedBox(height: 4),
                     Text(
-                      comment,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: Sizes.small,
-                      ),
+                      widget.comment,
+                      style: Theme.of(context).textTheme.bodySmall,
                       softWrap: true,
                     ),
                   ],
                 ),
               ),
-
               Column(
                 children: [
                   TextButton(
-                    onPressed: () => _approveReview(context),
+                    onPressed: _approveReview,
                     child: Text(
                       "Approve",
                       style: TextStyle(
                         color: Colors.green,
-                        fontSize: Sizes.extraSmall,
+                        fontSize: Sizes.medium,
                       ),
                     ),
                   ),
                   TextButton(
                     onPressed: () async {
-                      final confirm = await showDialog<bool>(
+                      final TextEditingController messageController =
+                          TextEditingController();
+
+                      final rejectMessage = await showDialog<String>(
                         context: context,
                         builder: (context) => AlertDialog(
-                          title: Text("Confirm Rejection"),
-                          content: Text(
-                            "Are you sure you want to decline and delete this review?",
+                          title: Text("Reject Review"),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text("Please enter a message for the user:"),
+                              SizedBox(height: 10),
+                              TextField(
+                                controller: messageController,
+                                maxLines: 3,
+                                decoration: InputDecoration(
+                                  hintText: "Rejection message",
+                                ),
+                              ),
+                            ],
                           ),
                           actions: [
                             TextButton(
-                              onPressed: () => Navigator.of(context).pop(false),
+                              onPressed: () => Navigator.of(context).pop(),
                               child: Text("Cancel"),
                             ),
-                            TextButton(
-                              onPressed: () => Navigator.of(context).pop(true),
-                              child: Text(
-                                "Decline",
-                                style: TextStyle(color: Colors.red),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.red,
                               ),
+                              onPressed: () {
+                                Navigator.of(
+                                  context,
+                                ).pop(messageController.text.trim());
+                              },
+                              child: Text("Reject"),
                             ),
                           ],
                         ),
                       );
-                      // ignore: use_build_context_synchronously
-                      if (confirm == true) _declineReview(context);
+
+                      if (!mounted) return;
+
+                      if (rejectMessage != null && rejectMessage.isNotEmpty) {
+                        await _declineReview(rejectMessage);
+                      }
                     },
                     child: Text(
                       "Decline",
                       style: TextStyle(
                         color: Colors.red,
-                        fontSize: Sizes.extraSmall,
+                        fontSize: Sizes.medium,
                       ),
                     ),
                   ),
