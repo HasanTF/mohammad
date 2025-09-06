@@ -7,7 +7,9 @@ class CustomInputField extends StatefulWidget {
   final TextInputType keyboardType;
   final bool obscureText;
   final Widget? prefixIcon;
-  final Function(String)? onChanged; // Added onChanged callback
+  final Function(String)? onChanged;
+  final String? Function(String?)? validator;
+  final Iterable<String>? autofillHints;
 
   const CustomInputField({
     super.key,
@@ -16,7 +18,9 @@ class CustomInputField extends StatefulWidget {
     this.keyboardType = TextInputType.text,
     this.obscureText = false,
     this.prefixIcon,
-    this.onChanged, // Added to constructor
+    this.onChanged,
+    this.validator,
+    this.autofillHints,
   });
 
   @override
@@ -40,39 +44,77 @@ class _CustomInputFieldState extends State<CustomInputField> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TextField(
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.white,
-            fontWeight: FontWeight.w600,
-          ),
-          controller: widget.controller,
-          keyboardType: widget.keyboardType,
-          obscureText: _obscure,
-          onChanged: widget.onChanged, // Pass onChanged to TextField
-          decoration: InputDecoration(
-            labelText: widget.label,
-            prefixIcon: widget.prefixIcon != null
-                ? IconTheme(
-                    data: IconThemeData(color: Colors.white, size: Sizes.large),
-                    child: widget.prefixIcon!,
-                  )
-                : null,
-            suffixIcon: widget.obscureText
-                ? IconButton(
-                    icon: Icon(
-                      _obscure ? Icons.visibility_off : Icons.visibility,
-                      color: Colors.white,
-                      size: Sizes.large,
-                    ),
-                    onPressed: _toggleVisibility,
-                  )
-                : null,
-          ),
+    return TextFormField(
+      controller: widget.controller,
+      keyboardType: widget.keyboardType,
+      obscureText: _obscure,
+      onChanged: widget.onChanged,
+      validator: widget.validator,
+      autofillHints: widget.autofillHints,
+      cursorColor: AppColors.secondaryDark,
+      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+        color: AppColors.textPrimary,
+      ),
+      decoration: InputDecoration(
+        labelText: widget.label,
+        labelStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
+          fontSize: 13,
+          fontWeight: FontWeight.w600,
+          color: AppColors.secondaryDark,
         ),
-      ],
+        floatingLabelStyle: Theme.of(context).textTheme.bodySmall?.copyWith(
+          fontSize: Sizes.small,
+          fontWeight: FontWeight.w700,
+          color: AppColors.secondaryDark,
+        ),
+        prefixIcon: widget.prefixIcon != null
+            ? Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: IconTheme(
+                  data: IconThemeData(
+                    color: AppColors.secondaryDark,
+                    size: Sizes.medium,
+                  ),
+                  child: widget.prefixIcon!,
+                ),
+              )
+            : null,
+        suffixIcon: widget.obscureText
+            ? IconButton(
+                icon: Icon(
+                  _obscure ? Icons.visibility_off : Icons.visibility,
+                  color: AppColors.secondaryDark,
+                  size: Sizes.medium,
+                ),
+                onPressed: _toggleVisibility,
+              )
+            : null,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppBorderRadius.borderR),
+          borderSide: BorderSide(color: AppColors.secondaryDark, width: 1.5),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppBorderRadius.borderR),
+          borderSide: BorderSide(color: AppColors.secondaryDark, width: 2),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppBorderRadius.borderR),
+          borderSide: BorderSide(color: Colors.redAccent, width: 1.5),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppBorderRadius.borderR),
+          borderSide: BorderSide(color: Colors.redAccent, width: 2),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppBorderRadius.borderR),
+          borderSide: BorderSide(color: AppColors.textSecondary, width: 1.5),
+        ),
+        errorStyle: Theme.of(
+          context,
+        ).textTheme.bodySmall?.copyWith(color: Colors.redAccent, fontSize: 12),
+      ),
     );
   }
 }

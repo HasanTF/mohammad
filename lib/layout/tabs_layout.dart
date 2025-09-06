@@ -1,10 +1,10 @@
 import 'dart:ui';
 
 import 'package:beuty_support/core/constants/themes.dart';
-import 'package:beuty_support/features/home/tabs/favorite_tab.dart';
-import 'package:beuty_support/features/home/tabs/home_tab.dart';
-import 'package:beuty_support/features/home/tabs/offers_tab.dart';
-import 'package:beuty_support/features/home/tabs/profile_tab.dart';
+import 'package:beuty_support/features/screens/home/favorite_tab.dart';
+import 'package:beuty_support/features/screens/home/home_tab.dart';
+import 'package:beuty_support/features/screens/home/offers_tab.dart';
+import 'package:beuty_support/features/screens/home/profile_tab.dart';
 import 'package:flutter/material.dart';
 
 class TabsLayout extends StatefulWidget {
@@ -36,11 +36,11 @@ class _TabsLayoutState extends State<TabsLayout> {
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 30.0, sigmaY: 30.0),
                 child: BottomNavigationBar(
-                  backgroundColor: AppColors.primary.withAlpha(150),
+                  backgroundColor: AppColors.secondaryDark.withAlpha(255),
                   elevation: 0,
                   currentIndex: _currentIndex,
                   type: BottomNavigationBarType.fixed,
-                  selectedItemColor: Colors.black87,
+                  selectedItemColor: AppColors.primary,
                   unselectedItemColor: Colors.white,
                   onTap: (index) {
                     setState(() {

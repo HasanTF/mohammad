@@ -25,29 +25,42 @@ class AuthSevices {
     required String email,
     required String password,
     required String username,
+    required String name,
+    bool isAdmin = false,
     String? imageUrl,
   }) async {
-    // Create user with Firebase Authentication
-    final UserCredential userCredential = await FirebaseAuth.instance
-        .createUserWithEmailAndPassword(email: email, password: password);
+    try {
+      // إنشاء المستخدم في Firebase Authentication
+      final UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
 
-    final user = userCredential.user;
+      final user = userCredential.user;
 
-    if (user != null) {
-      // Optional: Update Firebase display name
-      await user.updateDisplayName(username);
+      if (user != null) {
+        // تحديث displayName في FirebaseAuth
+        await user.updateDisplayName(name);
 
-      // Store additional user data in Firestore
-      await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
-        'uid': user.uid,
-        'email': email,
-        'username': username,
-        'imageUrl': imageUrl ?? '', // Avoid null
-        'createdAt': FieldValue.serverTimestamp(),
-      });
+        // إضافة بيانات المستخدم في Firestore
+        await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
+          'uid': user.uid,
+          'email': email,
+          'username': username,
+          'name': name,
+          'imageUrl': imageUrl ?? '',
+          'isAdmin': isAdmin,
+          'createdAt': FieldValue.serverTimestamp(),
+        });
+
+        // debugPrint(
+        // "User data successfully added to Firestore for UID: ${user.uid}",
+        // );
+      }
+
+      return userCredential;
+    } catch (e) {
+      // debugPrint("Error creating account: $e");
+      rethrow; // لعرض الخطأ في مكان استدعاء الدالة
     }
-
-    return userCredential;
   }
 
   Future<void> signOut() async {

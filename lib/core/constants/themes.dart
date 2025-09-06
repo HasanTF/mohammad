@@ -1,47 +1,44 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color primary = Color(0xFFD8D2FE);
-  static const Color secondary = Color(0xFFF6D1C1);
-  static const Color background = Color(0xFFFFF8F6);
-  static const Color textPrimary = Color(0xFF4A4A4A);
-  static const Color textSecondary = Color(0xC78B6B7B);
-  static const Color borders = Color(0xFFF0DDE5);
-  static const Color shadow = Color(0xFFDDA2B0);
+  static const Color primary = Color(0xFFFFD33C);
+  static const Color secondaryLight = Color(0xFFA5C5B1);
+  static const Color secondaryDark = Color(0xFFA5C5B1);
+  static const Color textPrimary = Color(0xFF3E3E3E);
+  static const Color textSecondary = Color(0xFF598DD4);
+  static const Color background = Color(0xFFFAF8F3);
+  static const Color success = Color(0xFF4CAF50);
+  static const Color error = Color(0xFFFF5252);
 }
 
 class Sizes {
-  static double extraSmall = 10;
-  static double small = 13;
-  static double medium = 18;
-  static double large = 24;
-  static double extraLarge = 32;
+  static double extraSmall = 16;
+  static double small = 18;
+  static double medium = 26;
+  static double large = 34;
+  static double extraLarge = 28;
   static double padding = 15;
 }
 
 class AppBorderRadius {
-  static double borderR = 15;
+  static double borderR = 25;
   static double borderHeavy = 50;
 }
 
 class AppShadows {
   static final List<BoxShadow> primaryShadow = [
-    BoxShadow(
-      color: AppColors.shadow.withAlpha(75),
-      blurRadius: 10,
-      spreadRadius: 1,
-      offset: const Offset(0, 2),
-    ),
+    BoxShadow(blurRadius: 10, spreadRadius: 1, offset: const Offset(0, 2)),
   ];
 }
 
 ThemeData buildAppTheme() {
   final base = ThemeData.light();
   return base.copyWith(
-    primaryColor: AppColors.primary,
+    primaryColor: AppColors.secondaryDark,
+    scaffoldBackgroundColor: AppColors.background,
     colorScheme: const ColorScheme.light(
-      primary: AppColors.primary,
-      secondary: AppColors.secondary,
+      primary: AppColors.secondaryDark,
+      secondary: AppColors.secondaryLight,
       surface: AppColors.background,
       onPrimary: Colors.white,
       onSecondary: Colors.white,
@@ -50,7 +47,7 @@ ThemeData buildAppTheme() {
       onError: Colors.white,
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: AppColors.primary,
+      backgroundColor: AppColors.secondaryLight,
       foregroundColor: Colors.white,
       elevation: 0,
       centerTitle: true,
@@ -66,21 +63,38 @@ ThemeData buildAppTheme() {
 
     // Texts
     textTheme: TextTheme(
-      // Onboarding
+      // --------------DONE-------------- //
+      // Headers
       displayLarge: TextStyle(
         fontFamily: 'Inter_18pt',
         fontSize: Sizes.extraLarge,
-        fontWeight: FontWeight.w700,
-        color: Colors.white,
+        fontWeight: FontWeight.bold,
+        color: AppColors.textPrimary,
         letterSpacing: 1,
       ),
+
+      // Sub-Headers
+      displayMedium: TextStyle(
+        fontFamily: 'Inter_18pt',
+        fontSize: Sizes.small,
+        fontWeight: FontWeight.w400,
+        color: AppColors.textPrimary,
+      ),
+
+      displaySmall: TextStyle(
+        fontFamily: 'Inter_18pt',
+        fontSize: Sizes.extraSmall,
+        fontWeight: FontWeight.w400,
+        color: AppColors.secondaryLight,
+      ),
+      // --------------DONE-------------- //
 
       // Sections Titles
       titleMedium: TextStyle(
         fontFamily: 'Inter_18pt',
-        fontSize: Sizes.large,
+        fontSize: Sizes.medium,
         fontWeight: FontWeight.w600,
-        color: Colors.black,
+        color: AppColors.textPrimary,
       ),
 
       // Sub-Sections Titles
@@ -94,25 +108,25 @@ ThemeData buildAppTheme() {
       // Cards Title
       bodyLarge: TextStyle(
         fontFamily: 'Inter_18pt',
-        fontSize: Sizes.medium,
-        fontWeight: FontWeight.w600,
+        fontSize: 22,
+        fontWeight: FontWeight.w800,
         color: AppColors.primary,
       ),
 
       // Cards sub-title
       bodyMedium: TextStyle(
         fontFamily: 'Inter_18pt',
-        fontSize: Sizes.medium,
+        fontSize: 18,
         fontWeight: FontWeight.w500,
-        color: Colors.black45,
+        color: AppColors.secondaryDark,
       ),
 
       // Cards Descriptions
       bodySmall: TextStyle(
         fontFamily: 'Inter_18pt',
-        fontSize: Sizes.small,
-        fontWeight: FontWeight.w400,
-        color: AppColors.textPrimary,
+        fontSize: 14,
+        fontWeight: FontWeight.w700,
+        color: AppColors.primary,
       ),
 
       // Username
@@ -127,18 +141,17 @@ ThemeData buildAppTheme() {
       // Buttons Texts
       labelMedium: TextStyle(
         fontFamily: 'Inter_18pt',
-        fontSize: Sizes.medium,
+        fontSize: Sizes.small,
         fontWeight: FontWeight.bold,
-        color: Colors.white,
-        letterSpacing: 0.5,
+        color: AppColors.background,
       ),
 
       // Sub-Buttons Texts
       labelSmall: TextStyle(
         fontFamily: 'Inter_18pt',
         fontSize: Sizes.small,
-        fontWeight: FontWeight.w500,
-        color: Colors.white,
+        fontWeight: FontWeight.w300,
+        color: AppColors.textPrimary,
       ),
     ),
     textButtonTheme: TextButtonThemeData(
@@ -150,63 +163,6 @@ ThemeData buildAppTheme() {
           fontSize: Sizes.medium,
         ),
       ),
-    ),
-    elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primary,
-        foregroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppBorderRadius.borderHeavy),
-        ),
-        elevation: 2.5,
-        shadowColor: Colors.black87,
-        minimumSize: const Size(double.infinity, 48),
-      ),
-    ),
-    outlinedButtonTheme: OutlinedButtonThemeData(
-      style: OutlinedButton.styleFrom(
-        foregroundColor: AppColors.primary,
-        backgroundColor: Colors.white.withAlpha(25),
-        side: BorderSide(color: AppColors.borders.withAlpha(100), width: 1),
-        textStyle: TextStyle(
-          fontFamily: 'Inter_18pt',
-          fontWeight: FontWeight.w700,
-          fontSize: Sizes.large,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppBorderRadius.borderHeavy),
-        ),
-        minimumSize: const Size(double.infinity, 48),
-      ),
-    ),
-    inputDecorationTheme: InputDecorationTheme(
-      filled: true,
-      fillColor: Colors.transparent,
-      labelStyle: TextStyle(
-        fontFamily: 'Inter_18pt',
-        fontWeight: FontWeight.w500,
-        fontSize: 14,
-        color: Colors.white,
-      ),
-
-      enabledBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Colors.white, width: 1.5),
-      ),
-      focusedBorder: UnderlineInputBorder(
-        borderRadius: BorderRadius.all(
-          Radius.circular(AppBorderRadius.borderR),
-        ),
-        borderSide: BorderSide(color: Colors.white, width: 1.5),
-      ),
-    ),
-    cardTheme: CardThemeData(
-      color: Colors.white,
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppBorderRadius.borderR),
-      ),
-      shadowColor: AppColors.shadow,
-      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
     ),
   );
 }

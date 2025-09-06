@@ -1,3 +1,4 @@
+import 'package:beuty_support/core/constants/themes.dart';
 import 'package:flutter/material.dart';
 
 class MyButton extends StatelessWidget {
@@ -25,32 +26,28 @@ class MyButton extends StatelessWidget {
           color: textColor,
         );
 
-    return Column(
-      children: [
-        ElevatedButton(
-          onPressed: onPressed,
-          style: ElevatedButton.styleFrom(
-            backgroundColor:
-                backgroundColor ?? Theme.of(context).colorScheme.primary,
-            minimumSize: const Size(double.infinity, 40),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (icon != null) ...[
-                Icon(icon, size: 20, color: textColor ?? Colors.white),
-                const SizedBox(width: 5),
-              ],
-              Text(text, style: effectiveTextStyle),
-            ],
-          ),
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor:
+            backgroundColor ?? Theme.of(context).colorScheme.primary,
+
+        minimumSize: const Size(double.infinity, 45),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppBorderRadius.borderHeavy),
         ),
-        SizedBox(height: 12),
-      ],
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (icon != null) ...[
+            Icon(icon, size: 30, color: textColor ?? AppColors.background),
+            const SizedBox(width: 5),
+          ],
+          Text(text, style: effectiveTextStyle),
+        ],
+      ),
     );
   }
 }

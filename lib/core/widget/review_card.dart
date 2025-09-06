@@ -73,7 +73,6 @@ class _ReviewCardState extends State<ReviewCard> {
             'message': "تم رفض مراجعتك: $rejectionMessage",
             'reviewId': widget.docId, // 👈 مهم جداً
             'timestamp': Timestamp.now(),
-            'read': false,
           });
 
       if (!mounted) return;
@@ -129,7 +128,7 @@ class _ReviewCardState extends State<ReviewCard> {
               CircleAvatar(
                 radius: 35,
                 backgroundImage: AssetImage("assets/images/avatar.jpg"),
-                backgroundColor: AppColors.secondary.withAlpha(51),
+                backgroundColor: AppColors.secondaryLight.withAlpha(51),
               ),
               SizedBox(width: 15.0),
               Expanded(
@@ -169,10 +168,7 @@ class _ReviewCardState extends State<ReviewCard> {
                     onPressed: _approveReview,
                     child: Text(
                       "Approve",
-                      style: TextStyle(
-                        color: Colors.green,
-                        fontSize: Sizes.medium,
-                      ),
+                      style: TextStyle(color: Colors.green, fontSize: 16),
                     ),
                   ),
                   TextButton(
@@ -226,10 +222,7 @@ class _ReviewCardState extends State<ReviewCard> {
                     },
                     child: Text(
                       "Decline",
-                      style: TextStyle(
-                        color: Colors.red,
-                        fontSize: Sizes.medium,
-                      ),
+                      style: TextStyle(color: Colors.red, fontSize: 16),
                     ),
                   ),
                 ],

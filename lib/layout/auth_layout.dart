@@ -1,6 +1,6 @@
 import 'package:beuty_support/core/services/auth_sevices.dart';
-import 'package:beuty_support/features/onboarding/onboarding_screen.dart';
-import 'package:beuty_support/features/home/tabs_layout.dart';
+import 'package:beuty_support/features/screens/onboarding/onboarding_screen.dart';
+import 'package:beuty_support/layout/tabs_layout.dart';
 import 'package:flutter/material.dart';
 
 class AuthLayout extends StatelessWidget {

@@ -56,11 +56,11 @@ class LanguageSwitcher extends StatelessWidget {
             value: lang['locale'],
             child: Row(
               children: [
-                Text(lang['flag'], style: TextStyle(fontSize: Sizes.large)),
+                Text(lang['flag'], style: TextStyle(fontSize: 22)),
                 SizedBox(width: Sizes.extraSmall),
                 Text(
                   lang['name'],
-                  style: TextStyle(fontSize: Sizes.small, color: Colors.white),
+                  style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ],
             ),

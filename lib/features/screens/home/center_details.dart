@@ -116,7 +116,7 @@ class _ReviewsState extends State<Reviews> {
     setState(() {
       _isLoading = true;
     });
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       setState(() {
         _isLoading = false;
       });
@@ -126,7 +126,7 @@ class _ReviewsState extends State<Reviews> {
   Future<void> _deleteReview(String reviewId) async {
     ScaffoldMessenger.of(
       context,
-    ).showSnackBar(SnackBar(content: Text("Deleting review...")));
+    ).showSnackBar(const SnackBar(content: Text("Deleting review...")));
 
     try {
       await FirebaseFirestore.instance
@@ -137,7 +137,7 @@ class _ReviewsState extends State<Reviews> {
       if (!mounted) return;
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           backgroundColor: Colors.green,
           content: Text("Review Deleted Successfully"),
         ),
@@ -155,9 +155,9 @@ class _ReviewsState extends State<Reviews> {
   @override
   Widget build(BuildContext context) {
     if (widget.centerId.isEmpty) {
-      return Text(
+      return const Text(
         "Invalid center ID.",
-        style: TextStyle(color: AppColors.primary),
+        style: TextStyle(color: AppColors.textPrimary),
       );
     }
 
@@ -171,13 +171,13 @@ class _ReviewsState extends State<Reviews> {
             children: [
               Text("Reviews", style: Theme.of(context).textTheme.titleMedium),
               IconButton(
-                icon: Icon(Icons.refresh),
+                icon: const Icon(Icons.refresh),
                 onPressed: _refresh,
                 tooltip: 'Refresh reviews',
               ),
             ],
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance
                 .collection('centerReviews')
@@ -188,24 +188,27 @@ class _ReviewsState extends State<Reviews> {
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting ||
                   _isLoading) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               }
               if (snapshot.hasError) {
                 return Column(
                   children: [
                     Text(
                       "Error loading reviews: ${snapshot.error}",
-                      style: TextStyle(color: AppColors.primary),
+                      style: const TextStyle(color: AppColors.textPrimary),
                     ),
-                    SizedBox(height: 8),
-                    ElevatedButton(onPressed: _refresh, child: Text("Retry")),
+                    const SizedBox(height: 8),
+                    ElevatedButton(
+                      onPressed: _refresh,
+                      child: const Text("Retry"),
+                    ),
                   ],
                 );
               }
               if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                return Text(
+                return const Text(
                   "No reviews yet.",
-                  style: TextStyle(color: AppColors.primary),
+                  style: TextStyle(color: AppColors.textPrimary),
                 );
               }
 
@@ -214,7 +217,7 @@ class _ReviewsState extends State<Reviews> {
               return ListView.builder(
                 itemCount: reviews.length,
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   final review = reviews[index].data() as Map<String, dynamic>;
 
@@ -226,11 +229,11 @@ class _ReviewsState extends State<Reviews> {
                   final date = timestamp.toDate();
 
                   return Container(
-                    padding: EdgeInsets.symmetric(vertical: 20),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    decoration: const BoxDecoration(
                       border: Border(
                         bottom: BorderSide(
-                          color: AppColors.primary,
+                          color: AppColors.secondaryLight,
                           width: 2.0,
                         ),
                       ),
@@ -240,14 +243,14 @@ class _ReviewsState extends State<Reviews> {
                       children: [
                         Row(
                           children: [
-                            CircleAvatar(
+                            const CircleAvatar(
                               radius: 30,
                               backgroundImage: AssetImage(
                                 "assets/images/avatar.jpg",
                               ),
-                              backgroundColor: AppColors.primary.withAlpha(51),
+                              backgroundColor: AppColors.primary,
                             ),
-                            SizedBox(width: 18.0),
+                            const SizedBox(width: 18.0),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -266,7 +269,7 @@ class _ReviewsState extends State<Reviews> {
                                     );
                                   }),
                                 ),
-                                SizedBox(height: 4),
+                                const SizedBox(height: 4),
                                 Text(
                                   comment,
                                   style: Theme.of(context).textTheme.bodySmall,
@@ -276,15 +279,16 @@ class _ReviewsState extends State<Reviews> {
                                     onTap: () async {
                                       final confirm = await showDialog<bool>(
                                         context: context,
-                                        builder: (context) => ConfirmationDialog(
-                                          title: "Confirm Deleting",
-                                          content:
-                                              "Are you sure you want to\ndelete this review?",
-                                          confirmText: "Delete",
-                                          cancelText: "Cancel",
-                                          confirmColor: Colors.red,
-                                          cancelColor: Colors.black,
-                                        ),
+                                        builder: (context) =>
+                                            const ConfirmationDialog(
+                                              title: "Confirm Deleting",
+                                              content:
+                                                  "Are you sure you want to\ndelete this review?",
+                                              confirmText: "Delete",
+                                              cancelText: "Cancel",
+                                              confirmColor: Colors.red,
+                                              cancelColor: Colors.black,
+                                            ),
                                       );
 
                                       if (confirm == true) {
@@ -362,12 +366,15 @@ class _CenterDetalState extends State<CenterDetal> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          /// اسم المركز
           Text(
             widget.data['centerName'] ?? 'No Name',
             style: Theme.of(
               context,
             ).textTheme.bodyLarge!.copyWith(color: Colors.black),
           ),
+
+          /// التقييم + العنوان
           Row(
             children: [
               ...List.generate(
@@ -380,38 +387,92 @@ class _CenterDetalState extends State<CenterDetal> {
                   size: 18.0,
                 ),
               ),
-              SizedBox(width: 10.0),
+              const SizedBox(width: 10.0),
               Text(
                 (widget.data['centerRating']?.toStringAsFixed(1) ?? '0.0'),
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 16.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(width: 10.0),
+              const SizedBox(width: 10.0),
               Text(
                 widget.data['centerAddress'] ?? '',
-                style: TextStyle(color: AppColors.primary, fontSize: 16.0),
+                style: const TextStyle(
+                  color: AppColors.primary,
+                  fontSize: 16.0,
+                ),
               ),
             ],
           ),
+
+          /// الموقع
           if (widget.data['centerLocation'] != null)
             Text(
               widget.data['centerLocation'],
-              style: TextStyle(color: AppColors.primary, fontSize: 16.0),
+              style: const TextStyle(
+                color: AppColors.textPrimary,
+                fontSize: 16.0,
+              ),
             ),
+
+          /// رقم الهاتف
           if (widget.data['centerPhone'] != null)
             Text(
               widget.data['centerPhone'],
-              style: TextStyle(color: AppColors.primary, fontSize: 16.0),
+              style: const TextStyle(
+                color: AppColors.textPrimary,
+                fontSize: 16.0,
+              ),
             ),
+
+          /// الوصف
           if (widget.data['centerDescription'] != null)
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: Text(
                 widget.data['centerDescription'],
                 style: TextStyle(color: Colors.black87, fontSize: Sizes.small),
+              ),
+            ),
+
+          /// الخدمات
+          if (widget.data['services'] != null &&
+              widget.data['services'] is List &&
+              (widget.data['services'] as List).isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(top: 12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Services",
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 6,
+                    children: (widget.data['services'] as List)
+                        .map<Widget>(
+                          (service) => Chip(
+                            label: Text(service.toString()),
+                            backgroundColor: AppColors.secondaryLight.withAlpha(
+                              50,
+                            ),
+                            labelStyle: const TextStyle(
+                              color: AppColors.textPrimary,
+                              fontSize: 14,
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
+                ],
               ),
             ),
         ],
@@ -444,7 +505,7 @@ class CenterImage extends StatelessWidget {
         height: kHeight * 0.22,
         color: Colors.grey[300],
         alignment: Alignment.center,
-        child: Icon(Icons.broken_image, size: 40),
+        child: const Icon(Icons.broken_image, size: 40),
       ),
     );
   }

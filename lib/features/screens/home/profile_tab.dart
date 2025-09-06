@@ -5,9 +5,9 @@ import 'package:beuty_support/core/services/auth_sevices.dart';
 import 'package:beuty_support/core/widget/confirmation_dialog.dart';
 import 'package:beuty_support/core/widget/language_switcher.dart';
 import 'package:beuty_support/core/widget/profile_services.dart';
-import 'package:beuty_support/features/auth/user_services/change_password.dart';
-import 'package:beuty_support/features/auth/user_services/delete_account.dart';
-import 'package:beuty_support/features/auth/user_services/update_username.dart';
+import 'package:beuty_support/features/screens/services/change_password.dart';
+import 'package:beuty_support/features/screens/services/delete_account.dart';
+import 'package:beuty_support/features/screens/services/update_username.dart';
 import 'package:beuty_support/features/providers/user_provider.dart';
 import 'package:beuty_support/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -39,7 +39,6 @@ class _ProfileTabState extends State<ProfileTab> {
     }
 
     return Scaffold(
-      backgroundColor: AppColors.primary,
       body: SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(
@@ -202,7 +201,7 @@ class UserDetails extends StatelessWidget {
         ), // زيادة الخشونة للغباشية
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white38, // شفافية أفتح وأجمل
+            color: AppColors.secondaryDark.withAlpha(50), // شفافية أفتح وأجمل
             borderRadius: BorderRadius.circular(AppBorderRadius.borderR),
             border: Border.all(color: Colors.white70, width: 2),
           ),

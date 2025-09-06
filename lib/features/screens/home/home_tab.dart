@@ -17,73 +17,49 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  String _searchQuery = ''; // Store the search query
+  String _searchQuery = '';
+  List<String> _selectedServices = []; // لتخزين الخدمات المختارة
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-    final kWidth = screenSize.width;
-
-    // Update username and photoURL on app start
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        final userProvider = Provider.of<UserProvider>(context, listen: false);
-        userProvider.setDisplayName(user.displayName ?? "User");
-        userProvider.setPhotoURL(user.photoURL ?? "");
-      });
-    }
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      body: Stack(
-        children: [
-          // Background image + blur
-          SizedBox.expand(
-            child: ImageFiltered(
-              imageFilter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-              child: Image.asset(
-                "assets/images/mybadlife.jpeg",
-                fit: BoxFit.cover,
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: Sizes.padding),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Header(),
+              SizedBox(height: screenHeight * 0.02),
+              SearchBar(
+                onSearch: (query, services) {
+                  setState(() {
+                    _searchQuery = query;
+                    _selectedServices = services; // تحديث الخدمات
+                  });
+                },
               ),
-            ),
-          ),
-          // Overlay layer for contrast
-          Container(color: Colors.black12),
-          // Foreground content
-          SafeArea(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: Sizes.padding),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Header(),
-                  SizedBox(height: 13.0),
-                  SearchBar(
-                    onSearch: (query) {
-                      setState(() {
-                        _searchQuery = query; // Update search query
-                      });
-                    },
-                  ),
-                  SizedBox(height: 13.0),
-                  BeutySupport(),
-                  SizedBox(height: 13.0),
-                  Locations(),
-                  SizedBox(height: 13.0),
-                  CentersText(),
-                  Centers(kWidth: kWidth, searchQuery: _searchQuery),
-                ],
+              Clinicly(),
+              Locations(),
+              CentersText(),
+              Centers(
+                screenWidth: screenWidth,
+                searchQuery: _searchQuery,
+                selectedServices: _selectedServices, // تمرير الخدمات
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
 }
 
 class SearchBar extends StatefulWidget {
-  final Function(String) onSearch;
+  final Function(String, List<String>) onSearch; // تعديل لتمرير الخدمات
   const SearchBar({super.key, required this.onSearch});
 
   @override
@@ -92,6 +68,14 @@ class SearchBar extends StatefulWidget {
 
 class _SearchBarState extends State<SearchBar> {
   final TextEditingController _controller = TextEditingController();
+  final List<String> allServices = [
+    "Haircut",
+    "Makeup",
+    "Massage",
+    "Nails",
+    "Skincare",
+  ];
+  List<String> selectedServices = [];
 
   @override
   void dispose() {
@@ -101,21 +85,64 @@ class _SearchBarState extends State<SearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    return CustomInputField(
-      label: S.of(context).search,
-      prefixIcon: const Icon(Icons.search),
-      controller: _controller,
-      onChanged: (value) {
-        widget.onSearch(value);
-      },
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CustomInputField(
+          label: S.of(context).search,
+          prefixIcon: const Icon(Icons.search),
+          controller: _controller,
+          onChanged: (value) {
+            widget.onSearch(value, selectedServices); // تمرير النص والخدمات
+          },
+        ),
+        SizedBox(height: 8),
+        Wrap(
+          spacing: 8,
+          runSpacing: 4,
+          children: allServices.map((service) {
+            final isSelected = selectedServices.contains(service);
+            return FilterChip(
+              label: Text(
+                service,
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              ),
+              selected: isSelected,
+              selectedColor: AppColors.secondaryDark.withAlpha(50),
+              checkmarkColor: AppColors.primary,
+              backgroundColor: AppColors.secondaryDark.withAlpha(100),
+              onSelected: (value) {
+                setState(() {
+                  if (value) {
+                    selectedServices.add(service);
+                  } else {
+                    selectedServices.remove(service);
+                  }
+                  widget.onSearch(
+                    _controller.text,
+                    selectedServices,
+                  ); // تحديث البحث
+                });
+              },
+            );
+          }).toList(),
+        ),
+      ],
     );
   }
 }
 
 class Centers extends StatelessWidget {
-  final double kWidth;
+  final double screenWidth;
   final String searchQuery;
-  const Centers({super.key, required this.kWidth, required this.searchQuery});
+  final List<String> selectedServices;
+
+  const Centers({
+    super.key,
+    required this.screenWidth,
+    required this.searchQuery,
+    required this.selectedServices,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -133,15 +160,23 @@ class Centers extends StatelessWidget {
             return const Center(child: Text("No centers available."));
           }
 
-          // Filter centers based on search query
+          // تصفية المراكز بناءً على النص والخدمات
           final centers = snapshot.data!.docs.where((center) {
             final data = center.data() as Map<String, dynamic>;
             final centerName =
                 data['centerName']?.toString().toLowerCase() ?? '';
             final centerLocation =
                 data['centerLocation']?.toString().toLowerCase() ?? '';
+            final services = List<String>.from(data['services'] ?? []);
             final query = searchQuery.toLowerCase();
-            return centerName.contains(query) || centerLocation.contains(query);
+
+            bool matchesQuery =
+                centerName.contains(query) || centerLocation.contains(query);
+            bool matchesServices =
+                selectedServices.isEmpty ||
+                selectedServices.every((service) => services.contains(service));
+
+            return matchesQuery && matchesServices;
           }).toList();
 
           if (centers.isEmpty) {
@@ -166,106 +201,97 @@ class Centers extends StatelessWidget {
                       arguments: centerData,
                     );
                   },
-                  child: PhysicalModel(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(25),
-                    elevation: 10,
-                    shadowColor: Colors.black54,
-                    child: ClipRRect(
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(25),
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-                        child: Container(
-                          padding: const EdgeInsets.all(8.0),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFD8D2FE).withAlpha(175),
-                            borderRadius: BorderRadius.circular(25),
-                            border: Border.all(
-                              color: Colors.white54,
-                              width: 1.5,
+                      border: Border.all(
+                        color: AppColors.primary.withAlpha(150),
+                        width: 1.5,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.primary.withAlpha(25),
+                          offset: Offset(0, 2),
+                          blurRadius: 10,
+                          spreadRadius: 2,
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.network(
+                            data['centerImageUrl'] ?? '',
+                            fit: BoxFit.cover,
+                            height: 100,
+                            width: 100,
+                            errorBuilder: (context, error, stackTrace) => Icon(
+                              Icons.broken_image,
+                              size: 100,
+                              color: Colors.white,
                             ),
                           ),
-                          child: Row(
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: Image.network(
-                                  data['centerImageUrl'] ?? '',
-                                  fit: BoxFit.cover,
-                                  height: 100,
-                                  width: 100,
-                                  errorBuilder: (context, error, stackTrace) =>
-                                      Icon(
-                                        Icons.broken_image,
-                                        size: 100,
-                                        color: Colors.white,
-                                      ),
+                              Text(
+                                data['centerName'] ?? 'No Name',
+                                style: Theme.of(context).textTheme.bodyLarge!
+                                    .copyWith(color: AppColors.primary),
+                              ),
+                              Row(
+                                children: List.generate(
+                                  5,
+                                  (i) => Icon(
+                                    Icons.star_rounded,
+                                    color:
+                                        i < (data['centerRating'] ?? 0).toInt()
+                                        ? Colors.amber
+                                        : Colors.black26,
+                                    size: 20,
+                                  ),
                                 ),
                               ),
-                              const SizedBox(width: 12),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      data['centerName'] ?? 'No Name',
+                              const SizedBox(height: 4),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.location_on,
+                                    size: 16,
+                                    color: AppColors.secondaryDark,
+                                  ),
+                                  const SizedBox(width: 6),
+                                  Expanded(
+                                    child: Text(
+                                      data['centerLocation'] ?? '',
                                       style: Theme.of(context)
                                           .textTheme
-                                          .bodyLarge!
-                                          .copyWith(color: Colors.black87),
-                                    ),
-                                    const SizedBox(height: 4),
-                                    Row(
-                                      children: List.generate(
-                                        5,
-                                        (i) => Icon(
-                                          Icons.star_rounded,
-                                          color:
-                                              i <
-                                                  (data['centerRating'] ?? 0)
-                                                      .toInt()
-                                              ? Colors.amber
-                                              : Colors.white24,
-                                          size: 20,
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 4),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.location_on,
-                                          size: 16,
-                                          color: Colors.white70,
-                                        ),
-                                        const SizedBox(width: 6),
-                                        Expanded(
-                                          child: Text(
-                                            data['centerLocation'] ?? '',
-                                            style: Theme.of(
-                                              context,
-                                            ).textTheme.bodySmall,
-                                            overflow: TextOverflow.ellipsis,
+                                          .bodySmall!
+                                          .copyWith(
+                                            color: AppColors.secondaryDark,
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 4),
-                                    Text(
-                                      data['centerDescription'] ?? '',
-                                      style: Theme.of(
-                                        context,
-                                      ).textTheme.bodyMedium,
-                                      maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                data['centerDescription'] ?? '',
+                                style: Theme.of(context).textTheme.bodyMedium,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ],
                           ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
                 ),
@@ -306,7 +332,7 @@ class _CentersTextState extends State<CentersText> {
           },
           child: Text(
             S.of(context).addCenter,
-            style: TextStyle(color: Colors.black38),
+            style: Theme.of(context).textTheme.labelSmall,
           ),
         ),
       ],
@@ -319,14 +345,21 @@ class Locations extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(12),
-      child: Container(
-        width: double.infinity,
-        height: MediaQuery.of(context).size.height * 0.20,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppBorderRadius.borderR),
-          border: Border.all(color: Colors.white, width: 2.5),
+    final radius = BorderRadius.circular(25);
+
+    return Container(
+      width: double.infinity,
+      height: MediaQuery.of(context).size.height * 0.20,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(25),
+        border: Border.all(
+          color: AppColors.secondaryDark.withAlpha(150),
+          width: 1.5,
+        ),
+      ),
+      child: ClipRRect(
+        borderRadius: radius.subtract(
+          BorderRadius.circular(2.5), // نقصنا عرض البوردر شوي
         ),
         child: Image.asset("assets/images/Locations.jpg", fit: BoxFit.cover),
       ),
@@ -334,8 +367,8 @@ class Locations extends StatelessWidget {
   }
 }
 
-class BeutySupport extends StatelessWidget {
-  const BeutySupport({super.key});
+class Clinicly extends StatelessWidget {
+  const Clinicly({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -343,11 +376,14 @@ class BeutySupport extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          S.of(context).beautySupport,
-          style: Theme.of(
-            context,
-          ).textTheme.titleMedium!.copyWith(color: Colors.black),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 5.0),
+          child: Text(
+            "Clinicly",
+            style: Theme.of(
+              context,
+            ).textTheme.titleMedium!.copyWith(color: Colors.black),
+          ),
         ),
       ],
     );
@@ -400,7 +436,7 @@ class _HeaderState extends State<Header> {
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
-                color: AppColors.primary.withAlpha(175),
+                color: AppColors.secondaryDark.withAlpha(175),
                 blurRadius: 10,
                 offset: Offset(1, 1),
               ),
@@ -458,7 +494,9 @@ class _HeaderState extends State<Header> {
             ),
             Text(
               userProvider.displayName,
-              style: Theme.of(context).textTheme.labelLarge,
+              style: Theme.of(
+                context,
+              ).textTheme.labelLarge!.copyWith(color: AppColors.primary),
             ),
           ],
         ),
@@ -475,7 +513,7 @@ class _HeaderState extends State<Header> {
                   border: Border.all(color: Colors.white54, width: 1.5),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.primary.withAlpha(100),
+                      color: AppColors.secondaryDark.withAlpha(100),
                       blurRadius: 8,
                       offset: const Offset(0, 4),
                     ),

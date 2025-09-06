@@ -182,7 +182,7 @@ class _PendingCentersState extends State<PendingCenters> {
                                     "Approve",
                                     style: TextStyle(
                                       color: Colors.green,
-                                      fontSize: Sizes.medium,
+                                      fontSize: 16,
                                     ),
                                   ),
                                 ),
@@ -256,7 +256,7 @@ class _PendingCentersState extends State<PendingCenters> {
                                     "Decline",
                                     style: TextStyle(
                                       color: Colors.red,
-                                      fontSize: Sizes.medium,
+                                      fontSize: 16,
                                     ),
                                   ),
                                 ),

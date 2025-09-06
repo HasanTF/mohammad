@@ -16,7 +16,12 @@ class ProfileServices extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(text, style: Theme.of(context).textTheme.titleSmall),
+            Text(
+              text,
+              style: Theme.of(
+                context,
+              ).textTheme.titleSmall!.copyWith(fontSize: 16),
+            ),
             Icon(Icons.arrow_forward_ios, size: Sizes.medium),
           ],
         ),
