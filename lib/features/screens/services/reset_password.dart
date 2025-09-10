@@ -2,6 +2,7 @@ import 'package:beuty_support/core/constants/themes.dart';
 import 'package:beuty_support/core/services/auth_sevices.dart';
 import 'package:beuty_support/core/widget/custom_input_field.dart';
 import 'package:beuty_support/core/widget/my_button.dart';
+import 'package:beuty_support/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +34,7 @@ class _ResetPasswordState extends State<ResetPassword> {
 
     if (email.isEmpty) {
       setState(() {
-        errorMessage = "Email field is required.";
+        errorMessage = S.of(context).allfieldsrequired;
         isLoading = false;
       });
       return;
@@ -46,8 +47,8 @@ class _ResetPasswordState extends State<ResetPassword> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("Check your email for reset instructions."),
+          SnackBar(
+            content: Text(S.of(context).checkemail),
             backgroundColor: Colors.green,
             duration: Duration(seconds: 3),
           ),
@@ -56,13 +57,12 @@ class _ResetPasswordState extends State<ResetPassword> {
       }
     } on FirebaseAuthException catch (error) {
       setState(() {
-        errorMessage =
-            error.message ?? "An error occurred while resetting the password.";
+        errorMessage = error.message ?? S.of(context).error;
         isLoading = false;
       });
     } catch (e) {
       setState(() {
-        errorMessage = "An unexpected error occurred.";
+        errorMessage = S.of(context).unexpectederror;
         isLoading = false;
       });
     }
@@ -76,7 +76,7 @@ class _ResetPasswordState extends State<ResetPassword> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, semanticLabel: "Go back"),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
         elevation: 0,
@@ -93,17 +93,16 @@ class _ResetPasswordState extends State<ResetPassword> {
                   Icons.lock_outline,
                   size: screenWidth * 0.2,
                   color: AppColors.primary,
-                  semanticLabel: "Lock icon",
                 ),
                 SizedBox(height: screenHeight * 0.03),
                 Text(
-                  "Forgot Password?",
+                  S.of(context).forgotpassword,
                   style: Theme.of(context).textTheme.bodyLarge,
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: screenHeight * 0.01),
                 Text(
-                  "Enter your email to receive\nreset instructions",
+                  S.of(context).enteremailreset,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
@@ -132,7 +131,7 @@ class _ResetPasswordState extends State<ResetPassword> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomInputField(
-                  label: "Email",
+                  label: S.of(context).email,
                   controller: _controllerEmail,
                   keyboardType: TextInputType.emailAddress,
                 ),
@@ -144,18 +143,16 @@ class _ResetPasswordState extends State<ResetPassword> {
                       context,
                     ).textTheme.bodySmall?.copyWith(color: Colors.redAccent),
                     textAlign: TextAlign.center,
-                    semanticsLabel: "Error message",
                   ),
                 ],
                 SizedBox(height: screenHeight * 0.03),
                 isLoading
                     ? const CircularProgressIndicator(
-                        semanticsLabel: "Loading",
                         color: AppColors.secondaryDark,
                       )
                     : MyButton(
                         onPressed: resetPassword,
-                        text: "Reset Password",
+                        text: S.of(context).resetpassword,
                         backgroundColor: AppColors.secondaryDark,
                         textColor: AppColors.textPrimary,
                       ),

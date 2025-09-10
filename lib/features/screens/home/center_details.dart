@@ -1,6 +1,7 @@
 import 'package:beuty_support/core/constants/themes.dart';
 import 'package:beuty_support/core/widget/confirmation_dialog.dart';
 import 'package:beuty_support/core/widget/my_button.dart';
+import 'package:beuty_support/generated/l10n.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class _CenterDetailsState extends State<CenterDetails> {
     if (center == null) {
       return Scaffold(
         backgroundColor: AppColors.background,
-        body: const Center(child: Text("Error: No center data provided.")),
+        body: Center(child: Text(S.of(context).noclinicsfound)),
       );
     }
 
@@ -126,7 +127,7 @@ class _ReviewsState extends State<Reviews> {
   Future<void> _deleteReview(String reviewId) async {
     ScaffoldMessenger.of(
       context,
-    ).showSnackBar(const SnackBar(content: Text("Deleting review...")));
+    ).showSnackBar(SnackBar(content: Text(S.of(context).deletingreview)));
 
     try {
       await FirebaseFirestore.instance
@@ -137,16 +138,16 @@ class _ReviewsState extends State<Reviews> {
       if (!mounted) return;
 
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+        SnackBar(
           backgroundColor: Colors.green,
-          content: Text("Review Deleted Successfully"),
+          content: Text(S.of(context).reviewdeleted),
         ),
       );
     } catch (error) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: Colors.red[200],
-          content: Text("Failed to delete review: $error"),
+          content: Text(S.of(context).failedtodeletereview),
         ),
       );
     }
@@ -155,8 +156,8 @@ class _ReviewsState extends State<Reviews> {
   @override
   Widget build(BuildContext context) {
     if (widget.centerId.isEmpty) {
-      return const Text(
-        "Invalid center ID.",
+      return Text(
+        S.of(context).invalidclinicid,
         style: TextStyle(color: AppColors.textPrimary),
       );
     }
@@ -166,10 +167,14 @@ class _ReviewsState extends State<Reviews> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Header Row
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Reviews", style: Theme.of(context).textTheme.titleMedium),
+              Text(
+                S.of(context).reviews,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
               IconButton(
                 icon: const Icon(Icons.refresh),
                 onPressed: _refresh,
@@ -206,8 +211,8 @@ class _ReviewsState extends State<Reviews> {
                 );
               }
               if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                return const Text(
-                  "No reviews yet.",
+                return Text(
+                  S.of(context).noreviews,
                   style: TextStyle(color: AppColors.textPrimary),
                 );
               }
@@ -239,74 +244,87 @@ class _ReviewsState extends State<Reviews> {
                       ),
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            const CircleAvatar(
-                              radius: 30,
-                              backgroundImage: AssetImage(
-                                "assets/images/avatar.jpg",
-                              ),
-                              backgroundColor: AppColors.primary,
-                            ),
-                            const SizedBox(width: 18.0),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  username,
-                                  style: Theme.of(context).textTheme.bodyLarge,
-                                ),
-                                Row(
-                                  children: List.generate(5, (i) {
-                                    return Icon(
-                                      Icons.star,
-                                      color: i < rating
-                                          ? Colors.amber
-                                          : Colors.grey,
-                                      size: 16.0,
-                                    );
-                                  }),
-                                ),
-                                const SizedBox(height: 4),
-                                Text(
-                                  comment,
-                                  style: Theme.of(context).textTheme.bodySmall,
-                                ),
-                                if (_isAdmin)
-                                  InkWell(
-                                    onTap: () async {
-                                      final confirm = await showDialog<bool>(
-                                        context: context,
-                                        builder: (context) =>
-                                            const ConfirmationDialog(
-                                              title: "Confirm Deleting",
-                                              content:
-                                                  "Are you sure you want to\ndelete this review?",
-                                              confirmText: "Delete",
-                                              cancelText: "Cancel",
-                                              confirmColor: Colors.red,
-                                              cancelColor: Colors.black,
-                                            ),
-                                      );
+                        // Avatar
+                        const CircleAvatar(
+                          radius: 30,
+                          backgroundImage: AssetImage(
+                            "assets/images/avatar.jpg",
+                          ),
+                          backgroundColor: AppColors.primary,
+                        ),
+                        const SizedBox(width: 18.0),
 
-                                      if (confirm == true) {
-                                        _deleteReview(reviews[index].id);
-                                      }
-                                    },
-                                    child: Text(
-                                      "Delete Review",
-                                      style: TextStyle(
-                                        color: Colors.red,
-                                        fontSize: Sizes.extraSmall,
+                        // Main content (Flexible)
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Username
+                              Text(
+                                username,
+                                style: Theme.of(context).textTheme.bodyLarge,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ),
+                              const SizedBox(height: 4),
+                              // Rating stars
+                              Row(
+                                children: List.generate(5, (i) {
+                                  return Icon(
+                                    Icons.star,
+                                    color: i < rating
+                                        ? Colors.amber
+                                        : Colors.grey,
+                                    size: 16.0,
+                                  );
+                                }),
+                              ),
+                              const SizedBox(height: 4),
+                              // Comment
+                              Text(
+                                comment,
+                                style: Theme.of(context).textTheme.bodySmall,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines:
+                                    3, // يسمح بالتفاف التعليق بسطرين/ثلاثة
+                              ),
+                              if (_isAdmin)
+                                InkWell(
+                                  onTap: () async {
+                                    final confirm = await showDialog<bool>(
+                                      context: context,
+                                      builder: (context) => ConfirmationDialog(
+                                        title: S.of(context).confirmdeleting,
+                                        content: S
+                                            .of(context)
+                                            .confirmdeletingreview,
+                                        confirmText: S.of(context).delete,
+                                        cancelText: S.of(context).cancel,
+                                        confirmColor: Colors.red,
+                                        cancelColor: Colors.black,
                                       ),
+                                    );
+
+                                    if (confirm == true) {
+                                      _deleteReview(reviews[index].id);
+                                    }
+                                  },
+                                  child: Text(
+                                    S.of(context).deletereview,
+                                    style: TextStyle(
+                                      color: Colors.red,
+                                      fontSize: Sizes.extraSmall,
                                     ),
                                   ),
-                              ],
-                            ),
-                          ],
+                                ),
+                            ],
+                          ),
                         ),
+
+                        // Date
+                        const SizedBox(width: 12),
                         Text(
                           "${date.month}/${date.day}/${date.year}",
                           style: TextStyle(
@@ -344,7 +362,7 @@ class WriteReviewButton extends StatelessWidget {
       onPressed: () {
         Navigator.pushNamed(context, '/writeareview', arguments: centerId);
       },
-      text: "Write a Review",
+      text: S.of(context).writereview,
     );
   }
 }
@@ -447,7 +465,7 @@ class _CenterDetalState extends State<CenterDetal> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Services",
+                    S.of(context).services,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,

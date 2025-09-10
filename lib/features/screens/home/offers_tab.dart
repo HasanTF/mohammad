@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:ui';
 import 'package:beuty_support/core/constants/themes.dart';
+import 'package:beuty_support/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -9,17 +11,55 @@ class OffersTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: Sizes.padding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            OffersCarousel(),
-            SizedBox(height: 20),
-            Text("HOT OFFERS!", style: Theme.of(context).textTheme.titleMedium),
-            HotOffers(),
-          ],
-        ),
+      child: Stack(
+        children: [
+          // Background content
+          SizedBox.expand(child: Container(color: Colors.white)),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: Sizes.padding),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                OffersCarousel(),
+                SizedBox(height: 20),
+                Text(
+                  S.of(context).hotoffers,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                HotOffers(),
+              ],
+            ),
+          ),
+          // Blurry layer with Coming Soon text
+          Container(
+            color: Colors.black.withAlpha(
+              75,
+            ), // Semi-transparent background for better blur contrast
+            child: BackdropFilter(
+              filter: ImageFilter.blur(
+                sigmaX: 5.0,
+                sigmaY: 5.0,
+              ), // Adjust blur intensity
+              child: Center(
+                child: Text(
+                  S.of(context).comingsoon,
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white, // White text for visibility
+                    shadows: [
+                      Shadow(
+                        blurRadius: 10.0,
+                        color: Colors.black.withAlpha(128),
+                        offset: Offset(2, 2),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

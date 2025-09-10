@@ -2,6 +2,7 @@ import 'package:beuty_support/core/constants/themes.dart';
 import 'package:beuty_support/core/services/auth_sevices.dart';
 import 'package:beuty_support/core/widget/custom_input_field.dart';
 import 'package:beuty_support/core/widget/my_button.dart';
+import 'package:beuty_support/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -42,9 +43,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     if (!_formKey.currentState!.validate() || !agree) {
       setState(() {
-        errorMessage = !agree
-            ? 'Please agree to the Terms & Privacy'
-            : errorMessage;
+        errorMessage = S.of(context).agreement;
         isLoading = false;
       });
       return;
@@ -65,19 +64,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
       String errorMsg;
       switch (e.code) {
         case 'email-already-in-use':
-          errorMsg = 'This email is already registered';
+          // ignore: use_build_context_synchronously
+          errorMsg = S.of(context).emailAlreadyInUse;
           break;
         case 'invalid-email':
-          errorMsg = 'Invalid email format';
+          // ignore: use_build_context_synchronously
+          errorMsg = S.of(context).invalidEmail;
           break;
         case 'weak-password':
-          errorMsg = 'Password is too weak';
+          // ignore: use_build_context_synchronously
+          errorMsg = S.of(context).weakPassword;
           break;
         case 'too-many-requests':
-          errorMsg = 'Too many attempts. Please try again later';
+          // ignore: use_build_context_synchronously
+          errorMsg = S.of(context).tooManyRequests;
           break;
         default:
-          errorMsg = 'An error occurred. Please try again';
+          errorMsg = S.of(context).genericError;
           debugPrint('Registration error: $e');
       }
       setState(() {
@@ -135,12 +138,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ? const Center(child: CircularProgressIndicator())
                         : MyButton(
                             onPressed: _register,
-                            text: "Sign Up",
+                            text: S.of(context).signup,
                             backgroundColor: const Color(0xFFFFD700), // Yellow
                             textColor: Colors.grey[700],
                           ),
                     SizedBox(height: screenHeight * 0.02),
                     const FooterText(),
+                    SizedBox(height: 15),
                   ],
                 ),
               ),
@@ -161,7 +165,7 @@ class FooterText extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Have an account? ",
+          S.of(context).alreadyhaveaccount,
           style: Theme.of(context).textTheme.labelSmall,
         ),
         GestureDetector(
@@ -169,7 +173,7 @@ class FooterText extends StatelessWidget {
             Navigator.pushNamed(context, "/login");
           },
           child: Text(
-            "Login",
+            S.of(context).login,
             style: Theme.of(
               context,
             ).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.w900),
@@ -196,17 +200,9 @@ class TermsAndPrivacy extends StatelessWidget {
       children: [
         Checkbox(value: agree, onChanged: onChanged),
         Expanded(
-          child: Text.rich(
-            TextSpan(
-              text: "I agree to the ",
-              style: Theme.of(context).textTheme.labelSmall,
-              children: [
-                TextSpan(
-                  text: "Terms & Privacy",
-                  style: Theme.of(context).textTheme.labelSmall,
-                ),
-              ],
-            ),
+          child: Text(
+            S.of(context).agreement,
+            style: Theme.of(context).textTheme.labelSmall,
           ),
         ),
       ],
@@ -240,11 +236,11 @@ class _InputFeildsState extends State<InputFeilds> {
   /// Validate email format
   String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Please enter your email';
+      return S.of(context).pleaseEnterEmail;
     }
     final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     if (!emailRegex.hasMatch(value)) {
-      return 'Please enter a valid email address';
+      return S.of(context).invalidEmailAddress;
     }
     return null;
   }
@@ -252,10 +248,10 @@ class _InputFeildsState extends State<InputFeilds> {
   /// Validate username
   String? _validateUsername(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Please enter your username';
+      return S.of(context).pleaseEnterUsername;
     }
     if (value.length < 3) {
-      return 'Username must be at least 3 characters';
+      return S.of(context).usernameTooShort;
     }
     return null;
   }
@@ -263,10 +259,10 @@ class _InputFeildsState extends State<InputFeilds> {
   /// Validate password
   String? _validatePassword(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Please enter your password';
+      return S.of(context).pleaseEnterPassword;
     }
     if (value.length < 6) {
-      return 'Password must be at least 6 characters';
+      return S.of(context).passwordTooShort;
     }
     return null;
   }
@@ -274,10 +270,10 @@ class _InputFeildsState extends State<InputFeilds> {
   /// Validate confirm password
   String? _validateConfirmPassword(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Please confirm your password';
+      return S.of(context).pleaseConfirmPassword;
     }
     if (value != widget.passwordController.text) {
-      return 'Passwords do not match';
+      return S.of(context).passwordsDoNotMatch;
     }
     return null;
   }
@@ -289,7 +285,7 @@ class _InputFeildsState extends State<InputFeilds> {
       child: Column(
         children: [
           CustomInputField(
-            label: "Username",
+            label: S.of(context).usernameLabel,
             prefixIcon: const Icon(Icons.person, color: Colors.green),
             controller: widget.usernameController,
             validator: _validateUsername,
@@ -298,7 +294,7 @@ class _InputFeildsState extends State<InputFeilds> {
           ),
           SizedBox(height: widget.screenHeight * 0.02),
           CustomInputField(
-            label: "E-mail",
+            label: S.of(context).emailLabel,
             prefixIcon: const Icon(Icons.mail, color: Colors.green),
             controller: widget.emailController,
             validator: _validateEmail,
@@ -307,7 +303,7 @@ class _InputFeildsState extends State<InputFeilds> {
           ),
           SizedBox(height: widget.screenHeight * 0.02),
           CustomInputField(
-            label: "Password",
+            label: S.of(context).passwordLabel,
             prefixIcon: const Icon(Icons.lock, color: Colors.green),
             controller: widget.passwordController,
             validator: _validatePassword,
@@ -316,7 +312,7 @@ class _InputFeildsState extends State<InputFeilds> {
           ),
           SizedBox(height: widget.screenHeight * 0.02),
           CustomInputField(
-            label: "Confirm Password",
+            label: S.of(context).confirmPasswordLabel,
             prefixIcon: const Icon(Icons.lock, color: Colors.green),
             controller: widget.confirmPasswordController,
             validator: _validateConfirmPassword,
@@ -368,14 +364,14 @@ class Header extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  "CLINICLY",
+                  S.of(context).clinicly,
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
               ],
             ),
             const SizedBox(height: 20),
             Text(
-              "Let’s\nCreate Your\nAccount",
+              S.of(context).createAccountHeader,
               style: Theme.of(context).textTheme.displayLarge,
             ),
             const Spacer(),

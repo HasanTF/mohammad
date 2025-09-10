@@ -1,4 +1,3 @@
-import 'package:beuty_support/core/constants/themes.dart';
 import 'package:beuty_support/features/screens/admin/dashboard_tabs/sub_tabs/current_centers.dart';
 import 'package:beuty_support/features/screens/admin/dashboard_tabs/sub_tabs/pending_centers.dart';
 import 'package:beuty_support/generated/l10n.dart';
@@ -16,16 +15,13 @@ class CentersTabs extends StatelessWidget {
           TabBar(
             tabs: [
               Tab(text: S.of(context).pending),
-              Tab(text: S.of(context).subCentersCurrent),
+              Tab(text: S.of(context).currents),
             ],
             labelColor: Colors.black,
             unselectedLabelColor: Colors.black45,
-            labelStyle: TextStyle(
-              fontSize: Sizes.large,
-              fontWeight: FontWeight.w900,
-            ),
+            labelStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
             unselectedLabelStyle: TextStyle(
-              fontSize: Sizes.medium * 0.9,
+              fontSize: 16,
               fontWeight: FontWeight.w600,
             ),
             dividerHeight: 0,

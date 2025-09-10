@@ -1,239 +1,545 @@
 {
   "@@locale": "en",
-  "onboardingWelcomeText": "Discover the best beauty centers\nnear you",
-  "@onboardingWelcomeText": {
-    "description": "Welcome text for the onboarding screen"
-  },
-  "register": "Register",
-  "@register": {
-    "description": "Label for the register button"
-  },
-  "login": "Login",
-  "@login": {
-    "description": "Label for the login button"
-  },
-  "createAccount": "Create an account",
-  "@createAccount": {
-    "description": "Text for creating a new account"
-  },
-  "welcomeBack": "Welcome back",
-  "@welcomeBack": {
-    "description": "Welcome message for returning users"
-  },
-  "loginText": "Log in to your account",
-  "@loginText": {
-    "description": "Text for the login screen"
-  },
-  "email": "Email",
-  "@email": {
-    "description": "Label for the email field"
-  },
-  "password": "Password",
-  "@password": {
-    "description": "Label for the password field"
-  },
-  "forgotPassword": "Forgot your password?",
-  "@forgotPassword": {
-    "description": "Text for the forgot password link"
-  },
-  "rememberMe": "Remember me",
-  "@rememberMe": {
-    "description": "Label for the remember me checkbox"
-  },
-  "dontHaveAccount": "Don't have an account? ",
-  "@dontHaveAccount": {
-    "description": "Prompt for users without an account"
-  },
-  "createNewAccount": "Create your new account",
-  "@createNewAccount": {
-    "description": "Text for creating a new account"
-  },
-  "fullName": "Full name",
-  "@fullName": {
-    "description": "Label for the full name field"
-  },
-  "orContinueWith": "Or continue with",
-  "@orContinueWith": {
-    "description": "Text for alternative login options"
-  },
-  "alreadyHaveAccount": "Already have an account? ",
-  "@alreadyHaveAccount": {
-    "description": "Prompt for users who already have an account"
-  },
+
+  "home": "Home",
+  "@home": { "description": "Label for the home screen button" },
+
   "search": "Search",
-  "@search": {
-    "description": "Label for the search function"
+  "@search": { "description": "Label for the search button" },
+
+  "loading": "Loading...",
+  "@loading": { "description": "Text shown while content is loading" },
+
+  "error": "Error",
+  "@error": { "description": "Generic error message" },
+
+  "ok": "OK",
+  "@ok": { "description": "OK confirmation button" },
+
+  "cancel": "Cancel",
+  "@cancel": { "description": "Cancel button" },
+
+  "retry": "Retry",
+  "@retry": { "description": "Retry button label" },
+
+  "goback": "Go Back",
+  "@goback": { "description": "Button to go back to the previous screen" },
+
+  "approve": "Approve",
+  "@approve": { "description": "Button to approve an item" },
+
+  "reject": "Reject",
+  "@reject": { "description": "Button to reject an item" },
+
+  "decline": "Decline",
+  "@decline": { "description": "Button to decline an action" },
+
+  "delete": "Delete",
+  "@delete": { "description": "Delete button label" },
+
+  "areyousure": "Are you sure?",
+  "@areyousure": { "description": "Confirmation dialog question" },
+
+  "email": "E-Mail",
+  "@email": { "description": "Email field label" },
+
+  "password": "Password",
+  "@password": { "description": "Password field label" },
+
+  "confirmpassword": "Confirm Password",
+  "@confirmpassword": { "description": "Confirm password field label" },
+
+  "forgotpassword": "Forgot Password?",
+  "@forgotpassword": { "description": "Forgot password link text" },
+
+  "login": "Login",
+  "@login": { "description": "Login button label" },
+
+  "loginapple": "Login with Apple",
+  "@loginapple": { "description": "Login with Apple button" },
+
+  "logingoogle": "Login with Google",
+  "@logingoogle": { "description": "Login with Google button" },
+
+  "noaccount": "Don't have an account?",
+  "@noaccount": { "description": "Prompt for users without an account" },
+
+  "signup": "Sign Up",
+  "@signup": { "description": "Sign up button label" },
+
+  "letscreateaccount": "Let's create an account for you",
+  "@letscreateaccount": { "description": "Onboarding text for account creation" },
+
+  "username": "Username",
+  "@username": { "description": "Username field label" },
+
+  "agreement": "I agree to the Terms of Service & Privacy Policy",
+  "@agreement": { "description": "Agreement text for terms and privacy" },
+
+  "emailAlreadyInUse": "This email is already registered",
+  "@emailAlreadyInUse": {
+    "description": "Error message shown when the email is already registered"
   },
-  "beautySupport": "Beauty Support",
-  "@beautySupport": {
-    "description": "App title"
+  "invalidEmail": "Invalid email format",
+  "@invalidEmail": {
+    "description": "Error message shown when the email format is invalid"
   },
-  "centers": "Centers",
-  "@centers": {
-    "description": "Label for beauty centers"
+  "weakPassword": "Password is too weak",
+  "@weakPassword": {
+    "description": "Error message shown when the password does not meet strength requirements"
   },
-  "center": "Center",
-  "@center": {
-    "description": "Singular label for a beauty center"
+
+  "pleaseEnterUsername": "Please enter your username",
+  "@pleaseEnterUsername": {
+    "description": "Validation message when username field is empty"
   },
-  "noCenters": "No centers available",
-  "@noCenters": {
-    "description": "Message when no centers are available"
+  "usernameTooShort": "Username must be at least 3 characters",
+  "@usernameTooShort": {
+    "description": "Validation message when username is less than 3 characters"
   },
-  "addCenter": "Add center",
-  "@addCenter": {
-    "description": "Label for adding a new center"
+  "pleaseConfirmPassword": "Please confirm your password",
+  "@pleaseConfirmPassword": {
+    "description": "Validation message when confirm password field is empty"
   },
-  "centerName": "Center name",
-  "@centerName": {
-    "description": "Label for the center name field"
+  "passwordsDoNotMatch": "Passwords do not match",
+  "@passwordsDoNotMatch": {
+    "description": "Validation message when password and confirm password do not match"
   },
-  "centerLocation": "Center location",
-  "@centerLocation": {
-    "description": "Label for the center location field"
+  "usernameLabel": "Username",
+  "@usernameLabel": {
+    "description": "Label text for username input field"
   },
-  "centerPhoneNumber": "Center phone number",
-  "@centerPhoneNumber": {
-    "description": "Label for the center phone number field"
+  "confirmPasswordLabel": "Confirm Password",
+  "@confirmPasswordLabel": {
+    "description": "Label text for confirm password input field"
   },
-  "centerDescription": "Center description",
-  "@centerDescription": {
-    "description": "Label for the center description field"
+  "appName": "CLINICLY",
+  "@appName": {
+    "description": "App name displayed in the header"
   },
-  "centerImage": "Center image",
-  "@centerImage": {
-    "description": "Label for the center image field"
+
+  "createAccountHeader": "Let’s\nCreate Your\nAccount",
+  "@createAccountHeader": {
+    "description": "Header text shown on the registration screen"
   },
-  "myProfile": "My profile",
-  "@myProfile": {
-    "description": "Label for the user profile section"
+
+  "pleaseEnterEmail": "Please enter your email",
+  "@pleaseEnterEmail": {
+    "description": "Validation message when email field is empty"
   },
+  "invalidEmailAddress": "Please enter a valid email address",
+  "@invalidEmailAddress": {
+    "description": "Validation message when email or phone is not valid"
+  },
+  "pleaseEnterPassword": "Please enter your password",
+  "@pleaseEnterPassword": {
+    "description": "Validation message when password field is empty"
+  },
+  "passwordTooShort": "Password must be at least 6 characters",
+  "@passwordTooShort": {
+    "description": "Validation message when password is shorter than 6 characters"
+  },
+  "noAccountFound": "No account found with this email or phone",
+  "@noAccountFound": {
+    "description": "Error message when user does not exist in Firebase"
+  },
+  "incorrectPassword": "Incorrect password",
+  "@incorrectPassword": {
+    "description": "Error message when user enters wrong password"
+  },
+  "invalidEmailOrPhoneFormat": "Invalid email or phone format",
+  "@invalidEmailOrPhoneFormat": {
+    "description": "Error message when email or phone format is invalid"
+  },
+  "tooManyAttempts": "Too many attempts. Please try again later",
+  "@tooManyAttempts": {
+    "description": "Error message when too many login attempts are made"
+  },
+  "accountDisabled": "This account has been disabled",
+  "@accountDisabled": {
+    "description": "Error message when the account is disabled by an administrator"
+  },
+  "emailLabel": "Email",
+  "@emailLabel": {
+    "description": "Label text for email input field"
+  },
+  "passwordLabel": "Password",
+  "@passwordLabel": {
+    "description": "Label text for password input field"
+  },
+  "forgotPassword": "Forgot Password?",
+  "@forgotPassword": {
+    "description": "Clickable text for navigating to password reset screen"
+  },
+  "loginButton": "Login",
+  "@loginButton": {
+    "description": "Text for login button"
+  },
+  "orText": "Or",
+  "@orText": {
+    "description": "Separator text between login options"
+  },
+  "appleSignInDisabledTitle": "Apple Sign-In Disabled",
+  "@appleSignInDisabledTitle": {
+    "description": "Dialog title when Apple login is disabled"
+  },
+  "appleSignInDisabledMessage": "Apple Sign-In is currently disabled for this demo.",
+  "@appleSignInDisabledMessage": {
+    "description": "Dialog message when Apple login is disabled"
+  },
+  "googleSignInDisabledTitle": "Google Sign-In Disabled",
+  "@googleSignInDisabledTitle": {
+    "description": "Dialog title when Google login is disabled"
+  },
+  "googleSignInDisabledMessage": "Google Sign-In is currently disabled for this demo.",
+  "@googleSignInDisabledMessage": {
+    "description": "Dialog message when Google login is disabled"
+  },
+  "okButton": "OK",
+  "@okButton": {
+    "description": "Text for confirming dialog"
+  },
+  "loginWithApple": "Login with Apple",
+  "@loginWithApple": {
+    "description": "Button text for Apple sign-in option"
+  },
+  "loginWithGoogle": "Login with Google",
+  "@loginWithGoogle": {
+    "description": "Button text for Google sign-in option"
+  },
+  "dontHaveAccount": "Dont have an account? ",
+  "@dontHaveAccount": {
+    "description": "Text shown before the signup link"
+  },
+  "signupText": "Signup",
+  "@signupText": {
+    "description": "Clickable text to navigate to signup screen"
+  },
+
+  "tooManyRequests": "Too many attempts. Please try again later",
+  "@tooManyRequests": {
+    "description": "Error message shown when the user exceeds the allowed number of attempts"
+  },
+  "genericError": "An error occurred. Please try again",
+  "@genericError": {
+    "description": "Generic error message shown when registration fails"
+  },
+  
+  "alreadyhaveaccount": "Already have an account? ",
+  "@alreadyhaveaccount": { "description": "Prompt for users who already have an account" },
+
+  "welcome": "Welcome back!",
+  "@welcome": { "description": "Welcome back message after login" },
+
+  "usernotlogged": "User not logged in.",
+  "@usernotlogged": { "description": "Message shown when the user is not logged in" },
+
+  "allfieldsrequired": "All fields are required.",
+  "@allfieldsrequired": { "description": "Error shown when form fields are empty" },
+
+  "passwordsdonotmatch": "Passwords do not match.",
+  "@passwordsdonotmatch": { "description": "Error when password and confirm password do not match" },
+
+  "passworddontmatch": "Password does not match.",
+  "@passworddontmatch": { "description": "Error when entered password is incorrect" },
+
+  "passwordisshort": "Password is too short.",
+  "@passwordisshort": { "description": "Error when password length is too short" },
+
+  "passwordsuccessfullychanged": "Password successfully changed.",
+  "@passwordsuccessfullychanged": { "description": "Success message for password change" },
+
+  "enternewpassword": "Enter your new password",
+  "@enternewpassword": { "description": "Instruction to enter a new password" },
+
+  "currentpassword": "Current Password",
+  "@currentpassword": { "description": "Label for current password field" },
+
+  "newpassword": "New Password",
+  "@newpassword": { "description": "Label for new password field" },
+
+  "confirmnewpassword": "Confirm New Password",
+  "@confirmnewpassword": { "description": "Label for confirm new password field" },
+
+  "updatepassword": "Update Password",
+  "@updatepassword": { "description": "Button to update password" },
+
+  "changeyourpassword": "Change Your Password",
+  "@changeyourpassword": { "description": "Title for change password screen" },
+
+  "checkemail": "Check your email for password reset instructions.",
+  "@checkemail": { "description": "Instruction to check email for reset link" },
+
+  "passwordreseterror": "An error occurred while resetting the password.",
+  "@passwordreseterror": { "description": "Error message for password reset" },
+
+  "unexpectederror": "An unexpected error occurred. Please try again.",
+  "@unexpectederror": { "description": "Generic unexpected error message" },
+
+  "forgotpasswordpage": "Forgot Password",
+  "@forgotpasswordpage": { "description": "Title for forgot password screen" },
+
+  "enteremailreset": "Enter your email address to receive\npassword reset instructions.",
+  "@enteremailreset": { "description": "Instruction for entering email to reset password" },
+
+  "resetpassword": "Reset Password",
+  "@resetpassword": { "description": "Button to reset password" },
+
+  "relogin": "Please log in again to continue.",
+  "@relogin": { "description": "Instruction to re-login after password change" },
+
+  "profile": "Profile",
+  "@profile": { "description": "Profile tab label" },
+
+  "myprofile": "My Profile",
+  "@myprofile": { "description": "Label for user's profile" },
+
   "settings": "Settings",
-  "@settings": {
-    "description": "Label for the settings menu"
-  },
-  "updateUsername": "Update username",
-  "@updateUsername": {
-    "description": "Label for updating the username"
-  },
-  "changePassword": "Change password",
-  "@changePassword": {
-    "description": "Label for changing the password"
-  },
-  "currentPassword": "Current password",
-  "@currentPassword": {
-    "description": "Label for the current password field"
-  },
-  "newPassword": "New password",
-  "@newPassword": {
-    "description": "Label for the new password field"
-  },
-  "confirmPassword": "Confirm password",
-  "@confirmPassword": {
-    "description": "Label for the confirm password field"
-  },
-  "deleteAccount": "Delete account",
-  "@deleteAccount": {
-    "description": "Label for deleting the account"
-  },
-  "aboutApp": "About the app",
-  "@aboutApp": {
-    "description": "Label for the about app section"
-  },
-  "logout": "Log out",
-  "@logout": {
-    "description": "Label for the logout button"
-  },
-  "profileTab": "Profile",
-  "@profileTab": {
-    "description": "Label for the profile tab"
-  },
-  "searchTab": "Search",
-  "@searchTab": {
-    "description": "Label for the search tab"
-  },
-  "resetPassword": "Reset password",
-  "@resetPassword": {
-    "description": "Label for resetting the password"
-  },
-  "newUsername": "New username",
-  "@newUsername": {
-    "description": "Label for the new username field"
-  },
-  "newsTab": "News",
-  "@newsTab": {
-    "description": "Label for the news tab"
-  },
-  "homeTab": "Home",
-  "@homeTab": {
-    "description": "Label for the home tab"
-  },
-  "adminDashboard": "Admin dashboard",
-  "@adminDashboard": {
-    "description": "Label for the admin dashboard"
-  },
-  "adminCenters": "Centers",
-  "@adminCenters": {
-    "description": "Label for admin centers section"
-  },
-  "adminReviews": "Reviews",
-  "@adminReviews": {
-    "description": "Label for admin reviews section"
-  },
-  "pendingReviews": "Pending reviews",
-  "@pendingReviews": {
-    "description": "Label for pending reviews"
-  },
-  "noPendingReviews": "No pending reviews",
-  "@noPendingReviews": {
-    "description": "Message when no reviews are pending"
-  },
-  "subCentersPending": "Pending",
-  "@subCentersPending": {
-    "description": "Label for pending sub-centers"
-  },
-  "subCentersCurrent": "Current",
-  "@subCentersCurrent": {
-    "description": "Label for current sub-centers"
-  },
-  "addNewCenter": "Add new center",
-  "@addNewCenter": {
-    "description": "Label for adding a new center"
-  },
+  "@settings": { "description": "Settings tab label" },
+
+  "updateusername": "Update Username",
+  "@updateusername": { "description": "Button to update username" },
+
+  "enternewusername": "Enter your new username\nto update your profile and reviews",
+  "@enternewusername": { "description": "Instruction to enter a new username" },
+
+  "newusername": "New Username",
+  "@newusername": { "description": "Label for new username field" },
+
+  "usernameupdated": "Username updated successfully.",
+  "@usernameupdated": { "description": "Success message for username update" },
+
+  "deleteaccount": "Delete your account",
+  "@deleteaccount": { "description": "Button to delete account" },
+
+  "entertodelete": "Enter your email and password to\ndelete your account permanently.",
+  "@entertodelete": { "description": "Instruction to confirm account deletion" },
+
+  "accountdeleted": "Account deleted successfully.",
+  "@accountdeleted": { "description": "Success message after account deletion" },
+
+  "logout": "Logout",
+  "@logout": { "description": "Logout button label" },
+
+  "confirmlogout": "Confirm Logout",
+  "@confirmlogout": { "description": "Title for confirm logout dialog" },
+
+  "confirmlogoutmsg": "Are you sure you want to logout?",
+  "@confirmlogoutmsg": { "description": "Confirmation message for logout" },
+
+  "clinics": "Clinics",
+  "@clinics": { "description": "Clinics section label" },
+
+  "clinicly": "Clinicly",
+  "@clinicly": { "description": "App name / branding text" },
+
+  "addclinic": "Add Clinic",
+  "@addclinic": { "description": "Button to add a clinic" },
+
+  "addnewclinic": "Add New Clinic",
+  "@addnewclinic": { "description": "Title for adding a new clinic" },
+
+  "clinicname": "Clinic Name",
+  "@clinicname": { "description": "Label for clinic name field" },
+
+  "cliniclocation": "Clinic Location",
+  "@cliniclocation": { "description": "Label for clinic location field" },
+
+  "clinicphonenumber": "Clinic Phone Number",
+  "@clinicphonenumber": { "description": "Label for clinic phone number field" },
+
+  "clinicdescription": "Clinic Description",
+  "@clinicdescription": { "description": "Label for clinic description field" },
+
+  "clinicimage": "Clinic Image",
+  "@clinicimage": { "description": "Label for clinic image upload" },
+
+  "unknownclinic": "Unknown Clinic",
+  "@unknownclinic": { "description": "Fallback text for unknown clinic" },
+
+  "failedtoaddclinic": "Failed to add clinic. Please try again.",
+  "@failedtoaddclinic": { "description": "Error message when failing to add clinic" },
+
+  "filltoaddclinic": "Please fill in all fields to add a clinic.",
+  "@filltoaddclinic": { "description": "Instruction to complete clinic form" },
+
+  "noclinicsfound": "No clinics found.",
+  "@noclinicsfound": { "description": "Message when no clinics are found" },
+
+  "noclinics": "No clinics available.",
+  "@noclinics": { "description": "Message when no clinics are available" },
+
+  "confirmdeletionclinic": "Confirm Deletion",
+  "@confirmdeletionclinic": { "description": "Title for confirm clinic deletion dialog" },
+
+  "confirmdeletionclinicmsg": "Are you sure you want to delete this clinic?",
+  "@confirmdeletionclinicmsg": { "description": "Confirmation message for clinic deletion" },
+
+  "invalidclinicid": "Invalid clinic ID.",
+  "@invalidclinicid": { "description": "Error for invalid clinic ID" },
+
+  "clinicrejected": "Clinic rejected",
+  "@clinicrejected": { "description": "Message when clinic is rejected" },
+
+  "services": "Services",
+  "@services": { "description": "Services section label" },
+
+  "haircut": "Haircut",
+  "@haircut": { "description": "Service option for haircut" },
+
+  "makeup": "Makeup",
+  "@makeup": { "description": "Service option for makeup" },
+
+  "massage": "Massage",
+  "@massage": { "description": "Service option for massage" },
+
+  "nails": "Nails",
+  "@nails": { "description": "Service option for nails" },
+
+  "skincare": "Skincare",
+  "@skincare": { "description": "Service option for skincare" },
+
+  "offers": "Offers",
+  "@offers": { "description": "Offers section label" },
+
+  "hotoffers": "Hot Offers",
+  "@hotoffers": { "description": "Label for hot offers section" },
+
+  "favorites": "Favorites",
+  "@favorites": { "description": "Favorites section label" },
+
+  "myfavorites": "My Favorites",
+  "@myfavorites": { "description": "User's favorites list" },
+
+  "nofavorites": "No favorites yet.",
+  "@nofavorites": { "description": "Message when no favorites are available" },
+
+  "removedfromfavorites": "Removed from favorites",
+  "@removedfromfavorites": { "description": "Message when item removed from favorites" },
+
+  "addedtofavorites": "Added to favorites",
+  "@addedtofavorites": { "description": "Message when item added to favorites" },
+
+  "comingsoon": "Coming Soon",
+  "@comingsoon": { "description": "Label for upcoming features" },
+
   "reviews": "Reviews",
-  "@reviews": {
-    "description": "Label for reviews section"
-  },
-  "noReviews": "No reviews yet",
-  "@noReviews": {
-    "description": "Message when no reviews are available"
-  },
-  "writeAReview": "Write a review",
-  "@writeAReview": {
-    "description": "Label for writing a review"
-  },
+  "@reviews": { "description": "Reviews section label" },
+
+  "noreviews": "No Reviews Yet",
+  "@noreviews": { "description": "Message when no reviews exist" },
+
+  "writereview": "Write a Review",
+  "@writereview": { "description": "Button to write a new review" },
+
+  "tellusexperience": "Tell us about your experience with this clinic.",
+  "@tellusexperience": { "description": "Prompt to share experience in review" },
+
+  "yourrating": "Your Rating",
+  "@yourrating": { "description": "Label for rating selection" },
+
+  "pleaserate": "Please rate your experience",
+  "@pleaserate": { "description": "Prompt asking user to rate" },
+
+  "writereviewhere": "Write your review here...",
+  "@writereviewhere": { "description": "Placeholder for review input field" },
+
+  "submitreview": "Submit Review",
+  "@submitreview": { "description": "Button to submit review" },
+
+  "failedtoresubmitreview": "Failed to resubmit review.",
+  "@failedtoresubmitreview": { "description": "Error when failing to resubmit review" },
+
+  "pleaseselectrating": "Please select a rating and write a review.",
+  "@pleaseselectrating": { "description": "Error when review is incomplete" },
+
+  "mustbelogged": "You must be logged in to submit a review.",
+  "@mustbelogged": { "description": "Error when user not logged in tries to review" },
+
+  "reviewsubmitted": "Review submitted successfully!\nIt will appear once the admin approves it.",
+  "@reviewsubmitted": { "description": "Success message after submitting review" },
+
+  "reviewnotsubmitted": "Failed to submit review. Please try again.",
+  "@reviewnotsubmitted": { "description": "Error when failing to submit review" },
+
+  "resubmittedforapproval": "Your review has been resubmitted for admin approval.",
+  "@resubmittedforapproval": { "description": "Message when review is resubmitted" },
+
+  "editandresubmit": "Edit and resubmit your review.",
+  "@editandresubmit": { "description": "Instruction to edit and resubmit review" },
+
+  "editreview": "Edit Review",
+  "@editreview": { "description": "Button to edit review" },
+
+  "resubmitforapproval": "Resubmit your review for admin approval",
+  "@resubmitforapproval": { "description": "Instruction to resubmit review for approval" },
+
+  "rejectionreason": "Rejected for: ",
+  "@rejectionreason": { "description": "Label for rejection reason" },
+
+  "yourreview": "Your Review",
+  "@yourreview": { "description": "Label for user's review" },
+
+  "resubmitreview": "Resubmit Review",
+  "@resubmitreview": { "description": "Button to resubmit review" },
+
+  "deletingreview": "Deleting review...",
+  "@deletingreview": { "description": "Message shown while deleting review" },
+
+  "reviewdeleted": "Review deleted successfully.",
+  "@reviewdeleted": { "description": "Success message after deleting review" },
+
+  "failedtodeletereview": "Failed to delete review",
+  "@failedtodeletereview": { "description": "Error message when failing to delete review" },
+
+  "confirmdeleting": "Confirm Deleting",
+  "@confirmdeleting": { "description": "Title for confirm deleting dialog" },
+
+  "confirmdeletingmsg": "Are you sure you want to delete this review?",
+  "@confirmdeletingmsg": { "description": "Confirmation message for review deletion" },
+
+  "deletereview": "Delete Review",
+  "@deletereview": { "description": "Button to delete review" },
+
+  "adminpanel": "Admin Panel",
+  "@adminpanel": { "description": "Label for admin panel section" },
+
+  "pendingreviews": "Pending Reviews",
+  "@pendingreviews": { "description": "Label for pending reviews section" },
+
+  "nopendingreviews": "No pending reviews.",
+  "@nopendingreviews": { "description": "Message when no pending reviews exist" },
+
   "pending": "Pending",
-  "@pending": {
-    "description": "Label for pending status"
-  },
-  "current": "Current",
-  "@current": {
-    "description": "Label for current status"
-  },
-  "howWasExperience": "How was your experience?",
-  "@howWasExperience": {
-    "description": "Prompt for user experience feedback"
-  },
-  "yourReview": "Your Review",
-  "@yourReview": {
-    "description": "Label for the user's review input field"
-  },
-  "writeSomethingAboutVisit": "Write something about your visit",
-  "@writeSomethingAboutVisit": {
-    "description": "Prompt for writing a review about the visit"
-  },
-  "submitReview": "Submit Review",
-  "@submitReview": {
-    "description": "Label for the submit review button"
-  }
+  "@pending": { "description": "Label for pending status" },
+
+  "currents": "Current",
+  "@currents": { "description": "Label for current status" },
+
+  "aboutapp": "About this App",
+  "@aboutapp": { "description": "Label for about app section" },
+
+  "centerapproved": "clinic approved",
+  "@centerapproved": { "description": "Message when clinic is approved" },
+
+  "erroraprrovingcenter": "Error approving clinic",
+  "@erroraprrovingcenter": { "description": "Error message when failing to approve clinic" },
+
+  "failedtoapprovecenter": "Failed to approve clinic",
+  "@failedtoapprovecenter": { "description": "Failure message for clinic approval" },
+
+  "doyoureallywanttodecline": "Do you really want to decline this clinic?\nThis action cannot be undone.",
+  "@doyoureallywanttodecline": { "description": "Confirmation to decline a clinic" },
+
+  "centerrejected": "clinic rejected",
+  "@centerrejected": { "description": "Message when clinic is rejected" },
+
+  "errorrejectingcenter": "Error rejecting clinic",
+  "@errorrejectingcenter": { "description": "Error message for rejecting clinic" },
+
+  "failedtorejectcenter": "Failed to reject clinic",
+  "@failedtorejectcenter": { "description": "Failure message for rejecting clinic" },
+
+  "confirmdeletingreview": "Are you sure you want to\ndelete this review?",
+  "@confirmdeletingreview": { "description": "Confirmation message for deleting a review" }
 }

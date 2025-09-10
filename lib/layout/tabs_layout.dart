@@ -5,6 +5,7 @@ import 'package:beuty_support/features/screens/home/favorite_tab.dart';
 import 'package:beuty_support/features/screens/home/home_tab.dart';
 import 'package:beuty_support/features/screens/home/offers_tab.dart';
 import 'package:beuty_support/features/screens/home/profile_tab.dart';
+import 'package:beuty_support/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class TabsLayout extends StatefulWidget {
@@ -47,22 +48,22 @@ class _TabsLayoutState extends State<TabsLayout> {
                       _currentIndex = index;
                     });
                   },
-                  items: const [
+                  items: [
                     BottomNavigationBarItem(
                       icon: Icon(Icons.home_outlined),
-                      label: 'Home',
+                      label: S.of(context).home,
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(Icons.local_offer),
-                      label: 'Offers',
+                      label: S.of(context).offers,
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(Icons.favorite_border),
-                      label: 'Favorites',
+                      label: S.of(context).favorites,
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(Icons.person_outline),
-                      label: 'Profile',
+                      label: S.of(context).profile,
                     ),
                   ],
                 ),

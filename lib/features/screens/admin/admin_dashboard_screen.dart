@@ -1,4 +1,3 @@
-import 'package:beuty_support/core/constants/themes.dart';
 import 'package:beuty_support/features/screens/admin/dashboard_tabs/centers_tabs.dart';
 import 'package:beuty_support/features/screens/admin/dashboard_tabs/reviews_tab.dart';
 import 'package:beuty_support/generated/l10n.dart';
@@ -15,22 +14,19 @@ class AdminDashboardScreen extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             title: Text(
-              S.of(context).adminDashboard,
+              S.of(context).adminpanel,
               style: Theme.of(context).appBarTheme.titleTextStyle,
             ),
             bottom: TabBar(
               tabs: [
                 Tab(text: S.of(context).reviews),
-                Tab(text: S.of(context).centers),
+                Tab(text: S.of(context).clinics),
               ],
               labelColor: Colors.black,
               unselectedLabelColor: Colors.black45,
-              labelStyle: TextStyle(
-                fontSize: Sizes.large,
-                fontWeight: FontWeight.w900,
-              ),
+              labelStyle: TextStyle(fontSize: 22, fontWeight: FontWeight.w900),
               unselectedLabelStyle: TextStyle(
-                fontSize: Sizes.medium * 0.9,
+                fontSize: 18,
                 fontWeight: FontWeight.w600,
               ),
               dividerHeight: 0,

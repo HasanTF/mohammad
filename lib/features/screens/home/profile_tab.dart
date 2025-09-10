@@ -69,10 +69,10 @@ class _ProfileTabState extends State<ProfileTab> {
                       final confirm = await showDialog<bool>(
                         context: context,
                         builder: (context) => ConfirmationDialog(
-                          title: "Confirm Logout",
-                          content: "Are you sure you want to logout?",
-                          confirmText: "Logout",
-                          cancelText: "Cancel",
+                          title: S.of(context).confirmlogout,
+                          content: S.of(context).confirmlogoutmsg,
+                          confirmText: S.of(context).logout,
+                          cancelText: S.of(context).cancel,
                           confirmColor: Colors.red,
                           cancelColor: Colors.black,
                         ),
@@ -111,7 +111,7 @@ class HeaderText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      S.of(context).myProfile,
+      S.of(context).myprofile,
       textAlign: TextAlign.center,
       style: Theme.of(
         context,
@@ -137,7 +137,7 @@ class Services extends StatelessWidget {
         ),
         SizedBox(height: 10),
         ProfileServices(
-          text: S.of(context).updateUsername,
+          text: S.of(context).updateusername,
           onTap: () {
             Navigator.push(
               context,
@@ -146,7 +146,7 @@ class Services extends StatelessWidget {
           },
         ),
         ProfileServices(
-          text: S.of(context).changePassword,
+          text: S.of(context).changeyourpassword,
           onTap: () {
             Navigator.push(
               context,
@@ -155,7 +155,7 @@ class Services extends StatelessWidget {
           },
         ),
         ProfileServices(
-          text: S.of(context).deleteAccount,
+          text: S.of(context).deleteaccount,
           onTap: () {
             Navigator.push(
               context,
@@ -164,7 +164,7 @@ class Services extends StatelessWidget {
           },
         ),
         ProfileServices(
-          text: S.of(context).aboutApp,
+          text: S.of(context).aboutapp,
           onTap: () {
             Navigator.push(
               context,

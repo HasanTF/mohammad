@@ -99,323 +99,941 @@ abstract class S {
     Locale('es'),
   ];
 
-  /// Welcome text for the onboarding screen
+  /// Label for the home screen button
   ///
   /// In en, this message translates to:
-  /// **'Discover the best beauty centers\nnear you'**
-  String get onboardingWelcomeText;
+  /// **'Home'**
+  String get home;
 
-  /// Label for the register button
-  ///
-  /// In en, this message translates to:
-  /// **'Register'**
-  String get register;
-
-  /// Label for the login button
-  ///
-  /// In en, this message translates to:
-  /// **'Login'**
-  String get login;
-
-  /// Text for creating a new account
-  ///
-  /// In en, this message translates to:
-  /// **'Create an account'**
-  String get createAccount;
-
-  /// Welcome message for returning users
-  ///
-  /// In en, this message translates to:
-  /// **'Welcome back'**
-  String get welcomeBack;
-
-  /// Text for the login screen
-  ///
-  /// In en, this message translates to:
-  /// **'Log in to your account'**
-  String get loginText;
-
-  /// Label for the email field
-  ///
-  /// In en, this message translates to:
-  /// **'Email'**
-  String get email;
-
-  /// Label for the password field
-  ///
-  /// In en, this message translates to:
-  /// **'Password'**
-  String get password;
-
-  /// Text for the forgot password link
-  ///
-  /// In en, this message translates to:
-  /// **'Forgot your password?'**
-  String get forgotPassword;
-
-  /// Label for the remember me checkbox
-  ///
-  /// In en, this message translates to:
-  /// **'Remember me'**
-  String get rememberMe;
-
-  /// Prompt for users without an account
-  ///
-  /// In en, this message translates to:
-  /// **'Don\'t have an account? '**
-  String get dontHaveAccount;
-
-  /// Text for creating a new account
-  ///
-  /// In en, this message translates to:
-  /// **'Create your new account'**
-  String get createNewAccount;
-
-  /// Label for the full name field
-  ///
-  /// In en, this message translates to:
-  /// **'Full name'**
-  String get fullName;
-
-  /// Text for alternative login options
-  ///
-  /// In en, this message translates to:
-  /// **'Or continue with'**
-  String get orContinueWith;
-
-  /// Prompt for users who already have an account
-  ///
-  /// In en, this message translates to:
-  /// **'Already have an account? '**
-  String get alreadyHaveAccount;
-
-  /// Label for the search function
+  /// Label for the search button
   ///
   /// In en, this message translates to:
   /// **'Search'**
   String get search;
 
-  /// App title
+  /// Text shown while content is loading
   ///
   /// In en, this message translates to:
-  /// **'Beauty Support'**
-  String get beautySupport;
+  /// **'Loading...'**
+  String get loading;
 
-  /// Label for beauty centers
+  /// Generic error message
   ///
   /// In en, this message translates to:
-  /// **'Centers'**
-  String get centers;
+  /// **'Error'**
+  String get error;
 
-  /// Singular label for a beauty center
+  /// OK confirmation button
   ///
   /// In en, this message translates to:
-  /// **'Center'**
-  String get center;
+  /// **'OK'**
+  String get ok;
 
-  /// Message when no centers are available
+  /// Cancel button
   ///
   /// In en, this message translates to:
-  /// **'No centers available'**
-  String get noCenters;
+  /// **'Cancel'**
+  String get cancel;
 
-  /// Label for adding a new center
+  /// Retry button label
   ///
   /// In en, this message translates to:
-  /// **'Add center'**
-  String get addCenter;
+  /// **'Retry'**
+  String get retry;
 
-  /// Label for the center name field
+  /// Button to go back to the previous screen
   ///
   /// In en, this message translates to:
-  /// **'Center name'**
-  String get centerName;
+  /// **'Go Back'**
+  String get goback;
 
-  /// Label for the center location field
+  /// Button to approve an item
   ///
   /// In en, this message translates to:
-  /// **'Center location'**
-  String get centerLocation;
+  /// **'Approve'**
+  String get approve;
 
-  /// Label for the center phone number field
+  /// Button to reject an item
   ///
   /// In en, this message translates to:
-  /// **'Center phone number'**
-  String get centerPhoneNumber;
+  /// **'Reject'**
+  String get reject;
 
-  /// Label for the center description field
+  /// Button to decline an action
   ///
   /// In en, this message translates to:
-  /// **'Center description'**
-  String get centerDescription;
+  /// **'Decline'**
+  String get decline;
 
-  /// Label for the center image field
+  /// Delete button label
   ///
   /// In en, this message translates to:
-  /// **'Center image'**
-  String get centerImage;
+  /// **'Delete'**
+  String get delete;
 
-  /// Label for the user profile section
+  /// Confirmation dialog question
   ///
   /// In en, this message translates to:
-  /// **'My profile'**
-  String get myProfile;
+  /// **'Are you sure?'**
+  String get areyousure;
 
-  /// Label for the settings menu
+  /// Email field label
+  ///
+  /// In en, this message translates to:
+  /// **'E-Mail'**
+  String get email;
+
+  /// Password field label
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// Confirm password field label
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmpassword;
+
+  /// Forgot password link text
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot Password?'**
+  String get forgotpassword;
+
+  /// Login button label
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// Login with Apple button
+  ///
+  /// In en, this message translates to:
+  /// **'Login with Apple'**
+  String get loginapple;
+
+  /// Login with Google button
+  ///
+  /// In en, this message translates to:
+  /// **'Login with Google'**
+  String get logingoogle;
+
+  /// Prompt for users without an account
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account?'**
+  String get noaccount;
+
+  /// Sign up button label
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Up'**
+  String get signup;
+
+  /// Onboarding text for account creation
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s create an account for you'**
+  String get letscreateaccount;
+
+  /// Username field label
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get username;
+
+  /// Agreement text for terms and privacy
+  ///
+  /// In en, this message translates to:
+  /// **'I agree to the Terms of Service & Privacy Policy'**
+  String get agreement;
+
+  /// Error message shown when the email is already registered
+  ///
+  /// In en, this message translates to:
+  /// **'This email is already registered'**
+  String get emailAlreadyInUse;
+
+  /// Error message shown when the email format is invalid
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email format'**
+  String get invalidEmail;
+
+  /// Error message shown when the password does not meet strength requirements
+  ///
+  /// In en, this message translates to:
+  /// **'Password is too weak'**
+  String get weakPassword;
+
+  /// Validation message when username field is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your username'**
+  String get pleaseEnterUsername;
+
+  /// Validation message when username is less than 3 characters
+  ///
+  /// In en, this message translates to:
+  /// **'Username must be at least 3 characters'**
+  String get usernameTooShort;
+
+  /// Validation message when confirm password field is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Please confirm your password'**
+  String get pleaseConfirmPassword;
+
+  /// Validation message when password and confirm password do not match
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get passwordsDoNotMatch;
+
+  /// Label text for username input field
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get usernameLabel;
+
+  /// Label text for confirm password input field
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmPasswordLabel;
+
+  /// App name displayed in the header
+  ///
+  /// In en, this message translates to:
+  /// **'CLINICLY'**
+  String get appName;
+
+  /// Header text shown on the registration screen
+  ///
+  /// In en, this message translates to:
+  /// **'Let’s\nCreate Your\nAccount'**
+  String get createAccountHeader;
+
+  /// Validation message when email field is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email'**
+  String get pleaseEnterEmail;
+
+  /// Validation message when email or phone is not valid
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email address'**
+  String get invalidEmailAddress;
+
+  /// Validation message when password field is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your password'**
+  String get pleaseEnterPassword;
+
+  /// Validation message when password is shorter than 6 characters
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters'**
+  String get passwordTooShort;
+
+  /// Error message when user does not exist in Firebase
+  ///
+  /// In en, this message translates to:
+  /// **'No account found with this email or phone'**
+  String get noAccountFound;
+
+  /// Error message when user enters wrong password
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect password'**
+  String get incorrectPassword;
+
+  /// Error message when email or phone format is invalid
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email or phone format'**
+  String get invalidEmailOrPhoneFormat;
+
+  /// Error message when too many login attempts are made
+  ///
+  /// In en, this message translates to:
+  /// **'Too many attempts. Please try again later'**
+  String get tooManyAttempts;
+
+  /// Error message when the account is disabled by an administrator
+  ///
+  /// In en, this message translates to:
+  /// **'This account has been disabled'**
+  String get accountDisabled;
+
+  /// Label text for email input field
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get emailLabel;
+
+  /// Label text for password input field
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get passwordLabel;
+
+  /// Clickable text for navigating to password reset screen
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot Password?'**
+  String get forgotPassword;
+
+  /// Text for login button
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get loginButton;
+
+  /// Separator text between login options
+  ///
+  /// In en, this message translates to:
+  /// **'Or'**
+  String get orText;
+
+  /// Dialog title when Apple login is disabled
+  ///
+  /// In en, this message translates to:
+  /// **'Apple Sign-In Disabled'**
+  String get appleSignInDisabledTitle;
+
+  /// Dialog message when Apple login is disabled
+  ///
+  /// In en, this message translates to:
+  /// **'Apple Sign-In is currently disabled for this demo.'**
+  String get appleSignInDisabledMessage;
+
+  /// Dialog title when Google login is disabled
+  ///
+  /// In en, this message translates to:
+  /// **'Google Sign-In Disabled'**
+  String get googleSignInDisabledTitle;
+
+  /// Dialog message when Google login is disabled
+  ///
+  /// In en, this message translates to:
+  /// **'Google Sign-In is currently disabled for this demo.'**
+  String get googleSignInDisabledMessage;
+
+  /// Text for confirming dialog
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get okButton;
+
+  /// Button text for Apple sign-in option
+  ///
+  /// In en, this message translates to:
+  /// **'Login with Apple'**
+  String get loginWithApple;
+
+  /// Button text for Google sign-in option
+  ///
+  /// In en, this message translates to:
+  /// **'Login with Google'**
+  String get loginWithGoogle;
+
+  /// Text shown before the signup link
+  ///
+  /// In en, this message translates to:
+  /// **'Dont have an account? '**
+  String get dontHaveAccount;
+
+  /// Clickable text to navigate to signup screen
+  ///
+  /// In en, this message translates to:
+  /// **'Signup'**
+  String get signupText;
+
+  /// Error message shown when the user exceeds the allowed number of attempts
+  ///
+  /// In en, this message translates to:
+  /// **'Too many attempts. Please try again later'**
+  String get tooManyRequests;
+
+  /// Generic error message shown when registration fails
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred. Please try again'**
+  String get genericError;
+
+  /// Prompt for users who already have an account
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account? '**
+  String get alreadyhaveaccount;
+
+  /// Welcome back message after login
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome back!'**
+  String get welcome;
+
+  /// Message shown when the user is not logged in
+  ///
+  /// In en, this message translates to:
+  /// **'User not logged in.'**
+  String get usernotlogged;
+
+  /// Error shown when form fields are empty
+  ///
+  /// In en, this message translates to:
+  /// **'All fields are required.'**
+  String get allfieldsrequired;
+
+  /// Error when password and confirm password do not match
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match.'**
+  String get passwordsdonotmatch;
+
+  /// Error when entered password is incorrect
+  ///
+  /// In en, this message translates to:
+  /// **'Password does not match.'**
+  String get passworddontmatch;
+
+  /// Error when password length is too short
+  ///
+  /// In en, this message translates to:
+  /// **'Password is too short.'**
+  String get passwordisshort;
+
+  /// Success message for password change
+  ///
+  /// In en, this message translates to:
+  /// **'Password successfully changed.'**
+  String get passwordsuccessfullychanged;
+
+  /// Instruction to enter a new password
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your new password'**
+  String get enternewpassword;
+
+  /// Label for current password field
+  ///
+  /// In en, this message translates to:
+  /// **'Current Password'**
+  String get currentpassword;
+
+  /// Label for new password field
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get newpassword;
+
+  /// Label for confirm new password field
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm New Password'**
+  String get confirmnewpassword;
+
+  /// Button to update password
+  ///
+  /// In en, this message translates to:
+  /// **'Update Password'**
+  String get updatepassword;
+
+  /// Title for change password screen
+  ///
+  /// In en, this message translates to:
+  /// **'Change Your Password'**
+  String get changeyourpassword;
+
+  /// Instruction to check email for reset link
+  ///
+  /// In en, this message translates to:
+  /// **'Check your email for password reset instructions.'**
+  String get checkemail;
+
+  /// Error message for password reset
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred while resetting the password.'**
+  String get passwordreseterror;
+
+  /// Generic unexpected error message
+  ///
+  /// In en, this message translates to:
+  /// **'An unexpected error occurred. Please try again.'**
+  String get unexpectederror;
+
+  /// Title for forgot password screen
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot Password'**
+  String get forgotpasswordpage;
+
+  /// Instruction for entering email to reset password
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email address to receive\npassword reset instructions.'**
+  String get enteremailreset;
+
+  /// Button to reset password
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get resetpassword;
+
+  /// Instruction to re-login after password change
+  ///
+  /// In en, this message translates to:
+  /// **'Please log in again to continue.'**
+  String get relogin;
+
+  /// Profile tab label
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// Label for user's profile
+  ///
+  /// In en, this message translates to:
+  /// **'My Profile'**
+  String get myprofile;
+
+  /// Settings tab label
   ///
   /// In en, this message translates to:
   /// **'Settings'**
   String get settings;
 
-  /// Label for updating the username
+  /// Button to update username
   ///
   /// In en, this message translates to:
-  /// **'Update username'**
-  String get updateUsername;
+  /// **'Update Username'**
+  String get updateusername;
 
-  /// Label for changing the password
+  /// Instruction to enter a new username
   ///
   /// In en, this message translates to:
-  /// **'Change password'**
-  String get changePassword;
+  /// **'Enter your new username\nto update your profile and reviews'**
+  String get enternewusername;
 
-  /// Label for the current password field
+  /// Label for new username field
   ///
   /// In en, this message translates to:
-  /// **'Current password'**
-  String get currentPassword;
+  /// **'New Username'**
+  String get newusername;
 
-  /// Label for the new password field
+  /// Success message for username update
   ///
   /// In en, this message translates to:
-  /// **'New password'**
-  String get newPassword;
+  /// **'Username updated successfully.'**
+  String get usernameupdated;
 
-  /// Label for the confirm password field
+  /// Button to delete account
   ///
   /// In en, this message translates to:
-  /// **'Confirm password'**
-  String get confirmPassword;
+  /// **'Delete your account'**
+  String get deleteaccount;
 
-  /// Label for deleting the account
+  /// Instruction to confirm account deletion
   ///
   /// In en, this message translates to:
-  /// **'Delete account'**
-  String get deleteAccount;
+  /// **'Enter your email and password to\ndelete your account permanently.'**
+  String get entertodelete;
 
-  /// Label for the about app section
+  /// Success message after account deletion
   ///
   /// In en, this message translates to:
-  /// **'About the app'**
-  String get aboutApp;
+  /// **'Account deleted successfully.'**
+  String get accountdeleted;
 
-  /// Label for the logout button
+  /// Logout button label
   ///
   /// In en, this message translates to:
-  /// **'Log out'**
+  /// **'Logout'**
   String get logout;
 
-  /// Label for the profile tab
+  /// Title for confirm logout dialog
   ///
   /// In en, this message translates to:
-  /// **'Profile'**
-  String get profileTab;
+  /// **'Confirm Logout'**
+  String get confirmlogout;
 
-  /// Label for the search tab
+  /// Confirmation message for logout
   ///
   /// In en, this message translates to:
-  /// **'Search'**
-  String get searchTab;
+  /// **'Are you sure you want to logout?'**
+  String get confirmlogoutmsg;
 
-  /// Label for resetting the password
+  /// Clinics section label
   ///
   /// In en, this message translates to:
-  /// **'Reset password'**
-  String get resetPassword;
+  /// **'Clinics'**
+  String get clinics;
 
-  /// Label for the new username field
+  /// App name / branding text
   ///
   /// In en, this message translates to:
-  /// **'New username'**
-  String get newUsername;
+  /// **'Clinicly'**
+  String get clinicly;
 
-  /// Label for the news tab
+  /// Button to add a clinic
   ///
   /// In en, this message translates to:
-  /// **'News'**
-  String get newsTab;
+  /// **'Add Clinic'**
+  String get addclinic;
 
-  /// Label for the home tab
+  /// Title for adding a new clinic
   ///
   /// In en, this message translates to:
-  /// **'Home'**
-  String get homeTab;
+  /// **'Add New Clinic'**
+  String get addnewclinic;
 
-  /// Label for the admin dashboard
+  /// Label for clinic name field
   ///
   /// In en, this message translates to:
-  /// **'Admin dashboard'**
-  String get adminDashboard;
+  /// **'Clinic Name'**
+  String get clinicname;
 
-  /// Label for admin centers section
+  /// Label for clinic location field
   ///
   /// In en, this message translates to:
-  /// **'Centers'**
-  String get adminCenters;
+  /// **'Clinic Location'**
+  String get cliniclocation;
 
-  /// Label for admin reviews section
+  /// Label for clinic phone number field
   ///
   /// In en, this message translates to:
-  /// **'Reviews'**
-  String get adminReviews;
+  /// **'Clinic Phone Number'**
+  String get clinicphonenumber;
 
-  /// Label for pending reviews
+  /// Label for clinic description field
   ///
   /// In en, this message translates to:
-  /// **'Pending reviews'**
-  String get pendingReviews;
+  /// **'Clinic Description'**
+  String get clinicdescription;
 
-  /// Message when no reviews are pending
+  /// Label for clinic image upload
   ///
   /// In en, this message translates to:
-  /// **'No pending reviews'**
-  String get noPendingReviews;
+  /// **'Clinic Image'**
+  String get clinicimage;
 
-  /// Label for pending sub-centers
+  /// Fallback text for unknown clinic
   ///
   /// In en, this message translates to:
-  /// **'Pending'**
-  String get subCentersPending;
+  /// **'Unknown Clinic'**
+  String get unknownclinic;
 
-  /// Label for current sub-centers
+  /// Error message when failing to add clinic
   ///
   /// In en, this message translates to:
-  /// **'Current'**
-  String get subCentersCurrent;
+  /// **'Failed to add clinic. Please try again.'**
+  String get failedtoaddclinic;
 
-  /// Label for adding a new center
+  /// Instruction to complete clinic form
   ///
   /// In en, this message translates to:
-  /// **'Add new center'**
-  String get addNewCenter;
+  /// **'Please fill in all fields to add a clinic.'**
+  String get filltoaddclinic;
 
-  /// Label for reviews section
+  /// Message when no clinics are found
+  ///
+  /// In en, this message translates to:
+  /// **'No clinics found.'**
+  String get noclinicsfound;
+
+  /// Message when no clinics are available
+  ///
+  /// In en, this message translates to:
+  /// **'No clinics available.'**
+  String get noclinics;
+
+  /// Title for confirm clinic deletion dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Deletion'**
+  String get confirmdeletionclinic;
+
+  /// Confirmation message for clinic deletion
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this clinic?'**
+  String get confirmdeletionclinicmsg;
+
+  /// Error for invalid clinic ID
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid clinic ID.'**
+  String get invalidclinicid;
+
+  /// Message when clinic is rejected
+  ///
+  /// In en, this message translates to:
+  /// **'Clinic rejected'**
+  String get clinicrejected;
+
+  /// Services section label
+  ///
+  /// In en, this message translates to:
+  /// **'Services'**
+  String get services;
+
+  /// Service option for haircut
+  ///
+  /// In en, this message translates to:
+  /// **'Haircut'**
+  String get haircut;
+
+  /// Service option for makeup
+  ///
+  /// In en, this message translates to:
+  /// **'Makeup'**
+  String get makeup;
+
+  /// Service option for massage
+  ///
+  /// In en, this message translates to:
+  /// **'Massage'**
+  String get massage;
+
+  /// Service option for nails
+  ///
+  /// In en, this message translates to:
+  /// **'Nails'**
+  String get nails;
+
+  /// Service option for skincare
+  ///
+  /// In en, this message translates to:
+  /// **'Skincare'**
+  String get skincare;
+
+  /// Offers section label
+  ///
+  /// In en, this message translates to:
+  /// **'Offers'**
+  String get offers;
+
+  /// Label for hot offers section
+  ///
+  /// In en, this message translates to:
+  /// **'Hot Offers'**
+  String get hotoffers;
+
+  /// Favorites section label
+  ///
+  /// In en, this message translates to:
+  /// **'Favorites'**
+  String get favorites;
+
+  /// User's favorites list
+  ///
+  /// In en, this message translates to:
+  /// **'My Favorites'**
+  String get myfavorites;
+
+  /// Message when no favorites are available
+  ///
+  /// In en, this message translates to:
+  /// **'No favorites yet.'**
+  String get nofavorites;
+
+  /// Message when item removed from favorites
+  ///
+  /// In en, this message translates to:
+  /// **'Removed from favorites'**
+  String get removedfromfavorites;
+
+  /// Message when item added to favorites
+  ///
+  /// In en, this message translates to:
+  /// **'Added to favorites'**
+  String get addedtofavorites;
+
+  /// Label for upcoming features
+  ///
+  /// In en, this message translates to:
+  /// **'Coming Soon'**
+  String get comingsoon;
+
+  /// Reviews section label
   ///
   /// In en, this message translates to:
   /// **'Reviews'**
   String get reviews;
 
-  /// Message when no reviews are available
+  /// Message when no reviews exist
   ///
   /// In en, this message translates to:
-  /// **'No reviews yet'**
-  String get noReviews;
+  /// **'No Reviews Yet'**
+  String get noreviews;
 
-  /// Label for writing a review
+  /// Button to write a new review
   ///
   /// In en, this message translates to:
-  /// **'Write a review'**
-  String get writeAReview;
+  /// **'Write a Review'**
+  String get writereview;
+
+  /// Prompt to share experience in review
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us about your experience with this clinic.'**
+  String get tellusexperience;
+
+  /// Label for rating selection
+  ///
+  /// In en, this message translates to:
+  /// **'Your Rating'**
+  String get yourrating;
+
+  /// Prompt asking user to rate
+  ///
+  /// In en, this message translates to:
+  /// **'Please rate your experience'**
+  String get pleaserate;
+
+  /// Placeholder for review input field
+  ///
+  /// In en, this message translates to:
+  /// **'Write your review here...'**
+  String get writereviewhere;
+
+  /// Button to submit review
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Review'**
+  String get submitreview;
+
+  /// Error when failing to resubmit review
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to resubmit review.'**
+  String get failedtoresubmitreview;
+
+  /// Error when review is incomplete
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a rating and write a review.'**
+  String get pleaseselectrating;
+
+  /// Error when user not logged in tries to review
+  ///
+  /// In en, this message translates to:
+  /// **'You must be logged in to submit a review.'**
+  String get mustbelogged;
+
+  /// Success message after submitting review
+  ///
+  /// In en, this message translates to:
+  /// **'Review submitted successfully!\nIt will appear once the admin approves it.'**
+  String get reviewsubmitted;
+
+  /// Error when failing to submit review
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to submit review. Please try again.'**
+  String get reviewnotsubmitted;
+
+  /// Message when review is resubmitted
+  ///
+  /// In en, this message translates to:
+  /// **'Your review has been resubmitted for admin approval.'**
+  String get resubmittedforapproval;
+
+  /// Instruction to edit and resubmit review
+  ///
+  /// In en, this message translates to:
+  /// **'Edit and resubmit your review.'**
+  String get editandresubmit;
+
+  /// Button to edit review
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Review'**
+  String get editreview;
+
+  /// Instruction to resubmit review for approval
+  ///
+  /// In en, this message translates to:
+  /// **'Resubmit your review for admin approval'**
+  String get resubmitforapproval;
+
+  /// Label for rejection reason
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected for: '**
+  String get rejectionreason;
+
+  /// Label for user's review
+  ///
+  /// In en, this message translates to:
+  /// **'Your Review'**
+  String get yourreview;
+
+  /// Button to resubmit review
+  ///
+  /// In en, this message translates to:
+  /// **'Resubmit Review'**
+  String get resubmitreview;
+
+  /// Message shown while deleting review
+  ///
+  /// In en, this message translates to:
+  /// **'Deleting review...'**
+  String get deletingreview;
+
+  /// Success message after deleting review
+  ///
+  /// In en, this message translates to:
+  /// **'Review deleted successfully.'**
+  String get reviewdeleted;
+
+  /// Error message when failing to delete review
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to delete review'**
+  String get failedtodeletereview;
+
+  /// Title for confirm deleting dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Deleting'**
+  String get confirmdeleting;
+
+  /// Confirmation message for review deletion
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this review?'**
+  String get confirmdeletingmsg;
+
+  /// Button to delete review
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Review'**
+  String get deletereview;
+
+  /// Label for admin panel section
+  ///
+  /// In en, this message translates to:
+  /// **'Admin Panel'**
+  String get adminpanel;
+
+  /// Label for pending reviews section
+  ///
+  /// In en, this message translates to:
+  /// **'Pending Reviews'**
+  String get pendingreviews;
+
+  /// Message when no pending reviews exist
+  ///
+  /// In en, this message translates to:
+  /// **'No pending reviews.'**
+  String get nopendingreviews;
 
   /// Label for pending status
   ///
@@ -427,31 +1045,61 @@ abstract class S {
   ///
   /// In en, this message translates to:
   /// **'Current'**
-  String get current;
+  String get currents;
 
-  /// Prompt for user experience feedback
+  /// Label for about app section
   ///
   /// In en, this message translates to:
-  /// **'How was your experience?'**
-  String get howWasExperience;
+  /// **'About this App'**
+  String get aboutapp;
 
-  /// Label for the user's review input field
+  /// Message when clinic is approved
   ///
   /// In en, this message translates to:
-  /// **'Your Review'**
-  String get yourReview;
+  /// **'clinic approved'**
+  String get centerapproved;
 
-  /// Prompt for writing a review about the visit
+  /// Error message when failing to approve clinic
   ///
   /// In en, this message translates to:
-  /// **'Write something about your visit'**
-  String get writeSomethingAboutVisit;
+  /// **'Error approving clinic'**
+  String get erroraprrovingcenter;
 
-  /// Label for the submit review button
+  /// Failure message for clinic approval
   ///
   /// In en, this message translates to:
-  /// **'Submit Review'**
-  String get submitReview;
+  /// **'Failed to approve clinic'**
+  String get failedtoapprovecenter;
+
+  /// Confirmation to decline a clinic
+  ///
+  /// In en, this message translates to:
+  /// **'Do you really want to decline this clinic?\nThis action cannot be undone.'**
+  String get doyoureallywanttodecline;
+
+  /// Message when clinic is rejected
+  ///
+  /// In en, this message translates to:
+  /// **'clinic rejected'**
+  String get centerrejected;
+
+  /// Error message for rejecting clinic
+  ///
+  /// In en, this message translates to:
+  /// **'Error rejecting clinic'**
+  String get errorrejectingcenter;
+
+  /// Failure message for rejecting clinic
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to reject clinic'**
+  String get failedtorejectcenter;
+
+  /// Confirmation message for deleting a review
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to\ndelete this review?'**
+  String get confirmdeletingreview;
 }
 
 class _SDelegate extends LocalizationsDelegate<S> {

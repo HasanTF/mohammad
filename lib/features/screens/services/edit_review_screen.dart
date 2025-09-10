@@ -1,5 +1,6 @@
 import 'package:beuty_support/core/constants/themes.dart';
 import 'package:beuty_support/core/widget/my_button.dart';
+import 'package:beuty_support/generated/l10n.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -48,16 +49,16 @@ class _EditReviewScreenState extends State<EditReviewScreen> {
 
       setState(() {
         if (snap.exists) {
-          centerName = snap['centerName'] ?? "Unknown Center";
+          centerName = snap['centerName'] ?? S.of(context).unknownclinic;
           centerImage = snap['centerImageUrl'];
         } else {
-          centerName = "Unknown Center";
+          centerName = S.of(context).unknownclinic;
         }
         isLoading = false;
       });
     } catch (_) {
       setState(() {
-        centerName = "Error loading center";
+        centerName = S.of(context).unexpectederror;
         centerImage = null;
         isLoading = false;
       });
@@ -66,7 +67,7 @@ class _EditReviewScreenState extends State<EditReviewScreen> {
 
   Future<void> _resubmitReview() async {
     if (_reviewController.text.trim().isEmpty || rating == 0) {
-      setState(() => errorMessage = "Please provide a rating and review.");
+      setState(() => errorMessage = S.of(context).pleaseselectrating);
       return;
     }
 
@@ -88,9 +89,10 @@ class _EditReviewScreenState extends State<EditReviewScreen> {
           });
 
       _showSnackBar("Review resubmitted for approval.", Colors.green);
+      // ignore: use_build_context_synchronously
       Navigator.pop(context);
     } catch (_) {
-      setState(() => errorMessage = "Failed to resubmit review.");
+      setState(() => errorMessage = S.of(context).failedtoresubmitreview);
     } finally {
       if (mounted) setState(() => isLoading = false);
     }
@@ -161,7 +163,7 @@ class _EditReviewScreenState extends State<EditReviewScreen> {
             context,
           ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
-        subtitle: const Text("Edit and resubmit your review"),
+        subtitle: Text(S.of(context).editandresubmit),
       ),
     );
   }
@@ -181,13 +183,13 @@ class _EditReviewScreenState extends State<EditReviewScreen> {
                 children: [
                   SizedBox(height: screenHeight * 0.03),
                   Text(
-                    "Edit Your Review",
+                    S.of(context).editreview,
                     style: Theme.of(context).textTheme.bodyLarge,
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(height: screenHeight * 0.01),
                   Text(
-                    "Resubmit your review for admin approval",
+                    S.of(context).resubmitreview,
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
@@ -210,7 +212,8 @@ class _EditReviewScreenState extends State<EditReviewScreen> {
                         const SizedBox(width: 10),
                         Expanded(
                           child: Text(
-                            "Your review was rejected:\n${widget.rejectionMessage}",
+                            S.of(context).rejectionreason +
+                                (widget.rejectionMessage),
                             style: Theme.of(context).textTheme.bodyMedium
                                 ?.copyWith(color: Colors.red.shade800),
                           ),
@@ -226,7 +229,7 @@ class _EditReviewScreenState extends State<EditReviewScreen> {
                     controller: _reviewController,
                     maxLines: 4,
                     decoration: InputDecoration(
-                      labelText: "Your Review",
+                      labelText: S.of(context).yourreview,
                       alignLabelWithHint: true,
                       filled: true,
                       fillColor: Colors.grey.shade100,
@@ -240,7 +243,7 @@ class _EditReviewScreenState extends State<EditReviewScreen> {
                   _buildErrorMessage(),
                   const SizedBox(height: 20),
                   MyButton(
-                    text: "Resubmit Review",
+                    text: S.of(context).resubmitreview,
                     onPressed: _resubmitReview,
                     backgroundColor: AppColors.secondaryDark,
                   ),

@@ -40,7 +40,7 @@ class _CentersTabState extends State<CentersTab> {
         }
 
         if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-          return Center(child: Text(S.of(context).noCenters));
+          return Center(child: Text(S.of(context).noclinics));
         }
 
         final centers = snapshot.data!.docs;
@@ -151,15 +151,17 @@ class _CentersTabState extends State<CentersTab> {
                                 final confirm = await showDialog<bool>(
                                   context: context,
                                   builder: (context) => AlertDialog(
-                                    title: const Text("Confirm Deletion"),
-                                    content: const Text(
-                                      "Are you sure you want to delete this center?",
+                                    title: Text(
+                                      S.of(context).confirmdeletionclinic,
+                                    ),
+                                    content: Text(
+                                      S.of(context).confirmdeletionclinicmsg,
                                     ),
                                     actions: [
                                       TextButton(
                                         onPressed: () =>
                                             Navigator.pop(context, false),
-                                        child: const Text("Cancel"),
+                                        child: Text(S.of(context).cancel),
                                       ),
                                       ElevatedButton(
                                         style: ElevatedButton.styleFrom(
@@ -168,7 +170,7 @@ class _CentersTabState extends State<CentersTab> {
                                         ),
                                         onPressed: () =>
                                             Navigator.pop(context, true),
-                                        child: const Text("Delete"),
+                                        child: Text(S.of(context).delete),
                                       ),
                                     ],
                                   ),
@@ -191,7 +193,7 @@ class _CentersTabState extends State<CentersTab> {
               child: Padding(
                 padding: EdgeInsets.all(Sizes.padding),
                 child: MyButton(
-                  text: S.of(context).addNewCenter,
+                  text: S.of(context).addnewclinic,
                   onPressed: () {
                     Navigator.pushNamed(context, '/addcenterscreen');
                   },

@@ -21,6 +21,14 @@ class _HomeTabState extends State<HomeTab> {
   List<String> _selectedServices = []; // لتخزين الخدمات المختارة
 
   @override
+  void initState() {
+    super.initState();
+    // تهيئة بيانات المستخدم عند بدء التطبيق
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    userProvider.initializeUser();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
@@ -68,13 +76,7 @@ class SearchBar extends StatefulWidget {
 
 class _SearchBarState extends State<SearchBar> {
   final TextEditingController _controller = TextEditingController();
-  final List<String> allServices = [
-    "Haircut",
-    "Makeup",
-    "Massage",
-    "Nails",
-    "Skincare",
-  ];
+
   List<String> selectedServices = [];
 
   @override
@@ -85,6 +87,13 @@ class _SearchBarState extends State<SearchBar> {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> allServices = [
+      S.of(context).haircut,
+      S.of(context).makeup,
+      S.of(context).massage,
+      S.of(context).nails,
+      S.of(context).skincare,
+    ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -146,6 +155,8 @@ class Centers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userId = FirebaseAuth.instance.currentUser!.uid;
+
     return Expanded(
       child: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
@@ -157,10 +168,10 @@ class Centers extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-            return const Center(child: Text("No centers available."));
+            return Center(child: Text(S.of(context).noclinics));
           }
 
-          // تصفية المراكز بناءً على النص والخدمات
+          // فلترة النتائج
           final centers = snapshot.data!.docs.where((center) {
             final data = center.data() as Map<String, dynamic>;
             final centerName =
@@ -213,7 +224,7 @@ class Centers extends StatelessWidget {
                       boxShadow: [
                         BoxShadow(
                           color: AppColors.primary.withAlpha(25),
-                          offset: Offset(0, 2),
+                          offset: const Offset(0, 2),
                           blurRadius: 10,
                           spreadRadius: 2,
                         ),
@@ -221,6 +232,7 @@ class Centers extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
+                        // صورة المركز
                         ClipRRect(
                           borderRadius: BorderRadius.circular(20),
                           child: Image.network(
@@ -236,57 +248,135 @@ class Centers extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 12),
+
+                        // باقي التفاصيل + القلب
                         Expanded(
-                          child: Column(
+                          child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                data['centerName'] ?? 'No Name',
-                                style: Theme.of(context).textTheme.bodyLarge!
-                                    .copyWith(color: AppColors.primary),
-                              ),
-                              Row(
-                                children: List.generate(
-                                  5,
-                                  (i) => Icon(
-                                    Icons.star_rounded,
-                                    color:
-                                        i < (data['centerRating'] ?? 0).toInt()
-                                        ? Colors.amber
-                                        : Colors.black26,
-                                    size: 20,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.location_on,
-                                    size: 16,
-                                    color: AppColors.secondaryDark,
-                                  ),
-                                  const SizedBox(width: 6),
-                                  Expanded(
-                                    child: Text(
-                                      data['centerLocation'] ?? '',
+                              // تفاصيل المركز
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      data['centerName'] ?? 'No Name',
                                       style: Theme.of(context)
                                           .textTheme
-                                          .bodySmall!
-                                          .copyWith(
-                                            color: AppColors.secondaryDark,
+                                          .bodyLarge!
+                                          .copyWith(color: AppColors.primary),
+                                    ),
+                                    Row(
+                                      children: List.generate(
+                                        5,
+                                        (i) => Icon(
+                                          Icons.star_rounded,
+                                          color:
+                                              i <
+                                                  (data['centerRating'] ?? 0)
+                                                      .toInt()
+                                              ? Colors.amber
+                                              : Colors.black26,
+                                          size: 20,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 4),
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.location_on,
+                                          size: 16,
+                                          color: AppColors.secondaryDark,
+                                        ),
+                                        const SizedBox(width: 6),
+                                        Expanded(
+                                          child: Text(
+                                            data['centerLocation'] ?? '',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodySmall!
+                                                .copyWith(
+                                                  color:
+                                                      AppColors.secondaryDark,
+                                                ),
+                                            overflow: TextOverflow.ellipsis,
                                           ),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 4),
+                                    Text(
+                                      data['centerDescription'] ?? '',
+                                      style: Theme.of(
+                                        context,
+                                      ).textTheme.bodyMedium,
+                                      maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                              const SizedBox(height: 4),
-                              Text(
-                                data['centerDescription'] ?? '',
-                                style: Theme.of(context).textTheme.bodyMedium,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
+
+                              // ❤️ زر المفضلة (يتغير حسب وجوده بالفيفوريتس)
+                              StreamBuilder<DocumentSnapshot>(
+                                stream: FirebaseFirestore.instance
+                                    .collection('users')
+                                    .doc(userId)
+                                    .collection('favorites')
+                                    .doc(center.id)
+                                    .snapshots(),
+                                builder: (context, favSnapshot) {
+                                  final isFavorite =
+                                      favSnapshot.data?.exists ?? false;
+
+                                  return IconButton(
+                                    icon: Icon(
+                                      isFavorite
+                                          ? Icons.favorite
+                                          : Icons.favorite_border,
+                                      color: isFavorite
+                                          ? Colors.red
+                                          : AppColors.secondaryDark,
+                                    ),
+                                    onPressed: () {
+                                      final favRef = FirebaseFirestore.instance
+                                          .collection('users')
+                                          .doc(userId)
+                                          .collection('favorites')
+                                          .doc(center.id);
+
+                                      if (isFavorite) {
+                                        favRef.delete();
+                                        ScaffoldMessenger.of(
+                                          context,
+                                        ).showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              S
+                                                  .of(context)
+                                                  .removedfromfavorites,
+                                            ),
+                                            duration: Duration(seconds: 1),
+                                          ),
+                                        );
+                                      } else {
+                                        favRef.set(data);
+                                        ScaffoldMessenger.of(
+                                          context,
+                                        ).showSnackBar(
+                                          SnackBar(
+                                            backgroundColor: Colors.green,
+                                            content: Text(
+                                              S.of(context).addedtofavorites,
+                                            ),
+                                            duration: Duration(seconds: 1),
+                                          ),
+                                        );
+                                      }
+                                    },
+                                  );
+                                },
                               ),
                             ],
                           ),
@@ -319,7 +409,7 @@ class _CentersTextState extends State<CentersText> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          S.of(context).centers,
+          S.of(context).clinics,
           style: Theme.of(
             context,
           ).textTheme.titleMedium!.copyWith(color: Colors.black87),
@@ -331,8 +421,10 @@ class _CentersTextState extends State<CentersText> {
             });
           },
           child: Text(
-            S.of(context).addCenter,
-            style: Theme.of(context).textTheme.labelSmall,
+            S.of(context).addclinic,
+            style: Theme.of(
+              context,
+            ).textTheme.labelSmall!.copyWith(color: Colors.blueAccent),
           ),
         ),
       ],
@@ -379,7 +471,7 @@ class Clinicly extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 5.0),
           child: Text(
-            "Clinicly",
+            S.of(context).clinicly,
             style: Theme.of(
               context,
             ).textTheme.titleMedium!.copyWith(color: Colors.black),
@@ -400,12 +492,10 @@ class Header extends StatefulWidget {
 class _HeaderState extends State<Header> {
   bool isAdmin = false;
   bool isLoading = false;
-  String? photoURL;
 
   @override
   void initState() {
     super.initState();
-    photoURL = FirebaseAuth.instance.currentUser?.photoURL;
     checkAdmin();
   }
 
@@ -427,6 +517,7 @@ class _HeaderState extends State<Header> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -442,65 +533,39 @@ class _HeaderState extends State<Header> {
               ),
             ],
           ),
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              CircleAvatar(
-                radius: 32,
-                backgroundImage: userProvider.photoURL.isNotEmpty
-                    ? NetworkImage(userProvider.photoURL)
-                    : AssetImage("assets/images/avatar.jpg") as ImageProvider,
-                backgroundColor: AppColors.primary.withAlpha(255),
-              ),
-              if (isLoading)
-                Container(
-                  width: 64,
-                  height: 64,
-                  decoration: BoxDecoration(
-                    color: Colors.black45,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Center(
-                    child: CircularProgressIndicator(color: Colors.white),
-                  ),
-                )
-              else
-                Positioned.fill(
-                  child: CircleAvatar(
-                    radius: 32,
-                    backgroundColor: Colors.black45,
-                    child: InkWell(
-                      onTap: () {},
-                      child: Icon(
-                        Icons.add_a_photo,
-                        size: 18,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-            ],
+          child: CircleAvatar(
+            radius: 32,
+            backgroundImage: userProvider.photoURL.isNotEmpty
+                ? NetworkImage(userProvider.photoURL)
+                : AssetImage("assets/images/avatar.jpg") as ImageProvider,
+            backgroundColor: AppColors.primary.withAlpha(255),
           ),
         ),
         SizedBox(width: 12.0),
+
         // Welcoming + Username
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text(
-              S.of(context).welcomeBack,
-              style: Theme.of(context).textTheme.titleSmall,
-            ),
-            Text(
-              userProvider.displayName,
-              style: Theme.of(
-                context,
-              ).textTheme.labelLarge!.copyWith(color: AppColors.primary),
-            ),
-          ],
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text(
+                S.of(context).welcome,
+                style: Theme.of(context).textTheme.titleSmall,
+              ),
+              Text(
+                userProvider.displayName,
+                style: Theme.of(
+                  context,
+                ).textTheme.labelLarge!.copyWith(color: AppColors.primary),
+                overflow: TextOverflow.ellipsis, // يمنع overflow
+                maxLines: 1, // يفرض سطر واحد
+              ),
+            ],
+          ),
         ),
-        Spacer(),
+
+        // زر الادمن إذا موجود
         if (isAdmin)
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
@@ -534,6 +599,8 @@ class _HeaderState extends State<Header> {
             ),
           ),
         SizedBox(width: 5),
+
+        // Notification Button
         NotificationButton(userId: FirebaseAuth.instance.currentUser!.uid),
       ],
     );

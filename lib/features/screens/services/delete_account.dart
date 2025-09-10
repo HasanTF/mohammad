@@ -2,6 +2,7 @@ import 'package:beuty_support/core/constants/themes.dart';
 import 'package:beuty_support/core/services/auth_sevices.dart';
 import 'package:beuty_support/core/widget/custom_input_field.dart';
 import 'package:beuty_support/core/widget/my_button.dart';
+import 'package:beuty_support/generated/l10n.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +38,7 @@ class _DeleteAccountState extends State<DeleteAccount> {
 
     if (email.isEmpty || password.isEmpty) {
       setState(() {
-        errorMessage = "Both fields are required.";
+        errorMessage = S.of(context).allfieldsrequired;
         isLoading = false;
       });
       return;
@@ -48,8 +49,8 @@ class _DeleteAccountState extends State<DeleteAccount> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("Account Deleted."),
+          SnackBar(
+            content: Text(S.of(context).accountdeleted),
             backgroundColor: Colors.green,
             duration: Duration(seconds: 3),
           ),
@@ -58,12 +59,12 @@ class _DeleteAccountState extends State<DeleteAccount> {
       }
     } on FirebaseAuthException catch (error) {
       setState(() {
-        errorMessage = error.message ?? "An error occurred.";
+        errorMessage = error.message ?? S.of(context).unexpectederror;
         isLoading = false;
       });
     } catch (e) {
       setState(() {
-        errorMessage = "Unexpected error occurred.";
+        errorMessage = S.of(context).unexpectederror;
         isLoading = false;
       });
     }
@@ -77,7 +78,7 @@ class _DeleteAccountState extends State<DeleteAccount> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, semanticLabel: "Go back"),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
         elevation: 0,
@@ -94,17 +95,16 @@ class _DeleteAccountState extends State<DeleteAccount> {
                   Icons.delete_forever,
                   size: screenWidth * 0.2,
                   color: Colors.redAccent,
-                  semanticLabel: "Delete account icon",
                 ),
                 SizedBox(height: screenHeight * 0.03),
                 Text(
-                  "Delete Account",
+                  S.of(context).deleteaccount,
                   style: Theme.of(context).textTheme.bodyLarge,
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: screenHeight * 0.01),
                 Text(
-                  "Enter your email and password to\ndelete your account permanently.",
+                  S.of(context).entertodelete,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
@@ -133,13 +133,13 @@ class _DeleteAccountState extends State<DeleteAccount> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomInputField(
-                  label: "Email",
+                  label: S.of(context).email,
                   controller: _controllerEmail,
                   keyboardType: TextInputType.emailAddress,
                 ),
                 SizedBox(height: screenHeight * 0.02),
                 CustomInputField(
-                  label: "Password",
+                  label: S.of(context).password,
                   controller: _controllerPassword,
                   obscureText: true,
                 ),
@@ -151,18 +151,14 @@ class _DeleteAccountState extends State<DeleteAccount> {
                       context,
                     ).textTheme.bodySmall?.copyWith(color: Colors.redAccent),
                     textAlign: TextAlign.center,
-                    semanticsLabel: "Error message",
                   ),
                 ],
                 SizedBox(height: screenHeight * 0.03),
                 isLoading
-                    ? const CircularProgressIndicator(
-                        semanticsLabel: "Loading",
-                        color: Colors.redAccent,
-                      )
+                    ? const CircularProgressIndicator(color: Colors.redAccent)
                     : MyButton(
                         onPressed: deleteAccount,
-                        text: "Delete Account",
+                        text: S.of(context).deleteaccount,
                         backgroundColor: Colors.redAccent,
                         textColor: AppColors.textPrimary,
                       ),

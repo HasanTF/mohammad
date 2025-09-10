@@ -85,5 +85,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'beautysupport-7df1b.firebasestorage.app',
     measurementId: 'G-70C5WZR7JE',
   );
-
 }

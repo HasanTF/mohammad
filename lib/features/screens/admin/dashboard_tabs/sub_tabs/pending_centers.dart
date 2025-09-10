@@ -39,7 +39,7 @@ class _PendingCentersState extends State<PendingCenters> {
         }
 
         if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-          return Center(child: Text(S.of(context).noCenters));
+          return Center(child: Text(S.of(context).noclinics));
         }
 
         final centers = snapshot.data!.docs;
@@ -157,13 +157,16 @@ class _PendingCentersState extends State<PendingCenters> {
                                         ).showSnackBar(
                                           SnackBar(
                                             backgroundColor: Colors.green,
-                                            content: Text("Center approved"),
+                                            content: Text(
+                                              S.of(context).centerapproved,
+                                            ),
                                           ),
                                         );
                                       }
                                     } catch (error) {
                                       debugPrint(
-                                        "Error approving center: $error",
+                                        // ignore: use_build_context_synchronously
+                                        "${S.of(context).erroraprrovingcenter} $error",
                                       );
                                       if (context.mounted) {
                                         ScaffoldMessenger.of(
@@ -171,7 +174,9 @@ class _PendingCentersState extends State<PendingCenters> {
                                         ).showSnackBar(
                                           SnackBar(
                                             content: Text(
-                                              "Failed to approve center",
+                                              S
+                                                  .of(context)
+                                                  .failedtoapprovecenter,
                                             ),
                                           ),
                                         );
@@ -179,7 +184,7 @@ class _PendingCentersState extends State<PendingCenters> {
                                     }
                                   },
                                   child: Text(
-                                    "Approve",
+                                    S.of(context).approve,
                                     style: TextStyle(
                                       color: Colors.green,
                                       fontSize: 16,
@@ -192,22 +197,24 @@ class _PendingCentersState extends State<PendingCenters> {
                                     final confirm = await showDialog<bool>(
                                       context: context,
                                       builder: (context) => AlertDialog(
-                                        title: const Text("Are you sure?"),
-                                        content: const Text(
-                                          "Do you really want to decline this center? This action cannot be undone.",
+                                        title: Text(S.of(context).areyousure),
+                                        content: Text(
+                                          S
+                                              .of(context)
+                                              .doyoureallywanttodecline,
                                         ),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.of(
                                               context,
                                             ).pop(false),
-                                            child: const Text("Cancel"),
+                                            child: Text(S.of(context).cancel),
                                           ),
                                           TextButton(
                                             onPressed: () =>
                                                 Navigator.of(context).pop(true),
                                             child: Text(
-                                              "Reject",
+                                              S.of(context).decline,
                                               style: TextStyle(
                                                 color: Colors.red,
                                               ),
@@ -227,23 +234,28 @@ class _PendingCentersState extends State<PendingCenters> {
                                           ScaffoldMessenger.of(
                                             context,
                                           ).showSnackBar(
-                                            const SnackBar(
+                                            SnackBar(
                                               backgroundColor: Colors.red,
-                                              content: Text("Center rejected"),
+                                              content: Text(
+                                                S.of(context).clinicrejected,
+                                              ),
                                             ),
                                           );
                                         }
                                       } catch (error) {
                                         debugPrint(
-                                          "Error deleting center: $error",
+                                          // ignore: use_build_context_synchronously
+                                          '${S.of(context).errorrejectingcenter} $error',
                                         );
                                         if (context.mounted) {
                                           ScaffoldMessenger.of(
                                             context,
                                           ).showSnackBar(
-                                            const SnackBar(
+                                            SnackBar(
                                               content: Text(
-                                                "Failed to delete center",
+                                                S
+                                                    .of(context)
+                                                    .failedtorejectcenter,
                                               ),
                                             ),
                                           );
@@ -253,7 +265,7 @@ class _PendingCentersState extends State<PendingCenters> {
                                   },
 
                                   child: Text(
-                                    "Decline",
+                                    S.of(context).decline,
                                     style: TextStyle(
                                       color: Colors.red,
                                       fontSize: 16,

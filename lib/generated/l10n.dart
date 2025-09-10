@@ -54,152 +54,12 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Discover the best beauty centers\nnear you`
-  String get onboardingWelcomeText {
+  /// `Home`
+  String get home {
     return Intl.message(
-      'Discover the best beauty centers\nnear you',
-      name: 'onboardingWelcomeText',
-      desc: 'Welcome text for the onboarding screen',
-      args: [],
-    );
-  }
-
-  /// `Register`
-  String get register {
-    return Intl.message(
-      'Register',
-      name: 'register',
-      desc: 'Label for the register button',
-      args: [],
-    );
-  }
-
-  /// `Login`
-  String get login {
-    return Intl.message(
-      'Login',
-      name: 'login',
-      desc: 'Label for the login button',
-      args: [],
-    );
-  }
-
-  /// `Create an account`
-  String get createAccount {
-    return Intl.message(
-      'Create an account',
-      name: 'createAccount',
-      desc: 'Text for creating a new account',
-      args: [],
-    );
-  }
-
-  /// `Welcome back`
-  String get welcomeBack {
-    return Intl.message(
-      'Welcome back',
-      name: 'welcomeBack',
-      desc: 'Welcome message for returning users',
-      args: [],
-    );
-  }
-
-  /// `Log in to your account`
-  String get loginText {
-    return Intl.message(
-      'Log in to your account',
-      name: 'loginText',
-      desc: 'Text for the login screen',
-      args: [],
-    );
-  }
-
-  /// `Email`
-  String get email {
-    return Intl.message(
-      'Email',
-      name: 'email',
-      desc: 'Label for the email field',
-      args: [],
-    );
-  }
-
-  /// `Password`
-  String get password {
-    return Intl.message(
-      'Password',
-      name: 'password',
-      desc: 'Label for the password field',
-      args: [],
-    );
-  }
-
-  /// `Forgot your password?`
-  String get forgotPassword {
-    return Intl.message(
-      'Forgot your password?',
-      name: 'forgotPassword',
-      desc: 'Text for the forgot password link',
-      args: [],
-    );
-  }
-
-  /// `Remember me`
-  String get rememberMe {
-    return Intl.message(
-      'Remember me',
-      name: 'rememberMe',
-      desc: 'Label for the remember me checkbox',
-      args: [],
-    );
-  }
-
-  /// `Don't have an account? `
-  String get dontHaveAccount {
-    return Intl.message(
-      'Don\'t have an account? ',
-      name: 'dontHaveAccount',
-      desc: 'Prompt for users without an account',
-      args: [],
-    );
-  }
-
-  /// `Create your new account`
-  String get createNewAccount {
-    return Intl.message(
-      'Create your new account',
-      name: 'createNewAccount',
-      desc: 'Text for creating a new account',
-      args: [],
-    );
-  }
-
-  /// `Full name`
-  String get fullName {
-    return Intl.message(
-      'Full name',
-      name: 'fullName',
-      desc: 'Label for the full name field',
-      args: [],
-    );
-  }
-
-  /// `Or continue with`
-  String get orContinueWith {
-    return Intl.message(
-      'Or continue with',
-      name: 'orContinueWith',
-      desc: 'Text for alternative login options',
-      args: [],
-    );
-  }
-
-  /// `Already have an account? `
-  String get alreadyHaveAccount {
-    return Intl.message(
-      'Already have an account? ',
-      name: 'alreadyHaveAccount',
-      desc: 'Prompt for users who already have an account',
+      'Home',
+      name: 'home',
+      desc: 'Label for the home screen button',
       args: [],
     );
   }
@@ -209,117 +69,830 @@ class S {
     return Intl.message(
       'Search',
       name: 'search',
-      desc: 'Label for the search function',
+      desc: 'Label for the search button',
       args: [],
     );
   }
 
-  /// `Beauty Support`
-  String get beautySupport {
+  /// `Loading...`
+  String get loading {
     return Intl.message(
-      'Beauty Support',
-      name: 'beautySupport',
-      desc: 'App title',
+      'Loading...',
+      name: 'loading',
+      desc: 'Text shown while content is loading',
       args: [],
     );
   }
 
-  /// `Centers`
-  String get centers {
+  /// `Error`
+  String get error {
     return Intl.message(
-      'Centers',
-      name: 'centers',
-      desc: 'Label for beauty centers',
+      'Error',
+      name: 'error',
+      desc: 'Generic error message',
       args: [],
     );
   }
 
-  /// `Center`
-  String get center {
+  /// `OK`
+  String get ok {
     return Intl.message(
-      'Center',
-      name: 'center',
-      desc: 'Singular label for a beauty center',
+      'OK',
+      name: 'ok',
+      desc: 'OK confirmation button',
       args: [],
     );
   }
 
-  /// `No centers available`
-  String get noCenters {
+  /// `Cancel`
+  String get cancel {
     return Intl.message(
-      'No centers available',
-      name: 'noCenters',
-      desc: 'Message when no centers are available',
+      'Cancel',
+      name: 'cancel',
+      desc: 'Cancel button',
       args: [],
     );
   }
 
-  /// `Add center`
-  String get addCenter {
+  /// `Retry`
+  String get retry {
     return Intl.message(
-      'Add center',
-      name: 'addCenter',
-      desc: 'Label for adding a new center',
+      'Retry',
+      name: 'retry',
+      desc: 'Retry button label',
       args: [],
     );
   }
 
-  /// `Center name`
-  String get centerName {
+  /// `Go Back`
+  String get goback {
     return Intl.message(
-      'Center name',
-      name: 'centerName',
-      desc: 'Label for the center name field',
+      'Go Back',
+      name: 'goback',
+      desc: 'Button to go back to the previous screen',
       args: [],
     );
   }
 
-  /// `Center location`
-  String get centerLocation {
+  /// `Approve`
+  String get approve {
     return Intl.message(
-      'Center location',
-      name: 'centerLocation',
-      desc: 'Label for the center location field',
+      'Approve',
+      name: 'approve',
+      desc: 'Button to approve an item',
       args: [],
     );
   }
 
-  /// `Center phone number`
-  String get centerPhoneNumber {
+  /// `Reject`
+  String get reject {
     return Intl.message(
-      'Center phone number',
-      name: 'centerPhoneNumber',
-      desc: 'Label for the center phone number field',
+      'Reject',
+      name: 'reject',
+      desc: 'Button to reject an item',
       args: [],
     );
   }
 
-  /// `Center description`
-  String get centerDescription {
+  /// `Decline`
+  String get decline {
     return Intl.message(
-      'Center description',
-      name: 'centerDescription',
-      desc: 'Label for the center description field',
+      'Decline',
+      name: 'decline',
+      desc: 'Button to decline an action',
       args: [],
     );
   }
 
-  /// `Center image`
-  String get centerImage {
+  /// `Delete`
+  String get delete {
     return Intl.message(
-      'Center image',
-      name: 'centerImage',
-      desc: 'Label for the center image field',
+      'Delete',
+      name: 'delete',
+      desc: 'Delete button label',
       args: [],
     );
   }
 
-  /// `My profile`
-  String get myProfile {
+  /// `Are you sure?`
+  String get areyousure {
     return Intl.message(
-      'My profile',
-      name: 'myProfile',
-      desc: 'Label for the user profile section',
+      'Are you sure?',
+      name: 'areyousure',
+      desc: 'Confirmation dialog question',
+      args: [],
+    );
+  }
+
+  /// `E-Mail`
+  String get email {
+    return Intl.message(
+      'E-Mail',
+      name: 'email',
+      desc: 'Email field label',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: 'Password field label',
+      args: [],
+    );
+  }
+
+  /// `Confirm Password`
+  String get confirmpassword {
+    return Intl.message(
+      'Confirm Password',
+      name: 'confirmpassword',
+      desc: 'Confirm password field label',
+      args: [],
+    );
+  }
+
+  /// `Forgot Password?`
+  String get forgotpassword {
+    return Intl.message(
+      'Forgot Password?',
+      name: 'forgotpassword',
+      desc: 'Forgot password link text',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get login {
+    return Intl.message(
+      'Login',
+      name: 'login',
+      desc: 'Login button label',
+      args: [],
+    );
+  }
+
+  /// `Login with Apple`
+  String get loginapple {
+    return Intl.message(
+      'Login with Apple',
+      name: 'loginapple',
+      desc: 'Login with Apple button',
+      args: [],
+    );
+  }
+
+  /// `Login with Google`
+  String get logingoogle {
+    return Intl.message(
+      'Login with Google',
+      name: 'logingoogle',
+      desc: 'Login with Google button',
+      args: [],
+    );
+  }
+
+  /// `Don't have an account?`
+  String get noaccount {
+    return Intl.message(
+      'Don\'t have an account?',
+      name: 'noaccount',
+      desc: 'Prompt for users without an account',
+      args: [],
+    );
+  }
+
+  /// `Sign Up`
+  String get signup {
+    return Intl.message(
+      'Sign Up',
+      name: 'signup',
+      desc: 'Sign up button label',
+      args: [],
+    );
+  }
+
+  /// `Let's create an account for you`
+  String get letscreateaccount {
+    return Intl.message(
+      'Let\'s create an account for you',
+      name: 'letscreateaccount',
+      desc: 'Onboarding text for account creation',
+      args: [],
+    );
+  }
+
+  /// `Username`
+  String get username {
+    return Intl.message(
+      'Username',
+      name: 'username',
+      desc: 'Username field label',
+      args: [],
+    );
+  }
+
+  /// `I agree to the Terms of Service & Privacy Policy`
+  String get agreement {
+    return Intl.message(
+      'I agree to the Terms of Service & Privacy Policy',
+      name: 'agreement',
+      desc: 'Agreement text for terms and privacy',
+      args: [],
+    );
+  }
+
+  /// `This email is already registered`
+  String get emailAlreadyInUse {
+    return Intl.message(
+      'This email is already registered',
+      name: 'emailAlreadyInUse',
+      desc: 'Error message shown when the email is already registered',
+      args: [],
+    );
+  }
+
+  /// `Invalid email format`
+  String get invalidEmail {
+    return Intl.message(
+      'Invalid email format',
+      name: 'invalidEmail',
+      desc: 'Error message shown when the email format is invalid',
+      args: [],
+    );
+  }
+
+  /// `Password is too weak`
+  String get weakPassword {
+    return Intl.message(
+      'Password is too weak',
+      name: 'weakPassword',
+      desc:
+          'Error message shown when the password does not meet strength requirements',
+      args: [],
+    );
+  }
+
+  /// `Please enter your username`
+  String get pleaseEnterUsername {
+    return Intl.message(
+      'Please enter your username',
+      name: 'pleaseEnterUsername',
+      desc: 'Validation message when username field is empty',
+      args: [],
+    );
+  }
+
+  /// `Username must be at least 3 characters`
+  String get usernameTooShort {
+    return Intl.message(
+      'Username must be at least 3 characters',
+      name: 'usernameTooShort',
+      desc: 'Validation message when username is less than 3 characters',
+      args: [],
+    );
+  }
+
+  /// `Please confirm your password`
+  String get pleaseConfirmPassword {
+    return Intl.message(
+      'Please confirm your password',
+      name: 'pleaseConfirmPassword',
+      desc: 'Validation message when confirm password field is empty',
+      args: [],
+    );
+  }
+
+  /// `Passwords do not match`
+  String get passwordsDoNotMatch {
+    return Intl.message(
+      'Passwords do not match',
+      name: 'passwordsDoNotMatch',
+      desc:
+          'Validation message when password and confirm password do not match',
+      args: [],
+    );
+  }
+
+  /// `Username`
+  String get usernameLabel {
+    return Intl.message(
+      'Username',
+      name: 'usernameLabel',
+      desc: 'Label text for username input field',
+      args: [],
+    );
+  }
+
+  /// `Confirm Password`
+  String get confirmPasswordLabel {
+    return Intl.message(
+      'Confirm Password',
+      name: 'confirmPasswordLabel',
+      desc: 'Label text for confirm password input field',
+      args: [],
+    );
+  }
+
+  /// `CLINICLY`
+  String get appName {
+    return Intl.message(
+      'CLINICLY',
+      name: 'appName',
+      desc: 'App name displayed in the header',
+      args: [],
+    );
+  }
+
+  /// `Let’s\nCreate Your\nAccount`
+  String get createAccountHeader {
+    return Intl.message(
+      'Let’s\nCreate Your\nAccount',
+      name: 'createAccountHeader',
+      desc: 'Header text shown on the registration screen',
+      args: [],
+    );
+  }
+
+  /// `Please enter your email`
+  String get pleaseEnterEmail {
+    return Intl.message(
+      'Please enter your email',
+      name: 'pleaseEnterEmail',
+      desc: 'Validation message when email field is empty',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid email address`
+  String get invalidEmailAddress {
+    return Intl.message(
+      'Please enter a valid email address',
+      name: 'invalidEmailAddress',
+      desc: 'Validation message when email or phone is not valid',
+      args: [],
+    );
+  }
+
+  /// `Please enter your password`
+  String get pleaseEnterPassword {
+    return Intl.message(
+      'Please enter your password',
+      name: 'pleaseEnterPassword',
+      desc: 'Validation message when password field is empty',
+      args: [],
+    );
+  }
+
+  /// `Password must be at least 6 characters`
+  String get passwordTooShort {
+    return Intl.message(
+      'Password must be at least 6 characters',
+      name: 'passwordTooShort',
+      desc: 'Validation message when password is shorter than 6 characters',
+      args: [],
+    );
+  }
+
+  /// `No account found with this email or phone`
+  String get noAccountFound {
+    return Intl.message(
+      'No account found with this email or phone',
+      name: 'noAccountFound',
+      desc: 'Error message when user does not exist in Firebase',
+      args: [],
+    );
+  }
+
+  /// `Incorrect password`
+  String get incorrectPassword {
+    return Intl.message(
+      'Incorrect password',
+      name: 'incorrectPassword',
+      desc: 'Error message when user enters wrong password',
+      args: [],
+    );
+  }
+
+  /// `Invalid email or phone format`
+  String get invalidEmailOrPhoneFormat {
+    return Intl.message(
+      'Invalid email or phone format',
+      name: 'invalidEmailOrPhoneFormat',
+      desc: 'Error message when email or phone format is invalid',
+      args: [],
+    );
+  }
+
+  /// `Too many attempts. Please try again later`
+  String get tooManyAttempts {
+    return Intl.message(
+      'Too many attempts. Please try again later',
+      name: 'tooManyAttempts',
+      desc: 'Error message when too many login attempts are made',
+      args: [],
+    );
+  }
+
+  /// `This account has been disabled`
+  String get accountDisabled {
+    return Intl.message(
+      'This account has been disabled',
+      name: 'accountDisabled',
+      desc: 'Error message when the account is disabled by an administrator',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get emailLabel {
+    return Intl.message(
+      'Email',
+      name: 'emailLabel',
+      desc: 'Label text for email input field',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get passwordLabel {
+    return Intl.message(
+      'Password',
+      name: 'passwordLabel',
+      desc: 'Label text for password input field',
+      args: [],
+    );
+  }
+
+  /// `Forgot Password?`
+  String get forgotPassword {
+    return Intl.message(
+      'Forgot Password?',
+      name: 'forgotPassword',
+      desc: 'Clickable text for navigating to password reset screen',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get loginButton {
+    return Intl.message(
+      'Login',
+      name: 'loginButton',
+      desc: 'Text for login button',
+      args: [],
+    );
+  }
+
+  /// `Or`
+  String get orText {
+    return Intl.message(
+      'Or',
+      name: 'orText',
+      desc: 'Separator text between login options',
+      args: [],
+    );
+  }
+
+  /// `Apple Sign-In Disabled`
+  String get appleSignInDisabledTitle {
+    return Intl.message(
+      'Apple Sign-In Disabled',
+      name: 'appleSignInDisabledTitle',
+      desc: 'Dialog title when Apple login is disabled',
+      args: [],
+    );
+  }
+
+  /// `Apple Sign-In is currently disabled for this demo.`
+  String get appleSignInDisabledMessage {
+    return Intl.message(
+      'Apple Sign-In is currently disabled for this demo.',
+      name: 'appleSignInDisabledMessage',
+      desc: 'Dialog message when Apple login is disabled',
+      args: [],
+    );
+  }
+
+  /// `Google Sign-In Disabled`
+  String get googleSignInDisabledTitle {
+    return Intl.message(
+      'Google Sign-In Disabled',
+      name: 'googleSignInDisabledTitle',
+      desc: 'Dialog title when Google login is disabled',
+      args: [],
+    );
+  }
+
+  /// `Google Sign-In is currently disabled for this demo.`
+  String get googleSignInDisabledMessage {
+    return Intl.message(
+      'Google Sign-In is currently disabled for this demo.',
+      name: 'googleSignInDisabledMessage',
+      desc: 'Dialog message when Google login is disabled',
+      args: [],
+    );
+  }
+
+  /// `OK`
+  String get okButton {
+    return Intl.message(
+      'OK',
+      name: 'okButton',
+      desc: 'Text for confirming dialog',
+      args: [],
+    );
+  }
+
+  /// `Login with Apple`
+  String get loginWithApple {
+    return Intl.message(
+      'Login with Apple',
+      name: 'loginWithApple',
+      desc: 'Button text for Apple sign-in option',
+      args: [],
+    );
+  }
+
+  /// `Login with Google`
+  String get loginWithGoogle {
+    return Intl.message(
+      'Login with Google',
+      name: 'loginWithGoogle',
+      desc: 'Button text for Google sign-in option',
+      args: [],
+    );
+  }
+
+  /// `Dont have an account? `
+  String get dontHaveAccount {
+    return Intl.message(
+      'Dont have an account? ',
+      name: 'dontHaveAccount',
+      desc: 'Text shown before the signup link',
+      args: [],
+    );
+  }
+
+  /// `Signup`
+  String get signupText {
+    return Intl.message(
+      'Signup',
+      name: 'signupText',
+      desc: 'Clickable text to navigate to signup screen',
+      args: [],
+    );
+  }
+
+  /// `Too many attempts. Please try again later`
+  String get tooManyRequests {
+    return Intl.message(
+      'Too many attempts. Please try again later',
+      name: 'tooManyRequests',
+      desc:
+          'Error message shown when the user exceeds the allowed number of attempts',
+      args: [],
+    );
+  }
+
+  /// `An error occurred. Please try again`
+  String get genericError {
+    return Intl.message(
+      'An error occurred. Please try again',
+      name: 'genericError',
+      desc: 'Generic error message shown when registration fails',
+      args: [],
+    );
+  }
+
+  /// `Already have an account? `
+  String get alreadyhaveaccount {
+    return Intl.message(
+      'Already have an account? ',
+      name: 'alreadyhaveaccount',
+      desc: 'Prompt for users who already have an account',
+      args: [],
+    );
+  }
+
+  /// `Welcome back!`
+  String get welcome {
+    return Intl.message(
+      'Welcome back!',
+      name: 'welcome',
+      desc: 'Welcome back message after login',
+      args: [],
+    );
+  }
+
+  /// `User not logged in.`
+  String get usernotlogged {
+    return Intl.message(
+      'User not logged in.',
+      name: 'usernotlogged',
+      desc: 'Message shown when the user is not logged in',
+      args: [],
+    );
+  }
+
+  /// `All fields are required.`
+  String get allfieldsrequired {
+    return Intl.message(
+      'All fields are required.',
+      name: 'allfieldsrequired',
+      desc: 'Error shown when form fields are empty',
+      args: [],
+    );
+  }
+
+  /// `Passwords do not match.`
+  String get passwordsdonotmatch {
+    return Intl.message(
+      'Passwords do not match.',
+      name: 'passwordsdonotmatch',
+      desc: 'Error when password and confirm password do not match',
+      args: [],
+    );
+  }
+
+  /// `Password does not match.`
+  String get passworddontmatch {
+    return Intl.message(
+      'Password does not match.',
+      name: 'passworddontmatch',
+      desc: 'Error when entered password is incorrect',
+      args: [],
+    );
+  }
+
+  /// `Password is too short.`
+  String get passwordisshort {
+    return Intl.message(
+      'Password is too short.',
+      name: 'passwordisshort',
+      desc: 'Error when password length is too short',
+      args: [],
+    );
+  }
+
+  /// `Password successfully changed.`
+  String get passwordsuccessfullychanged {
+    return Intl.message(
+      'Password successfully changed.',
+      name: 'passwordsuccessfullychanged',
+      desc: 'Success message for password change',
+      args: [],
+    );
+  }
+
+  /// `Enter your new password`
+  String get enternewpassword {
+    return Intl.message(
+      'Enter your new password',
+      name: 'enternewpassword',
+      desc: 'Instruction to enter a new password',
+      args: [],
+    );
+  }
+
+  /// `Current Password`
+  String get currentpassword {
+    return Intl.message(
+      'Current Password',
+      name: 'currentpassword',
+      desc: 'Label for current password field',
+      args: [],
+    );
+  }
+
+  /// `New Password`
+  String get newpassword {
+    return Intl.message(
+      'New Password',
+      name: 'newpassword',
+      desc: 'Label for new password field',
+      args: [],
+    );
+  }
+
+  /// `Confirm New Password`
+  String get confirmnewpassword {
+    return Intl.message(
+      'Confirm New Password',
+      name: 'confirmnewpassword',
+      desc: 'Label for confirm new password field',
+      args: [],
+    );
+  }
+
+  /// `Update Password`
+  String get updatepassword {
+    return Intl.message(
+      'Update Password',
+      name: 'updatepassword',
+      desc: 'Button to update password',
+      args: [],
+    );
+  }
+
+  /// `Change Your Password`
+  String get changeyourpassword {
+    return Intl.message(
+      'Change Your Password',
+      name: 'changeyourpassword',
+      desc: 'Title for change password screen',
+      args: [],
+    );
+  }
+
+  /// `Check your email for password reset instructions.`
+  String get checkemail {
+    return Intl.message(
+      'Check your email for password reset instructions.',
+      name: 'checkemail',
+      desc: 'Instruction to check email for reset link',
+      args: [],
+    );
+  }
+
+  /// `An error occurred while resetting the password.`
+  String get passwordreseterror {
+    return Intl.message(
+      'An error occurred while resetting the password.',
+      name: 'passwordreseterror',
+      desc: 'Error message for password reset',
+      args: [],
+    );
+  }
+
+  /// `An unexpected error occurred. Please try again.`
+  String get unexpectederror {
+    return Intl.message(
+      'An unexpected error occurred. Please try again.',
+      name: 'unexpectederror',
+      desc: 'Generic unexpected error message',
+      args: [],
+    );
+  }
+
+  /// `Forgot Password`
+  String get forgotpasswordpage {
+    return Intl.message(
+      'Forgot Password',
+      name: 'forgotpasswordpage',
+      desc: 'Title for forgot password screen',
+      args: [],
+    );
+  }
+
+  /// `Enter your email address to receive\npassword reset instructions.`
+  String get enteremailreset {
+    return Intl.message(
+      'Enter your email address to receive\npassword reset instructions.',
+      name: 'enteremailreset',
+      desc: 'Instruction for entering email to reset password',
+      args: [],
+    );
+  }
+
+  /// `Reset Password`
+  String get resetpassword {
+    return Intl.message(
+      'Reset Password',
+      name: 'resetpassword',
+      desc: 'Button to reset password',
+      args: [],
+    );
+  }
+
+  /// `Please log in again to continue.`
+  String get relogin {
+    return Intl.message(
+      'Please log in again to continue.',
+      name: 'relogin',
+      desc: 'Instruction to re-login after password change',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get profile {
+    return Intl.message(
+      'Profile',
+      name: 'profile',
+      desc: 'Profile tab label',
+      args: [],
+    );
+  }
+
+  /// `My Profile`
+  String get myprofile {
+    return Intl.message(
+      'My Profile',
+      name: 'myprofile',
+      desc: 'Label for user\'s profile',
       args: [],
     );
   }
@@ -329,227 +902,427 @@ class S {
     return Intl.message(
       'Settings',
       name: 'settings',
-      desc: 'Label for the settings menu',
+      desc: 'Settings tab label',
       args: [],
     );
   }
 
-  /// `Update username`
-  String get updateUsername {
+  /// `Update Username`
+  String get updateusername {
     return Intl.message(
-      'Update username',
-      name: 'updateUsername',
-      desc: 'Label for updating the username',
+      'Update Username',
+      name: 'updateusername',
+      desc: 'Button to update username',
       args: [],
     );
   }
 
-  /// `Change password`
-  String get changePassword {
+  /// `Enter your new username\nto update your profile and reviews`
+  String get enternewusername {
     return Intl.message(
-      'Change password',
-      name: 'changePassword',
-      desc: 'Label for changing the password',
+      'Enter your new username\nto update your profile and reviews',
+      name: 'enternewusername',
+      desc: 'Instruction to enter a new username',
       args: [],
     );
   }
 
-  /// `Current password`
-  String get currentPassword {
+  /// `New Username`
+  String get newusername {
     return Intl.message(
-      'Current password',
-      name: 'currentPassword',
-      desc: 'Label for the current password field',
+      'New Username',
+      name: 'newusername',
+      desc: 'Label for new username field',
       args: [],
     );
   }
 
-  /// `New password`
-  String get newPassword {
+  /// `Username updated successfully.`
+  String get usernameupdated {
     return Intl.message(
-      'New password',
-      name: 'newPassword',
-      desc: 'Label for the new password field',
+      'Username updated successfully.',
+      name: 'usernameupdated',
+      desc: 'Success message for username update',
       args: [],
     );
   }
 
-  /// `Confirm password`
-  String get confirmPassword {
+  /// `Delete your account`
+  String get deleteaccount {
     return Intl.message(
-      'Confirm password',
-      name: 'confirmPassword',
-      desc: 'Label for the confirm password field',
+      'Delete your account',
+      name: 'deleteaccount',
+      desc: 'Button to delete account',
       args: [],
     );
   }
 
-  /// `Delete account`
-  String get deleteAccount {
+  /// `Enter your email and password to\ndelete your account permanently.`
+  String get entertodelete {
     return Intl.message(
-      'Delete account',
-      name: 'deleteAccount',
-      desc: 'Label for deleting the account',
+      'Enter your email and password to\ndelete your account permanently.',
+      name: 'entertodelete',
+      desc: 'Instruction to confirm account deletion',
       args: [],
     );
   }
 
-  /// `About the app`
-  String get aboutApp {
+  /// `Account deleted successfully.`
+  String get accountdeleted {
     return Intl.message(
-      'About the app',
-      name: 'aboutApp',
-      desc: 'Label for the about app section',
+      'Account deleted successfully.',
+      name: 'accountdeleted',
+      desc: 'Success message after account deletion',
       args: [],
     );
   }
 
-  /// `Log out`
+  /// `Logout`
   String get logout {
     return Intl.message(
-      'Log out',
+      'Logout',
       name: 'logout',
-      desc: 'Label for the logout button',
+      desc: 'Logout button label',
       args: [],
     );
   }
 
-  /// `Profile`
-  String get profileTab {
+  /// `Confirm Logout`
+  String get confirmlogout {
     return Intl.message(
-      'Profile',
-      name: 'profileTab',
-      desc: 'Label for the profile tab',
+      'Confirm Logout',
+      name: 'confirmlogout',
+      desc: 'Title for confirm logout dialog',
       args: [],
     );
   }
 
-  /// `Search`
-  String get searchTab {
+  /// `Are you sure you want to logout?`
+  String get confirmlogoutmsg {
     return Intl.message(
-      'Search',
-      name: 'searchTab',
-      desc: 'Label for the search tab',
+      'Are you sure you want to logout?',
+      name: 'confirmlogoutmsg',
+      desc: 'Confirmation message for logout',
       args: [],
     );
   }
 
-  /// `Reset password`
-  String get resetPassword {
+  /// `Clinics`
+  String get clinics {
     return Intl.message(
-      'Reset password',
-      name: 'resetPassword',
-      desc: 'Label for resetting the password',
+      'Clinics',
+      name: 'clinics',
+      desc: 'Clinics section label',
       args: [],
     );
   }
 
-  /// `New username`
-  String get newUsername {
+  /// `Clinicly`
+  String get clinicly {
     return Intl.message(
-      'New username',
-      name: 'newUsername',
-      desc: 'Label for the new username field',
+      'Clinicly',
+      name: 'clinicly',
+      desc: 'App name / branding text',
       args: [],
     );
   }
 
-  /// `News`
-  String get newsTab {
+  /// `Add Clinic`
+  String get addclinic {
     return Intl.message(
-      'News',
-      name: 'newsTab',
-      desc: 'Label for the news tab',
+      'Add Clinic',
+      name: 'addclinic',
+      desc: 'Button to add a clinic',
       args: [],
     );
   }
 
-  /// `Home`
-  String get homeTab {
+  /// `Add New Clinic`
+  String get addnewclinic {
     return Intl.message(
-      'Home',
-      name: 'homeTab',
-      desc: 'Label for the home tab',
+      'Add New Clinic',
+      name: 'addnewclinic',
+      desc: 'Title for adding a new clinic',
       args: [],
     );
   }
 
-  /// `Admin dashboard`
-  String get adminDashboard {
+  /// `Clinic Name`
+  String get clinicname {
     return Intl.message(
-      'Admin dashboard',
-      name: 'adminDashboard',
-      desc: 'Label for the admin dashboard',
+      'Clinic Name',
+      name: 'clinicname',
+      desc: 'Label for clinic name field',
       args: [],
     );
   }
 
-  /// `Centers`
-  String get adminCenters {
+  /// `Clinic Location`
+  String get cliniclocation {
     return Intl.message(
-      'Centers',
-      name: 'adminCenters',
-      desc: 'Label for admin centers section',
+      'Clinic Location',
+      name: 'cliniclocation',
+      desc: 'Label for clinic location field',
       args: [],
     );
   }
 
-  /// `Reviews`
-  String get adminReviews {
+  /// `Clinic Phone Number`
+  String get clinicphonenumber {
     return Intl.message(
-      'Reviews',
-      name: 'adminReviews',
-      desc: 'Label for admin reviews section',
+      'Clinic Phone Number',
+      name: 'clinicphonenumber',
+      desc: 'Label for clinic phone number field',
       args: [],
     );
   }
 
-  /// `Pending reviews`
-  String get pendingReviews {
+  /// `Clinic Description`
+  String get clinicdescription {
     return Intl.message(
-      'Pending reviews',
-      name: 'pendingReviews',
-      desc: 'Label for pending reviews',
+      'Clinic Description',
+      name: 'clinicdescription',
+      desc: 'Label for clinic description field',
       args: [],
     );
   }
 
-  /// `No pending reviews`
-  String get noPendingReviews {
+  /// `Clinic Image`
+  String get clinicimage {
     return Intl.message(
-      'No pending reviews',
-      name: 'noPendingReviews',
-      desc: 'Message when no reviews are pending',
+      'Clinic Image',
+      name: 'clinicimage',
+      desc: 'Label for clinic image upload',
       args: [],
     );
   }
 
-  /// `Pending`
-  String get subCentersPending {
+  /// `Unknown Clinic`
+  String get unknownclinic {
     return Intl.message(
-      'Pending',
-      name: 'subCentersPending',
-      desc: 'Label for pending sub-centers',
+      'Unknown Clinic',
+      name: 'unknownclinic',
+      desc: 'Fallback text for unknown clinic',
       args: [],
     );
   }
 
-  /// `Current`
-  String get subCentersCurrent {
+  /// `Failed to add clinic. Please try again.`
+  String get failedtoaddclinic {
     return Intl.message(
-      'Current',
-      name: 'subCentersCurrent',
-      desc: 'Label for current sub-centers',
+      'Failed to add clinic. Please try again.',
+      name: 'failedtoaddclinic',
+      desc: 'Error message when failing to add clinic',
       args: [],
     );
   }
 
-  /// `Add new center`
-  String get addNewCenter {
+  /// `Please fill in all fields to add a clinic.`
+  String get filltoaddclinic {
     return Intl.message(
-      'Add new center',
-      name: 'addNewCenter',
-      desc: 'Label for adding a new center',
+      'Please fill in all fields to add a clinic.',
+      name: 'filltoaddclinic',
+      desc: 'Instruction to complete clinic form',
+      args: [],
+    );
+  }
+
+  /// `No clinics found.`
+  String get noclinicsfound {
+    return Intl.message(
+      'No clinics found.',
+      name: 'noclinicsfound',
+      desc: 'Message when no clinics are found',
+      args: [],
+    );
+  }
+
+  /// `No clinics available.`
+  String get noclinics {
+    return Intl.message(
+      'No clinics available.',
+      name: 'noclinics',
+      desc: 'Message when no clinics are available',
+      args: [],
+    );
+  }
+
+  /// `Confirm Deletion`
+  String get confirmdeletionclinic {
+    return Intl.message(
+      'Confirm Deletion',
+      name: 'confirmdeletionclinic',
+      desc: 'Title for confirm clinic deletion dialog',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this clinic?`
+  String get confirmdeletionclinicmsg {
+    return Intl.message(
+      'Are you sure you want to delete this clinic?',
+      name: 'confirmdeletionclinicmsg',
+      desc: 'Confirmation message for clinic deletion',
+      args: [],
+    );
+  }
+
+  /// `Invalid clinic ID.`
+  String get invalidclinicid {
+    return Intl.message(
+      'Invalid clinic ID.',
+      name: 'invalidclinicid',
+      desc: 'Error for invalid clinic ID',
+      args: [],
+    );
+  }
+
+  /// `Clinic rejected`
+  String get clinicrejected {
+    return Intl.message(
+      'Clinic rejected',
+      name: 'clinicrejected',
+      desc: 'Message when clinic is rejected',
+      args: [],
+    );
+  }
+
+  /// `Services`
+  String get services {
+    return Intl.message(
+      'Services',
+      name: 'services',
+      desc: 'Services section label',
+      args: [],
+    );
+  }
+
+  /// `Haircut`
+  String get haircut {
+    return Intl.message(
+      'Haircut',
+      name: 'haircut',
+      desc: 'Service option for haircut',
+      args: [],
+    );
+  }
+
+  /// `Makeup`
+  String get makeup {
+    return Intl.message(
+      'Makeup',
+      name: 'makeup',
+      desc: 'Service option for makeup',
+      args: [],
+    );
+  }
+
+  /// `Massage`
+  String get massage {
+    return Intl.message(
+      'Massage',
+      name: 'massage',
+      desc: 'Service option for massage',
+      args: [],
+    );
+  }
+
+  /// `Nails`
+  String get nails {
+    return Intl.message(
+      'Nails',
+      name: 'nails',
+      desc: 'Service option for nails',
+      args: [],
+    );
+  }
+
+  /// `Skincare`
+  String get skincare {
+    return Intl.message(
+      'Skincare',
+      name: 'skincare',
+      desc: 'Service option for skincare',
+      args: [],
+    );
+  }
+
+  /// `Offers`
+  String get offers {
+    return Intl.message(
+      'Offers',
+      name: 'offers',
+      desc: 'Offers section label',
+      args: [],
+    );
+  }
+
+  /// `Hot Offers`
+  String get hotoffers {
+    return Intl.message(
+      'Hot Offers',
+      name: 'hotoffers',
+      desc: 'Label for hot offers section',
+      args: [],
+    );
+  }
+
+  /// `Favorites`
+  String get favorites {
+    return Intl.message(
+      'Favorites',
+      name: 'favorites',
+      desc: 'Favorites section label',
+      args: [],
+    );
+  }
+
+  /// `My Favorites`
+  String get myfavorites {
+    return Intl.message(
+      'My Favorites',
+      name: 'myfavorites',
+      desc: 'User\'s favorites list',
+      args: [],
+    );
+  }
+
+  /// `No favorites yet.`
+  String get nofavorites {
+    return Intl.message(
+      'No favorites yet.',
+      name: 'nofavorites',
+      desc: 'Message when no favorites are available',
+      args: [],
+    );
+  }
+
+  /// `Removed from favorites`
+  String get removedfromfavorites {
+    return Intl.message(
+      'Removed from favorites',
+      name: 'removedfromfavorites',
+      desc: 'Message when item removed from favorites',
+      args: [],
+    );
+  }
+
+  /// `Added to favorites`
+  String get addedtofavorites {
+    return Intl.message(
+      'Added to favorites',
+      name: 'addedtofavorites',
+      desc: 'Message when item added to favorites',
+      args: [],
+    );
+  }
+
+  /// `Coming Soon`
+  String get comingsoon {
+    return Intl.message(
+      'Coming Soon',
+      name: 'comingsoon',
+      desc: 'Label for upcoming features',
       args: [],
     );
   }
@@ -559,27 +1332,287 @@ class S {
     return Intl.message(
       'Reviews',
       name: 'reviews',
-      desc: 'Label for reviews section',
+      desc: 'Reviews section label',
       args: [],
     );
   }
 
-  /// `No reviews yet`
-  String get noReviews {
+  /// `No Reviews Yet`
+  String get noreviews {
     return Intl.message(
-      'No reviews yet',
-      name: 'noReviews',
-      desc: 'Message when no reviews are available',
+      'No Reviews Yet',
+      name: 'noreviews',
+      desc: 'Message when no reviews exist',
       args: [],
     );
   }
 
-  /// `Write a review`
-  String get writeAReview {
+  /// `Write a Review`
+  String get writereview {
     return Intl.message(
-      'Write a review',
-      name: 'writeAReview',
-      desc: 'Label for writing a review',
+      'Write a Review',
+      name: 'writereview',
+      desc: 'Button to write a new review',
+      args: [],
+    );
+  }
+
+  /// `Tell us about your experience with this clinic.`
+  String get tellusexperience {
+    return Intl.message(
+      'Tell us about your experience with this clinic.',
+      name: 'tellusexperience',
+      desc: 'Prompt to share experience in review',
+      args: [],
+    );
+  }
+
+  /// `Your Rating`
+  String get yourrating {
+    return Intl.message(
+      'Your Rating',
+      name: 'yourrating',
+      desc: 'Label for rating selection',
+      args: [],
+    );
+  }
+
+  /// `Please rate your experience`
+  String get pleaserate {
+    return Intl.message(
+      'Please rate your experience',
+      name: 'pleaserate',
+      desc: 'Prompt asking user to rate',
+      args: [],
+    );
+  }
+
+  /// `Write your review here...`
+  String get writereviewhere {
+    return Intl.message(
+      'Write your review here...',
+      name: 'writereviewhere',
+      desc: 'Placeholder for review input field',
+      args: [],
+    );
+  }
+
+  /// `Submit Review`
+  String get submitreview {
+    return Intl.message(
+      'Submit Review',
+      name: 'submitreview',
+      desc: 'Button to submit review',
+      args: [],
+    );
+  }
+
+  /// `Failed to resubmit review.`
+  String get failedtoresubmitreview {
+    return Intl.message(
+      'Failed to resubmit review.',
+      name: 'failedtoresubmitreview',
+      desc: 'Error when failing to resubmit review',
+      args: [],
+    );
+  }
+
+  /// `Please select a rating and write a review.`
+  String get pleaseselectrating {
+    return Intl.message(
+      'Please select a rating and write a review.',
+      name: 'pleaseselectrating',
+      desc: 'Error when review is incomplete',
+      args: [],
+    );
+  }
+
+  /// `You must be logged in to submit a review.`
+  String get mustbelogged {
+    return Intl.message(
+      'You must be logged in to submit a review.',
+      name: 'mustbelogged',
+      desc: 'Error when user not logged in tries to review',
+      args: [],
+    );
+  }
+
+  /// `Review submitted successfully!\nIt will appear once the admin approves it.`
+  String get reviewsubmitted {
+    return Intl.message(
+      'Review submitted successfully!\nIt will appear once the admin approves it.',
+      name: 'reviewsubmitted',
+      desc: 'Success message after submitting review',
+      args: [],
+    );
+  }
+
+  /// `Failed to submit review. Please try again.`
+  String get reviewnotsubmitted {
+    return Intl.message(
+      'Failed to submit review. Please try again.',
+      name: 'reviewnotsubmitted',
+      desc: 'Error when failing to submit review',
+      args: [],
+    );
+  }
+
+  /// `Your review has been resubmitted for admin approval.`
+  String get resubmittedforapproval {
+    return Intl.message(
+      'Your review has been resubmitted for admin approval.',
+      name: 'resubmittedforapproval',
+      desc: 'Message when review is resubmitted',
+      args: [],
+    );
+  }
+
+  /// `Edit and resubmit your review.`
+  String get editandresubmit {
+    return Intl.message(
+      'Edit and resubmit your review.',
+      name: 'editandresubmit',
+      desc: 'Instruction to edit and resubmit review',
+      args: [],
+    );
+  }
+
+  /// `Edit Review`
+  String get editreview {
+    return Intl.message(
+      'Edit Review',
+      name: 'editreview',
+      desc: 'Button to edit review',
+      args: [],
+    );
+  }
+
+  /// `Resubmit your review for admin approval`
+  String get resubmitforapproval {
+    return Intl.message(
+      'Resubmit your review for admin approval',
+      name: 'resubmitforapproval',
+      desc: 'Instruction to resubmit review for approval',
+      args: [],
+    );
+  }
+
+  /// `Rejected for: `
+  String get rejectionreason {
+    return Intl.message(
+      'Rejected for: ',
+      name: 'rejectionreason',
+      desc: 'Label for rejection reason',
+      args: [],
+    );
+  }
+
+  /// `Your Review`
+  String get yourreview {
+    return Intl.message(
+      'Your Review',
+      name: 'yourreview',
+      desc: 'Label for user\'s review',
+      args: [],
+    );
+  }
+
+  /// `Resubmit Review`
+  String get resubmitreview {
+    return Intl.message(
+      'Resubmit Review',
+      name: 'resubmitreview',
+      desc: 'Button to resubmit review',
+      args: [],
+    );
+  }
+
+  /// `Deleting review...`
+  String get deletingreview {
+    return Intl.message(
+      'Deleting review...',
+      name: 'deletingreview',
+      desc: 'Message shown while deleting review',
+      args: [],
+    );
+  }
+
+  /// `Review deleted successfully.`
+  String get reviewdeleted {
+    return Intl.message(
+      'Review deleted successfully.',
+      name: 'reviewdeleted',
+      desc: 'Success message after deleting review',
+      args: [],
+    );
+  }
+
+  /// `Failed to delete review`
+  String get failedtodeletereview {
+    return Intl.message(
+      'Failed to delete review',
+      name: 'failedtodeletereview',
+      desc: 'Error message when failing to delete review',
+      args: [],
+    );
+  }
+
+  /// `Confirm Deleting`
+  String get confirmdeleting {
+    return Intl.message(
+      'Confirm Deleting',
+      name: 'confirmdeleting',
+      desc: 'Title for confirm deleting dialog',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this review?`
+  String get confirmdeletingmsg {
+    return Intl.message(
+      'Are you sure you want to delete this review?',
+      name: 'confirmdeletingmsg',
+      desc: 'Confirmation message for review deletion',
+      args: [],
+    );
+  }
+
+  /// `Delete Review`
+  String get deletereview {
+    return Intl.message(
+      'Delete Review',
+      name: 'deletereview',
+      desc: 'Button to delete review',
+      args: [],
+    );
+  }
+
+  /// `Admin Panel`
+  String get adminpanel {
+    return Intl.message(
+      'Admin Panel',
+      name: 'adminpanel',
+      desc: 'Label for admin panel section',
+      args: [],
+    );
+  }
+
+  /// `Pending Reviews`
+  String get pendingreviews {
+    return Intl.message(
+      'Pending Reviews',
+      name: 'pendingreviews',
+      desc: 'Label for pending reviews section',
+      args: [],
+    );
+  }
+
+  /// `No pending reviews.`
+  String get nopendingreviews {
+    return Intl.message(
+      'No pending reviews.',
+      name: 'nopendingreviews',
+      desc: 'Message when no pending reviews exist',
       args: [],
     );
   }
@@ -594,44 +1627,102 @@ class S {
     );
   }
 
-  // skipped getter for the 'current' key
-
-  /// `How was your experience?`
-  String get howWasExperience {
+  /// `Current`
+  String get currents {
     return Intl.message(
-      'How was your experience?',
-      name: 'howWasExperience',
-      desc: 'Prompt for user experience feedback',
+      'Current',
+      name: 'currents',
+      desc: 'Label for current status',
       args: [],
     );
   }
 
-  /// `Your Review`
-  String get yourReview {
+  /// `About this App`
+  String get aboutapp {
     return Intl.message(
-      'Your Review',
-      name: 'yourReview',
-      desc: 'Label for the user\'s review input field',
+      'About this App',
+      name: 'aboutapp',
+      desc: 'Label for about app section',
       args: [],
     );
   }
 
-  /// `Write something about your visit`
-  String get writeSomethingAboutVisit {
+  /// `clinic approved`
+  String get centerapproved {
     return Intl.message(
-      'Write something about your visit',
-      name: 'writeSomethingAboutVisit',
-      desc: 'Prompt for writing a review about the visit',
+      'clinic approved',
+      name: 'centerapproved',
+      desc: 'Message when clinic is approved',
       args: [],
     );
   }
 
-  /// `Submit Review`
-  String get submitReview {
+  /// `Error approving clinic`
+  String get erroraprrovingcenter {
     return Intl.message(
-      'Submit Review',
-      name: 'submitReview',
-      desc: 'Label for the submit review button',
+      'Error approving clinic',
+      name: 'erroraprrovingcenter',
+      desc: 'Error message when failing to approve clinic',
+      args: [],
+    );
+  }
+
+  /// `Failed to approve clinic`
+  String get failedtoapprovecenter {
+    return Intl.message(
+      'Failed to approve clinic',
+      name: 'failedtoapprovecenter',
+      desc: 'Failure message for clinic approval',
+      args: [],
+    );
+  }
+
+  /// `Do you really want to decline this clinic?\nThis action cannot be undone.`
+  String get doyoureallywanttodecline {
+    return Intl.message(
+      'Do you really want to decline this clinic?\nThis action cannot be undone.',
+      name: 'doyoureallywanttodecline',
+      desc: 'Confirmation to decline a clinic',
+      args: [],
+    );
+  }
+
+  /// `clinic rejected`
+  String get centerrejected {
+    return Intl.message(
+      'clinic rejected',
+      name: 'centerrejected',
+      desc: 'Message when clinic is rejected',
+      args: [],
+    );
+  }
+
+  /// `Error rejecting clinic`
+  String get errorrejectingcenter {
+    return Intl.message(
+      'Error rejecting clinic',
+      name: 'errorrejectingcenter',
+      desc: 'Error message for rejecting clinic',
+      args: [],
+    );
+  }
+
+  /// `Failed to reject clinic`
+  String get failedtorejectcenter {
+    return Intl.message(
+      'Failed to reject clinic',
+      name: 'failedtorejectcenter',
+      desc: 'Failure message for rejecting clinic',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to\ndelete this review?`
+  String get confirmdeletingreview {
+    return Intl.message(
+      'Are you sure you want to\ndelete this review?',
+      name: 'confirmdeletingreview',
+      desc: 'Confirmation message for deleting a review',
       args: [],
     );
   }

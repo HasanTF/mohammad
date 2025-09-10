@@ -46,7 +46,7 @@ class _ChangePasswordState extends State<ChangePassword> {
         newPassword.isEmpty ||
         confirmPassword.isEmpty) {
       setState(() {
-        errorMessage = "AllFieldsRequired";
+        errorMessage = S.of(context).allfieldsrequired;
         isLoading = false;
       });
       return;
@@ -54,7 +54,7 @@ class _ChangePasswordState extends State<ChangePassword> {
 
     if (newPassword != confirmPassword) {
       setState(() {
-        errorMessage = "PasswordsDontMatch";
+        errorMessage = S.of(context).passworddontmatch;
         isLoading = false;
       });
       return;
@@ -62,7 +62,7 @@ class _ChangePasswordState extends State<ChangePassword> {
 
     if (newPassword.length < 6) {
       setState(() {
-        errorMessage = "Password is too short";
+        errorMessage = S.of(context).passwordisshort;
         isLoading = false;
       });
       return;
@@ -73,7 +73,7 @@ class _ChangePasswordState extends State<ChangePassword> {
 
       if (email == null) {
         setState(() {
-          errorMessage = "You need to reLogin";
+          errorMessage = S.of(context).relogin;
           isLoading = false;
         });
         return;
@@ -88,7 +88,7 @@ class _ChangePasswordState extends State<ChangePassword> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text("S.of(context).passwordUpdatedSuccessfully"),
+            content: Text(S.of(context).passwordsuccessfullychanged),
             backgroundColor: Colors.green,
             duration: const Duration(seconds: 3),
           ),
@@ -97,12 +97,12 @@ class _ChangePasswordState extends State<ChangePassword> {
       }
     } on FirebaseAuthException catch (error) {
       setState(() {
-        errorMessage = error.message ?? "S.of(context).errorOccurred";
+        errorMessage = error.message ?? S.of(context).unexpectederror;
         isLoading = false;
       });
     } catch (e) {
       setState(() {
-        errorMessage = "S.of(context).unexpectedError";
+        errorMessage = S.of(context).unexpectederror;
         isLoading = false;
       });
     }
@@ -116,7 +116,7 @@ class _ChangePasswordState extends State<ChangePassword> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, semanticLabel: "رجوع"),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
         elevation: 0,
@@ -133,11 +133,10 @@ class _ChangePasswordState extends State<ChangePassword> {
                   Icons.lock_outline,
                   size: screenWidth * 0.2,
                   color: AppColors.primary,
-                  semanticLabel: "أيقونة القفل",
                 ),
                 SizedBox(height: screenHeight * 0.03),
                 Text(
-                  S.of(context).changePassword,
+                  S.of(context).changeyourpassword,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     color: AppColors.secondaryDark,
                     fontWeight: FontWeight.bold,
@@ -146,7 +145,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                 ),
                 SizedBox(height: screenHeight * 0.01),
                 Text(
-                  "enterNewPassword",
+                  S.of(context).enternewpassword,
                   textAlign: TextAlign.center,
                   style: Theme.of(
                     context,
@@ -183,21 +182,21 @@ class _ChangePasswordState extends State<ChangePassword> {
                 ),
                 SizedBox(height: screenHeight * 0.02),
                 CustomInputField(
-                  label: S.of(context).currentPassword,
+                  label: S.of(context).currentpassword,
                   controller: _currentPasswordController,
                   keyboardType: TextInputType.text,
                   obscureText: true,
                 ),
                 SizedBox(height: screenHeight * 0.02),
                 CustomInputField(
-                  label: S.of(context).newPassword,
+                  label: S.of(context).newpassword,
                   controller: _newPasswordController,
                   keyboardType: TextInputType.text,
                   obscureText: true,
                 ),
                 SizedBox(height: screenHeight * 0.02),
                 CustomInputField(
-                  label: S.of(context).confirmPassword,
+                  label: S.of(context).confirmpassword,
                   controller: _confirmPasswordController,
                   keyboardType: TextInputType.text,
                   obscureText: true,
@@ -210,18 +209,16 @@ class _ChangePasswordState extends State<ChangePassword> {
                       context,
                     ).textTheme.bodySmall?.copyWith(color: Colors.redAccent),
                     textAlign: TextAlign.center,
-                    semanticsLabel: "رسالة خطأ",
                   ),
                 ],
                 SizedBox(height: screenHeight * 0.03),
                 isLoading
                     ? const CircularProgressIndicator(
-                        semanticsLabel: "جارٍ التحميل",
                         color: AppColors.secondaryDark,
                       )
                     : MyButton(
                         onPressed: updatePassword,
-                        text: S.of(context).changePassword,
+                        text: S.of(context).changeyourpassword,
                         backgroundColor: AppColors.secondaryDark,
                         textColor: AppColors.textPrimary,
                       ),

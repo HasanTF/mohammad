@@ -1,7 +1,7 @@
-import 'package:beuty_support/core/services/auth_sevices.dart';
 import 'package:beuty_support/features/screens/onboarding/onboarding_screen.dart';
 import 'package:beuty_support/layout/tabs_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthLayout extends StatelessWidget {
   const AuthLayout({super.key, this.pageInNotConnected});
@@ -10,23 +10,23 @@ class AuthLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: authServices,
-      builder: (context, authSevices, child) {
-        return StreamBuilder(
-          stream: authSevices.authStateChanges,
-          builder: (context, snapshot) {
-            Widget widget;
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              widget = Center(child: CircularProgressIndicator());
-            } else if (snapshot.hasData) {
-              widget = const TabsLayout();
-            } else {
-              widget = pageInNotConnected ?? const OnboardingScreen();
-            }
-            return widget;
-          },
-        );
+    return StreamBuilder<User?>(
+      // 1️⃣ استخدمنا stream مباشر من FirebaseAuth لتتبع حالة تسجيل الدخول
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          // 2️⃣ نعرض دائرة تحميل أثناء الانتظار
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        if (snapshot.hasData) {
+          // 3️⃣ المستخدم موجود -> تحويل مباشر إلى TabsLayout
+          // ✅ هذا يضمن التنقل فور تسجيل الدخول
+          return const TabsLayout();
+        } else {
+          // 4️⃣ لم يسجل دخول -> نعرض Onboarding أو الصفحة المرسلة
+          return pageInNotConnected ?? const OnboardingScreen();
+        }
       },
     );
   }

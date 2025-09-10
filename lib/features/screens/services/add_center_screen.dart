@@ -22,15 +22,6 @@ class _AddCenterScreenState extends State<AddCenterScreen> {
   String errorMessage = "";
   bool isLoading = false;
 
-  // قائمة الخدمات المتاحة
-  final List<String> allServices = [
-    "Haircut",
-    "Makeup",
-    "Massage",
-    "Nails",
-    "Skincare",
-  ];
-
   // الخدمات المختارة
   List<String> selectedServices = [];
 
@@ -56,7 +47,7 @@ class _AddCenterScreenState extends State<AddCenterScreen> {
         _centerImageUrl.text.isEmpty ||
         _centerPhoneNumber.text.isEmpty) {
       setState(() {
-        errorMessage = 'Please fill in all fields.';
+        errorMessage = S.of(context).allfieldsrequired;
         isLoading = false;
       });
       return;
@@ -97,7 +88,7 @@ class _AddCenterScreenState extends State<AddCenterScreen> {
       }
     } catch (error) {
       setState(() {
-        errorMessage = "Failed to add center";
+        errorMessage = S.of(context).failedtoaddclinic;
         isLoading = false;
       });
     } finally {
@@ -112,10 +103,20 @@ class _AddCenterScreenState extends State<AddCenterScreen> {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
+    // قائمة الخدمات المتاحة
+    final List<String> allServices = [
+      S.of(context).haircut,
+      S.of(context).makeup,
+      S.of(context).massage,
+      S.of(context).nails,
+      S.of(context).skincare,
+    ];
+
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, semanticLabel: "Go back"),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
         elevation: 0,
@@ -133,17 +134,16 @@ class _AddCenterScreenState extends State<AddCenterScreen> {
                   Icons.store_mall_directory_outlined,
                   size: screenWidth * 0.2,
                   color: AppColors.secondaryDark,
-                  semanticLabel: "Center icon",
                 ),
                 SizedBox(height: screenHeight * 0.03),
                 Text(
-                  "Add New Center",
+                  S.of(context).addclinic,
                   style: Theme.of(context).textTheme.bodyLarge,
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: screenHeight * 0.01),
                 Text(
-                  "Fill the fields below to request\nadding your center",
+                  S.of(context).filltoaddclinic,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
@@ -172,39 +172,37 @@ class _AddCenterScreenState extends State<AddCenterScreen> {
             ),
             child: SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomInputField(
                     controller: _centerName,
-                    label: S.of(context).centerName,
+                    label: S.of(context).clinicname,
                   ),
                   SizedBox(height: screenHeight * 0.02),
                   CustomInputField(
                     controller: _centerLocation,
-                    label: S.of(context).centerLocation,
+                    label: S.of(context).cliniclocation,
                   ),
                   SizedBox(height: screenHeight * 0.02),
                   CustomInputField(
                     controller: _centerPhoneNumber,
-                    label: S.of(context).centerPhoneNumber,
+                    label: S.of(context).clinicphonenumber,
                     keyboardType: TextInputType.number,
                   ),
                   SizedBox(height: screenHeight * 0.02),
                   CustomInputField(
                     controller: _centerDescription,
-                    label: S.of(context).centerDescription,
+                    label: S.of(context).clinicdescription,
                   ),
                   SizedBox(height: screenHeight * 0.02),
                   CustomInputField(
                     controller: _centerImageUrl,
-                    label: S.of(context).centerImage,
+                    label: S.of(context).clinicimage,
                   ),
                   SizedBox(height: screenHeight * 0.03),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      "Services",
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
+                  Text(
+                    S.of(context).services,
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   SizedBox(height: 5),
                   Wrap(
@@ -222,7 +220,7 @@ class _AddCenterScreenState extends State<AddCenterScreen> {
                         ),
                         selected: isSelected,
                         backgroundColor: AppColors.primary.withAlpha(100),
-                        selectedColor: AppColors.secondaryDark.withOpacity(0.2),
+                        selectedColor: AppColors.secondaryDark.withAlpha(50),
                         checkmarkColor: AppColors.secondaryDark,
                         side: BorderSide.none,
 
@@ -257,7 +255,7 @@ class _AddCenterScreenState extends State<AddCenterScreen> {
                         )
                       : MyButton(
                           onPressed: addNewCenter,
-                          text: "Add New Center",
+                          text: S.of(context).addclinic,
                           backgroundColor: AppColors.secondaryDark,
                           textColor: AppColors.textPrimary,
                         ),

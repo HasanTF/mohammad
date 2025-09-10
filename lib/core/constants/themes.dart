@@ -54,7 +54,7 @@ ThemeData buildAppTheme() {
       titleTextStyle: TextStyle(
         fontFamily: 'Inter_18pt',
         fontWeight: FontWeight.w600,
-        fontSize: Sizes.large,
+        fontSize: 24,
         color: Colors.black87,
       ),
       iconTheme: IconThemeData(color: Colors.black87, size: 28),

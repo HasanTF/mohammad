@@ -1,5 +1,6 @@
 import 'package:beuty_support/core/constants/themes.dart';
 import 'package:beuty_support/core/widget/my_button.dart';
+import 'package:beuty_support/generated/l10n.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,7 @@ class _WriteAReviewState extends State<WriteAReview> {
 
     if (selectedRating == 0 || comment.isEmpty) {
       setState(() {
-        errorMessage = "Please select a rating and write a review.";
+        errorMessage = S.of(context).pleaseselectrating;
       });
       return;
     }
@@ -43,7 +44,7 @@ class _WriteAReviewState extends State<WriteAReview> {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) {
       setState(() {
-        errorMessage = "You must be logged in to submit a review.";
+        errorMessage = S.of(context).mustbelogged;
       });
       return;
     }
@@ -67,11 +68,9 @@ class _WriteAReviewState extends State<WriteAReview> {
       await FirebaseFirestore.instance.collection('centerReviews').add(review);
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
+          SnackBar(
             backgroundColor: Colors.green,
-            content: Text(
-              "Review submitted successfully!\nIt will appear once the admin approves it.",
-            ),
+            content: Text(S.of(context).reviewsubmitted),
             duration: Duration(seconds: 3),
           ),
         );
@@ -79,7 +78,7 @@ class _WriteAReviewState extends State<WriteAReview> {
       }
     } catch (error) {
       setState(() {
-        errorMessage = "Failed to submit review. Please try again.";
+        errorMessage = S.of(context).reviewnotsubmitted;
       });
     } finally {
       setState(() {
@@ -114,17 +113,16 @@ class _WriteAReviewState extends State<WriteAReview> {
                   Icons.rate_review_outlined,
                   size: screenWidth * 0.2,
                   color: AppColors.secondaryDark,
-                  semanticLabel: "Review icon",
                 ),
                 SizedBox(height: screenHeight * 0.03),
                 Text(
-                  "Write a Review",
+                  S.of(context).writereview,
                   style: Theme.of(context).textTheme.bodyLarge,
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: screenHeight * 0.01),
                 Text(
-                  "Tell us about your experience with this center",
+                  S.of(context).tellusexperience,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
@@ -155,7 +153,7 @@ class _WriteAReviewState extends State<WriteAReview> {
               child: Column(
                 children: [
                   Text(
-                    "Your Rating",
+                    S.of(context).yourrating,
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   SizedBox(height: screenHeight * 0.015),
@@ -183,7 +181,7 @@ class _WriteAReviewState extends State<WriteAReview> {
                     controller: reviewController,
                     maxLines: 6,
                     decoration: InputDecoration(
-                      hintText: "Write your review here...",
+                      hintText: S.of(context).writereviewhere,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -197,18 +195,17 @@ class _WriteAReviewState extends State<WriteAReview> {
                         context,
                       ).textTheme.bodySmall?.copyWith(color: Colors.redAccent),
                       textAlign: TextAlign.center,
-                      semanticsLabel: "Error message",
                     ),
                   ],
                   SizedBox(height: screenHeight * 0.03),
                   isLoading
-                      ? const CircularProgressIndicator(
-                          semanticsLabel: "Loading",
+                      ? CircularProgressIndicator(
+                          semanticsLabel: S.of(context).loading,
                           color: AppColors.secondaryDark,
                         )
                       : MyButton(
                           onPressed: submitReview,
-                          text: "Submit Review",
+                          text: S.of(context).submitreview,
                           backgroundColor: AppColors.secondaryDark,
                         ),
                 ],

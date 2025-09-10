@@ -1,239 +1,545 @@
 {
   "@@locale": "es",
-  "onboardingWelcomeText": "Descubre los mejores centros de belleza cerca de ti",
-  "@onboardingWelcomeText": {
-    "description": "Texto de bienvenida para la pantalla de incorporación"
-  },
-  "register": "Registrarse",
-  "@register": {
-    "description": "Etiqueta para el botón de registro"
-  },
-  "login": "Iniciar sesión",
-  "@login": {
-    "description": "Etiqueta para el botón de inicio de sesión"
-  },
-  "createAccount": "Crear una cuenta",
-  "@createAccount": {
-    "description": "Texto para crear una nueva cuenta"
-  },
-  "welcomeBack": "Bienvenido de nuevo",
-  "@welcomeBack": {
-    "description": "Mensaje de bienvenida para usuarios que regresan"
-  },
-  "loginText": "Inicia sesión en tu cuenta",
-  "@loginText": {
-    "description": "Texto para la pantalla de inicio de sesión"
-  },
+
+  "home": "Inicio",
+  "@home": { "description": "Etiqueta para el botón de la pantalla de inicio" },
+
+  "search": "Buscar",
+  "@search": { "description": "Etiqueta para el botón de búsqueda" },
+
+  "loading": "Cargando...",
+  "@loading": { "description": "Texto mostrado mientras se carga el contenido" },
+
+  "error": "Error",
+  "@error": { "description": "Mensaje de error genérico" },
+
+  "ok": "Aceptar",
+  "@ok": { "description": "Botón de confirmación Aceptar" },
+
+  "cancel": "Cancelar",
+  "@cancel": { "description": "Botón de cancelar" },
+
+  "retry": "Reintentar",
+  "@retry": { "description": "Etiqueta del botón de reintentar" },
+
+  "goback": "Volver",
+  "@goback": { "description": "Botón para regresar a la pantalla anterior" },
+
+  "approve": "Aprobar",
+  "@approve": { "description": "Botón para aprobar un elemento" },
+
+  "reject": "Rechazar",
+  "@reject": { "description": "Botón para rechazar un elemento" },
+
+  "decline": "Declinar",
+  "@decline": { "description": "Botón para declinar una acción" },
+
+  "delete": "Eliminar",
+  "@delete": { "description": "Etiqueta del botón de eliminar" },
+
+  "areyousure": "¿Estás seguro?",
+  "@areyousure": { "description": "Pregunta en el diálogo de confirmación" },
+
   "email": "Correo electrónico",
-  "@email": {
-    "description": "Etiqueta para el campo de correo electrónico"
-  },
+  "@email": { "description": "Etiqueta del campo de correo electrónico" },
+
   "password": "Contraseña",
-  "@password": {
-    "description": "Etiqueta para el campo de contraseña"
+  "@password": { "description": "Etiqueta del campo de contraseña" },
+
+  "confirmpassword": "Confirmar contraseña",
+  "@confirmpassword": { "description": "Etiqueta del campo de confirmación de contraseña" },
+
+  "forgotpassword": "¿Olvidaste tu contraseña?",
+  "@forgotpassword": { "description": "Texto del enlace para olvidar contraseña" },
+
+  "login": "Iniciar sesión",
+  "@login": { "description": "Etiqueta del botón de inicio de sesión" },
+
+  "loginapple": "Iniciar sesión con Apple",
+  "@loginapple": { "description": "Botón de inicio de sesión con Apple" },
+
+  "logingoogle": "Iniciar sesión con Google",
+  "@logingoogle": { "description": "Botón de inicio de sesión con Google" },
+
+  "noaccount": "¿No tienes una cuenta?",
+  "@noaccount": { "description": "Mensaje para usuarios sin cuenta" },
+
+  "signup": "Registrarse",
+  "@signup": { "description": "Etiqueta del botón de registro" },
+
+  "letscreateaccount": "Creemos una cuenta para ti",
+  "@letscreateaccount": { "description": "Texto de bienvenida para la creación de cuenta" },
+
+  "username": "Nombre de usuario",
+  "@username": { "description": "Etiqueta del campo de nombre de usuario" },
+
+  "agreement": "Acepto los Términos de Servicio y la Política de Privacidad",
+  "@agreement": { "description": "Texto de aceptación de términos y privacidad" },
+
+  "emailAlreadyInUse": "Este correo ya está registrado",
+  "@emailAlreadyInUse": {
+    "description": "Mensaje de error cuando el correo ya está registrado"
+  },
+  "invalidEmail": "Formato de correo inválido",
+  "@invalidEmail": {
+    "description": "Mensaje de error cuando el formato del correo es inválido"
+  },
+  "weakPassword": "LaබLa contraseña es demasiado débil",
+  "@weakPassword": {
+    "description": "Mensaje de error cuando la contraseña no cumple con los requisitos de seguridad"
+  },
+
+  "pleaseEnterUsername": "Por favor, introduce tu nombre de usuario",
+  "@pleaseEnterUsername": {
+    "description": "Mensaje de validación cuando el campo de nombre de usuario está vacío"
+  },
+  "usernameTooShort": "El nombre de usuario debe tener al menos 3 caracteres",
+  "@usernameTooShort": {
+    "description": "Mensaje de validación cuando el nombre de usuario tiene menos de 3 caracteres"
+  },
+  "pleaseConfirmPassword": "Por favor, confirma tu contraseña",
+  "@pleaseConfirmPassword": {
+    "description": "Mensaje de validación cuando el campo de confirmación de contraseña está vacío"
+  },
+  "passwordsDoNotMatch": "Las contraseñas no coinciden",
+  "@passwordsDoNotMatch": {
+    "description": "Mensaje de validación cuando la contraseña y la confirmación no coinciden"
+  },
+  "usernameLabel": "Nombre de usuario",
+  "@usernameLabel": {
+    "description": "Texto de la etiqueta para el campo de nombre de usuario"
+  },
+  "confirmPasswordLabel": "Confirmar contraseña",
+  "@confirmPasswordLabel": {
+    "description": "Texto de la etiqueta para el campo de confirmación de contraseña"
+  },
+  "appName": "CLINICLY",
+  "@appName": {
+    "description": "Nombre de la aplicación mostrado en el encabezado"
+  },
+
+  "createAccountHeader": "Vamos a\nCrear tu\nCuenta",
+  "@createAccountHeader": {
+    "description": "Texto del encabezado en la pantalla de registro"
+  },
+
+  "pleaseEnterEmail": "Por favor, introduce tu correo electrónico",
+  "@pleaseEnterEmail": {
+    "description": "Mensaje de validación cuando el campo de correo está vacío"
+  },
+  "invalidEmailAddress": "Por favor, introduce una dirección de correo válida",
+  "@invalidEmailAddress": {
+    "description": "Mensaje de validación cuando el correo o teléfono no es válido"
+  },
+  "pleaseEnterPassword": "Por favor, introduce tu contraseña",
+  "@pleaseEnterPassword": {
+    "description": "Mensaje de validación cuando el campo de contraseña está vacío"
+  },
+  "passwordTooShort": "La contraseña debe tener al menos 6 caracteres",
+  "@passwordTooShort": {
+    "description": "Mensaje de validación cuando la contraseña tiene menos de 6 caracteres"
+  },
+  "noAccountFound": "No se encontró ninguna cuenta con este correo o teléfono",
+  "@noAccountFound": {
+    "description": "Mensaje de error cuando el usuario no existe en Firebase"
+  },
+  "incorrectPassword": "Contraseña incorrecta",
+  "@incorrectPassword": {
+    "description": "Mensaje de error cuando el usuario introduce una contraseña incorrecta"
+  },
+  "invalidEmailOrPhoneFormat": "Formato de correo o teléfono inválido",
+  "@invalidEmailOrPhoneFormat": {
+    "description": "Mensaje de error cuando el formato de correo o teléfono es inválido"
+  },
+  "tooManyAttempts": "Demasiados intentos. Por favor, intenta de nuevo más tarde",
+  "@tooManyAttempts": {
+    "description": "Mensaje de error cuando se realizan demasiados intentos de inicio de sesión"
+  },
+  "accountDisabled": "Esta cuenta ha sido desactivada",
+  "@accountDisabled": {
+    "description": "Mensaje de error cuando la cuenta ha sido desactivada por un administrador"
+  },
+  "emailLabel": "Correo electrónico",
+  "@emailLabel": {
+    "description": "Texto de la etiqueta para el campo de correo electrónico"
+  },
+  "passwordLabel": "Contraseña",
+  "@passwordLabel": {
+    "description": "Texto de la etiqueta para el campo de contraseña"
   },
   "forgotPassword": "¿Olvidaste tu contraseña?",
   "@forgotPassword": {
-    "description": "Texto para el enlace de olvido de contraseña"
+    "description": "Texto cliqueable para navegar a la pantalla de restablecimiento de contraseña"
   },
-  "rememberMe": "Recuérdame",
-  "@rememberMe": {
-    "description": "Etiqueta para la casilla de recordar"
+  "loginButton": "Iniciar sesión",
+  "@loginButton": {
+    "description": "Texto para el botón de inicio de sesión"
+  },
+  "orText": "O",
+  "@orText": {
+    "description": "Texto separador entre opciones de inicio de sesión"
+  },
+  "appleSignInDisabledTitle": "Inicio de sesión con Apple desactivado",
+  "@appleSignInDisabledTitle": {
+    "description": "Título del diálogo cuando el inicio de sesión con Apple está desactivado"
+  },
+  "appleSignInDisabledMessage": "El inicio de sesión con Apple está desactivado para esta demostración.",
+  "@appleSignInDisabledMessage": {
+    "description": "Mensaje del diálogo cuando el inicio de sesión con Apple está desactivado"
+  },
+  "googleSignInDisabledTitle": "Inicio de sesión con Google desactivado",
+  "@googleSignInDisabledTitle": {
+    "description": "Título del diálogo cuando el inicio de sesión con Google está desactivado"
+  },
+  "googleSignInDisabledMessage": "El inicio de sesión con Google está desactivado para esta demostración.",
+  "@googleSignInDisabledMessage": {
+    "description": "Mensaje del diálogo cuando el inicio de sesión con Google está desactivado"
+  },
+  "okButton": "Aceptar",
+  "@okButton": {
+    "description": "Texto para el botón de confirmación del diálogo"
+  },
+  "loginWithApple": "Iniciar sesión con Apple",
+  "@loginWithApple": {
+    "description": "Texto del botón para la opción de inicio de sesión con Apple"
+  },
+  "loginWithGoogle": "Iniciar sesión con Google",
+  "@loginWithGoogle": {
+    "description": "Texto del botón para la opción de inicio de sesión con Google"
   },
   "dontHaveAccount": "¿No tienes una cuenta? ",
   "@dontHaveAccount": {
-    "description": "Mensaje para usuarios sin cuenta"
+    "description": "Texto mostrado antes del enlace de registro"
   },
-  "createNewAccount": "Crea tu nueva cuenta",
-  "@createNewAccount": {
-    "description": "Texto para crear una nueva cuenta"
+  "signupText": "Registrarse",
+  "@signupText": {
+    "description": "Texto cliqueable para navegar a la pantalla de registro"
   },
-  "fullName": "Nombre completo",
-  "@fullName": {
-    "description": "Etiqueta para el campo de nombre completo"
+
+  "tooManyRequests": "Demasiados intentos. Por favor, intenta de nuevo más tarde",
+  "@tooManyRequests": {
+    "description": "Mensaje de error cuando el usuario excede el número permitido de intentos"
   },
-  "orContinueWith": "O continúa con",
-  "@orContinueWith": {
-    "description": "Texto para opciones de inicio de sesión alternativas"
+  "genericError": "Ocurrió un error. Por favor, intenta de nuevo",
+  "@genericError": {
+    "description": "Mensaje de error genérico cuando falla el registro"
   },
-  "alreadyHaveAccount": "¿Ya tienes una cuenta? ",
-  "@alreadyHaveAccount": {
-    "description": "Mensaje para usuarios que ya tienen una cuenta"
-  },
-  "search": "Buscar",
-  "@search": {
-    "description": "Etiqueta para la función de búsqueda"
-  },
-  "beautySupport": "Soporte de Belleza",
-  "@beautySupport": {
-    "description": "Título de la aplicación"
-  },
-  "centers": "Centros",
-  "@centers": {
-    "description": "Etiqueta para centros de belleza"
-  },
-  "center": "Centro",
-  "@center": {
-    "description": "Etiqueta singular para un centro de belleza"
-  },
-  "noCenters": "No hay centros disponibles",
-  "@noCenters": {
-    "description": "Mensaje cuando no hay centros disponibles"
-  },
-  "addCenter": "Agregar centro",
-  "@addCenter": {
-    "description": "Etiqueta para agregar un nuevo centro"
-  },
-  "centerName": "Nombre del centro",
-  "@centerName": {
-    "description": "Etiqueta para el campo de nombre del centro"
-  },
-  "centerLocation": "Ubicación del centro",
-  "@centerLocation": {
-    "description": "Etiqueta para el campo de ubicación del centro"
-  },
-  "centerPhoneNumber": "Número de teléfono del centro",
-  "@centerPhoneNumber": {
-    "description": "Etiqueta para el campo de número de teléfono del centro"
-  },
-  "centerDescription": "Descripción del centro",
-  "@centerDescription": {
-    "description": "Etiqueta para el campo de descripción del centro"
-  },
-  "centerImage": "Imagen del centro",
-  "@centerImage": {
-    "description": "Etiqueta para el campo de imagen del centro"
-  },
-  "myProfile": "Mi perfil",
-  "@myProfile": {
-    "description": "Etiqueta para la sección de perfil del usuario"
-  },
+
+  "alreadyhaveaccount": "¿Ya tienes una cuenta? ",
+  "@alreadyhaveaccount": { "description": "Mensaje para usuarios que ya tienen una cuenta" },
+
+  "welcome": "¡Bienvenido!",
+  "@welcome": { "description": "Mensaje de bienvenida después del inicio de sesión" },
+
+  "usernotlogged": "Usuario no conectado.",
+  "@usernotlogged": { "description": "Mensaje mostrado cuando el usuario no está conectado" },
+
+  "allfieldsrequired": "Todos los campos son obligatorios.",
+  "@allfieldsrequired": { "description": "Error mostrado cuando los campos del formulario están vacíos" },
+
+  "passwordsdonotmatch": "Las contraseñas no coinciden.",
+  "@passwordsdonotmatch": { "description": "Error cuando la contraseña y la confirmación no coinciden" },
+
+  "passworddontmatch": "La contraseña no coincide.",
+  "@passworddontmatch": { "description": "Error cuando la contraseña ingresada es incorrecta" },
+
+  "passwordisshort": "La contraseña es demasiado corta.",
+  "@passwordisshort": { "description": "Error cuando la longitud de la contraseña es demasiado corta" },
+
+  "passwordsuccessfullychanged": "Contraseña cambiada exitosamente.",
+  "@passwordsuccessfullychanged": { "description": "Mensaje de éxito para el cambio de contraseña" },
+
+  "enternewpassword": "Introduce tu nueva contraseña",
+  "@enternewpassword": { "description": "Instrucción para ingresar una nueva contraseña" },
+
+  "currentpassword": "Contraseña actual",
+  "@currentpassword": { "description": "Etiqueta para el campo de contraseña actual" },
+
+  "newpassword": "Nueva contraseña",
+  "@newpassword": { "description": "Etiqueta para el campo de nueva contraseña" },
+
+  "confirmnewpassword": "Confirmar nueva contraseña",
+  "@confirmnewpassword": { "description": "Etiqueta para el campo de confirmación de nueva contraseña" },
+
+  "updatepassword": "Actualizar contraseña",
+  "@updatepassword": { "description": "Botón para actualizar la contraseña" },
+
+  "changeyourpassword": "Cambia tu contraseña",
+  "@changeyourpassword": { "description": "Título para la pantalla de cambio de contraseña" },
+
+  "checkemail": "Revisa tu correo para las instrucciones de restablecimiento de contraseña.",
+  "@checkemail": { "description": "Instrucción para revisar el correo para el enlace de restablecimiento" },
+
+  "passwordreseterror": "Ocurrió un error al restablecer la contraseña.",
+  "@passwordreseterror": { "description": "Mensaje de error para el restablecimiento de contraseña" },
+
+  "unexpectederror": "Ocurrió un error inesperado. Por favor, intenta de nuevo.",
+  "@unexpectederror": { "description": "Mensaje de error inesperado genérico" },
+
+  "forgotpasswordpage": "Olvidé mi contraseña",
+  "@forgotpasswordpage": { "description": "Título para la pantalla de olvidar contraseña" },
+
+  "enteremailreset": "Ingresa tu dirección de correo electrónico para recibir\ninstrucciones de restablecimiento de contraseña.",
+  "@enteremailreset": { "description": "Instrucción para ingresar el correo para restablecer la contraseña" },
+
+  "resetpassword": "Restablecer contraseña",
+  "@resetpassword": { "description": "Botón para restablecer la contraseña" },
+
+  "relogin": "Por favor, inicia sesión de nuevo para continuar.",
+  "@relogin": { "description": "Instrucción para volver a iniciar sesión después del cambio de contraseña" },
+
+  "profile": "Perfil",
+  "@profile": { "description": "Etiqueta de la pestaña de perfil" },
+
+  "myprofile": "Mi perfil",
+  "@myprofile": { "description": "Etiqueta para el perfil del usuario" },
+
   "settings": "Configuraciones",
-  "@settings": {
-    "description": "Etiqueta para el menú de configuraciones"
-  },
-  "updateUsername": "Actualizar nombre de usuario",
-  "@updateUsername": {
-    "description": "Etiqueta para actualizar el nombre de usuario"
-  },
-  "changePassword": "Cambiar contraseña",
-  "@changePassword": {
-    "description": "Etiqueta para cambiar la contraseña"
-  },
-  "currentPassword": "Contraseña actual",
-  "@currentPassword": {
-    "description": "Etiqueta para el campo de contraseña actual"
-  },
-  "newPassword": "Nueva contraseña",
-  "@newPassword": {
-    "description": "Etiqueta para el campo de nueva contraseña"
-  },
-  "confirmPassword": "Confirmar contraseña",
-  "@confirmPassword": {
-    "description": "Etiqueta para el campo de confirmar contraseña"
-  },
-  "deleteAccount": "Eliminar cuenta",
-  "@deleteAccount": {
-    "description": "Etiqueta para eliminar la cuenta"
-  },
-  "aboutApp": "Acerca de la aplicación",
-  "@aboutApp": {
-    "description": "Etiqueta para la sección acerca de la aplicación"
-  },
+  "@settings": { "description": "Etiqueta de la pestaña de configuraciones" },
+
+  "updateusername": "Actualizar nombre de usuario",
+  "@updateusername": { "description": "Botón para actualizar el nombre de usuario" },
+
+  "enternewusername": "Ingresa tu nuevo nombre de usuario\npara actualizar tu perfil y reseñas",
+  "@enternewusername": { "description": "Instrucción para ingresar un nuevo nombre de usuario" },
+
+  "newusername": "Nuevo nombre de usuario",
+  "@newusername": { "description": "Etiqueta para el campo de nuevo nombre de usuario" },
+
+  "usernameupdated": "Nombre de usuario actualizado exitosamente.",
+  "@usernameupdated": { "description": "Mensaje de éxito para la actualización del nombre de usuario" },
+
+  "deleteaccount": "Eliminar tu cuenta",
+  "@deleteaccount": { "description": "Botón para eliminar la cuenta" },
+
+  "entertodelete": "Ingresa tu correo y contraseña para\neliminar tu cuenta permanentemente.",
+  "@entertodelete": { "description": "Instrucción para confirmar la eliminación de la cuenta" },
+
+  "accountdeleted": "Cuenta eliminada exitosamente.",
+  "@accountdeleted": { "description": "Mensaje de éxito después de la eliminación de la cuenta" },
+
   "logout": "Cerrar sesión",
-  "@logout": {
-    "description": "Etiqueta para el botón de cerrar sesión"
-  },
-  "profileTab": "Perfil",
-  "@profileTab": {
-    "description": "Etiqueta para la pestaña de perfil"
-  },
-  "searchTab": "Buscar",
-  "@searchTab": {
-    "description": "Etiqueta para la pestaña de búsqueda"
-  },
-  "resetPassword": "Restablecer contraseña",
-  "@resetPassword": {
-    "description": "Etiqueta para restablecer la contraseña"
-  },
-  "newUsername": "Nuevo nombre de usuario",
-  "@newUsername": {
-    "description": "Etiqueta para el campo de nuevo nombre de usuario"
-  },
-  "newsTab": "Noticias",
-  "@newsTab": {
-    "description": "Etiqueta para la pestaña de noticias"
-  },
-  "homeTab": "Inicio",
-  "@homeTab": {
-    "description": "Etiqueta para la pestaña de inicio"
-  },
-  "adminDashboard": "Panel de administración",
-  "@adminDashboard": {
-    "description": "Etiqueta para el panel de administración"
-  },
-  "adminCenters": "Centros",
-  "@adminCenters": {
-    "description": "Etiqueta para la sección de centros de administración"
-  },
-  "adminReviews": "Reseñas",
-  "@adminReviews": {
-    "description": "Etiqueta para la sección de reseñas de administración"
-  },
-  "pendingReviews": "Reseñas pendientes",
-  "@pendingReviews": {
-    "description": "Etiqueta para reseñas pendientes"
-  },
-  "noPendingReviews": "No hay reseñas pendientes",
-  "@noPendingReviews": {
-    "description": "Mensaje cuando no hay reseñas pendientes"
-  },
-  "subCentersPending": "Pendiente",
-  "@subCentersPending": {
-    "description": "Etiqueta para subcentros pendientes"
-  },
-  "subCentersCurrent": "Actual",
-  "@subCentersCurrent": {
-    "description": "Etiqueta para subcentros actuales"
-  },
-  "addNewCenter": "Agregar nuevo centro",
-  "@addNewCenter": {
-    "description": "Etiqueta para agregar un nuevo centro"
-  },
+  "@logout": { "description": "Etiqueta del botón de cerrar sesión" },
+
+  "confirmlogout": "Confirmar cierre de sesión",
+  "@confirmlogout": { "description": "Título para el diálogo de confirmación de cierre de sesión" },
+
+  "confirmlogoutmsg": "¿Estás seguro de que quieres cerrar sesión?",
+  "@confirmlogoutmsg": { "description": "Mensaje de confirmación para el cierre de sesión" },
+
+  "clinics": "Clínicas",
+  "@clinics": { "description": "Etiqueta de la sección de clínicas" },
+
+  "clinicly": "Clinicly",
+  "@clinicly": { "description": "Nombre de la aplicación / texto de marca" },
+
+  "addclinic": "Agregar clínica",
+  "@addclinic": { "description": "Botón para agregar una clínica" },
+
+  "addnewclinic": "Agregar nueva clínica",
+  "@addnewclinic": { "description": "Título para agregar una nueva clínica" },
+
+  "clinicname": "Nombre de la clínica",
+  "@clinicname": { "description": "Etiqueta para el campo de nombre de la clínica" },
+
+  "cliniclocation": "Ubicación de la clínica",
+  "@cliniclocation": { "description": "Etiqueta para el campo de ubicación de la clínica" },
+
+  "clinicphonenumber": "Número de teléfono de la clínica",
+  "@clinicphonenumber": { "description": "Etiqueta para el campo de número de teléfono de la clínica" },
+
+  "clinicdescription": "Descripción de la clínica",
+  "@clinicdescription": { "description": "Etiqueta para el campo de descripción de la clínica" },
+
+  "clinicimage": "Imagen de la clínica",
+  "@clinicimage": { "description": "Etiqueta para la carga de imagen de la clínica" },
+
+  "unknownclinic": "Clínica desconocida",
+  "@unknownclinic": { "description": "Texto de respaldo para clínica desconocida" },
+
+  "failedtoaddclinic": "Error al agregar la clínica. Por favor, intenta de nuevo.",
+  "@failedtoaddclinic": { "description": "Mensaje de error cuando falla la adición de una clínica" },
+
+  "filltoaddclinic": "Por favor, completa todos los campos para agregar una clínica.",
+  "@filltoaddclinic": { "description": "Instrucción para completar el formulario de la clínica" },
+
+  "noclinicsfound": "No se encontraron clínicas.",
+  "@noclinicsfound": { "description": "Mensaje cuando no se encuentran clínicas" },
+
+  "noclinics": "No hay clínicas disponibles.",
+  "@noclinics": { "description": "Mensaje cuando no hay clínicas disponibles" },
+
+  "confirmdeletionclinic": "Confirmar eliminación",
+  "@confirmdeletionclinic": { "description": "Título para el diálogo de confirmación de eliminación de clínica" },
+
+  "confirmdeletionclinicmsg": "¿Estás seguro de que quieres eliminar esta clínica?",
+  "@confirmdeletionclinicmsg": { "description": "Mensaje de confirmación para la eliminación de clínica" },
+
+  "invalidclinicid": "ID de clínica inválido.",
+  "@invalidclinicid": { "description": "Error para ID de clínica inválido" },
+
+  "clinicrejected": "Clínica rechazada",
+  "@clinicrejected": { "description": "Mensaje cuando la clínica es rechazada" },
+
+  "services": "Servicios",
+  "@services": { "description": "Etiqueta de la sección de servicios" },
+
+  "haircut": "Corte de pelo",
+  "@haircut": { "description": "Opción de servicio para corte de pelo" },
+
+  "makeup": "Maquillaje",
+  "@makeup": { "description": "Opción de servicio para maquillaje" },
+
+  "massage": "Masaje",
+  "@massage": { "description": "Opción de servicio para masaje" },
+
+  "nails": "Uñas",
+  "@nails": { "description": "Opción de servicio para uñas" },
+
+  "skincare": "Cuidado de la piel",
+  "@skincare": { "description": "Opción de servicio para cuidado de la piel" },
+
+  "offers": "Ofertas",
+  "@offers": { "description": "Etiqueta de la sección de ofertas" },
+
+  "hotoffers": "Ofertas destacadas",
+  "@hotoffers": { "description": "Etiqueta para la sección de ofertas destacadas" },
+
+  "favorites": "Favoritos",
+  "@favorites": { "description": "Etiqueta de la sección de favoritos" },
+
+  "myfavorites": "Mis favoritos",
+  "@myfavorites": { "description": "Lista de favoritos del usuario" },
+
+  "nofavorites": "Aún no hay favoritos.",
+  "@nofavorites": { "description": "Mensaje cuando no hay favoritos disponibles" },
+
+  "removedfromfavorites": "Eliminado de favoritos",
+  "@removedfromfavorites": { "description": "Mensaje cuando un elemento es eliminado de favoritos" },
+
+  "addedtofavorites": "Agregado a favoritos",
+  "@addedtofavorites": { "description": "Mensaje cuando un elemento es agregado a favoritos" },
+
+  "comingsoon": "Próximamente",
+  "@comingsoon": { "description": "Etiqueta para funciones próximas" },
+
   "reviews": "Reseñas",
-  "@reviews": {
-    "description": "Etiqueta para la sección de reseñas"
-  },
-  "noReviews": "Aún no hay reseñas",
-  "@noReviews": {
-    "description": "Mensaje cuando no hay reseñas disponibles"
-  },
-  "writeAReview": "Escribir una reseña",
-  "@writeAReview": {
-    "description": "Etiqueta para escribir una reseña"
-  },
+  "@reviews": { "description": "Etiqueta de la sección de reseñas" },
+
+  "noreviews": "Aún no hay reseñas",
+  "@noreviews": { "description": "Mensaje cuando no hay reseñas" },
+
+  "writereview": "Escribir una reseña",
+  "@writereview": { "description": "Botón para escribir una nueva reseña" },
+
+  "tellusexperience": "Cuéntanos sobre tu experiencia con esta clínica.",
+  "@tellusexperience": { "description": "Mensaje para compartir experiencia en reseña" },
+
+  "yourrating": "Tu calificación",
+  "@yourrating": { "description": "Etiqueta para la selección de calificación" },
+
+  "pleaserate": "Por favor, califica tu experiencia",
+  "@pleaserate": { "description": "Mensaje solicitando al usuario que califique" },
+
+  "writereviewhere": "Escribe tu reseña aquí...",
+  "@writereviewhere": { "description": "Marcador de posición para el campo de entrada de reseña" },
+
+  "submitreview": "Enviar reseña",
+  "@submitreview": { "description": "Botón para enviar reseña" },
+
+  "failedtoresubmitreview": "Error al reenviar la reseña.",
+  "@failedtoresubmitreview": { "description": "Error cuando falla el reenvío de una reseña" },
+
+  "pleaseselectrating": "Por favor, selecciona una calificación y escribe una reseña.",
+  "@pleaseselectrating": { "description": "Error cuando la reseña está incompleta" },
+
+  "mustbelogged": "Debes estar conectado para enviar una reseña.",
+  "@mustbelogged": { "description": "Error cuando un usuario no conectado intenta enviar una reseña" },
+
+  "reviewsubmitted": "¡Reseña enviada exitosamente!\nAparecerá una vez que el administrador la apruebe.",
+  "@reviewsubmitted": { "description": "Mensaje de éxito después de enviar una reseña" },
+
+  "reviewnotsubmitted": "Error al enviar la reseña. Por favor, intenta de nuevo.",
+  "@reviewnotsubmitted": { "description": "Error cuando falla el envío de una reseña" },
+
+  "resubmittedforapproval": "Tu reseña ha sido reenviada para aprobación del administrador.",
+  "@resubmittedforapproval": { "description": "Mensaje cuando la reseña es reenviada" },
+
+  "editandresubmit": "Edita y reenvía tu reseña.",
+  "@editandresubmit": { "description": "Instrucción para editar y reenviar una reseña" },
+
+  "editreview": "Editar reseña",
+  "@editreview": { "description": "Botón para editar una reseña" },
+
+  "resubmitforapproval": "Reenvía tu reseña para aprobación del administrador",
+  "@resubmitforapproval": { "description": "Instrucción para reenviar una reseña para aprobación" },
+
+  "rejectionreason": "Rechazada por: ",
+  "@rejectionreason": { "description": "Etiqueta para la razón de rechazo" },
+
+  "yourreview": "Tu reseña",
+  "@yourreview": { "description": "Etiqueta para la reseña del usuario" },
+
+  "resubmitreview": "Reenviar reseña",
+  "@resubmitreview": { "description": "Botón para reenviar reseña" },
+
+  "deletingreview": "Eliminando reseña...",
+  "@deletingreview": { "description": "Mensaje mostrado mientras se elimina una reseña" },
+
+  "reviewdeleted": "Reseña eliminada exitosamente.",
+  "@reviewdeleted": { "description": "Mensaje de éxito después de eliminar una reseña" },
+
+  "failedtodeletereview": "Error al eliminar la reseña",
+  "@failedtodeletereview": { "description": "Mensaje de error cuando falla la eliminación de una reseña" },
+
+  "confirmdeleting": "Confirmar eliminación",
+  "@confirmdeleting": { "description": "Título para el diálogo de confirmación de eliminación" },
+
+  "confirmdeletingmsg": "¿Estás seguro de que quieres eliminar esta reseña?",
+  "@confirmdeletingmsg": { "description": "Mensaje de confirmación para la eliminación de reseña" },
+
+  "deletereview": "Eliminar reseña",
+  "@deletereview": { "description": "Botón para eliminar reseña" },
+
+  "adminpanel": "Panel de administración",
+  "@adminpanel": { "description": "Etiqueta para la sección del panel de administración" },
+
+  "pendingreviews": "Reseñas pendientes",
+  "@pendingreviews": { "description": "Etiqueta para la sección de reseñas pendientes" },
+
+  "nopendingreviews": "No hay reseñas pendientes.",
+  "@nopendingreviews": { "description": "Mensaje cuando no hay reseñas pendientes" },
+
   "pending": "Pendiente",
-  "@pending": {
-    "description": "Etiqueta para el estado pendiente"
-  },
-  "current": "Actual",
-  "@current": {
-    "description": "Etiqueta para el estado actual"
-  },
-  "howWasExperience": "¿Cómo fue tu experiencia?",
-  "@howWasExperience": {
-    "description": "Mensaje para retroalimentación sobre la experiencia del usuario"
-  },
-  "yourReview": "Tu Reseña",
-  "@yourReview": {
-    "description": "Etiqueta para el campo de entrada de la reseña del usuario"
-  },
-  "writeSomethingAboutVisit": "Escribe algo sobre tu visita",
-  "@writeSomethingAboutVisit": {
-    "description": "Mensaje para escribir una reseña sobre la visita"
-  },
-  "submitReview": "Enviar Reseña",
-  "@submitReview": {
-    "description": "Etiqueta para el botón de enviar reseña"
-  }
+  "@pending": { "description": "Etiqueta para el estado pendiente" },
+
+  "currents": "Actual",
+  "@currents": { "description": "Etiqueta para el estado actual" },
+
+  "aboutapp": "Acerca de esta aplicación",
+  "@aboutapp": { "description": "Etiqueta para la sección de información sobre la aplicación" },
+
+  "centerapproved": "Centro aprobado",
+  "@centerapproved": { "description": "Mensaje cuando el centro es aprobado" },
+
+  "erroraprrovingcenter": "Error al aprobar el centro",
+  "@erroraprrovingcenter": { "description": "Mensaje de error cuando falla la aprobación del centro" },
+
+  "failedtoapprovecenter": "Fallo al aprobar el centro",
+  "@failedtoapprovecenter": { "description": "Mensaje de fallo para la aprobación del centro" },
+
+  "doyoureallywanttodecline": "¿Realmente quieres declinar este centro?\nEsta acción no se puede deshacer.",
+  "@doyoureallywanttodecline": { "description": "Confirmación para declinar un centro" },
+
+  "centerrejected": "Centro rechazado",
+  "@centerrejected": { "description": "Mensaje cuando el centro es rechazado" },
+
+  "errorrejectingcenter": "Error al rechazar el centro",
+  "@errorrejectingcenter": { "description": "Mensaje de error para el rechazo del centro" },
+
+  "failedtorejectcenter": "Fallo al rechazar el centro",
+  "@failedtorejectcenter": { "description": "Mensaje de fallo para el rechazo del centro" },
+
+  "confirmdeletingreview": "¿Estás seguro de que quieres\neliminar esta reseña?",
+  "@confirmdeletingreview": { "description": "Mensaje de confirmación para eliminar una reseña" }
 }

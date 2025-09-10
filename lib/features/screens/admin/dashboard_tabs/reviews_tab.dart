@@ -15,10 +15,10 @@ class ReviewsTab extends StatelessWidget {
         Padding(
           padding: EdgeInsets.all(Sizes.padding),
           child: Text(
-            S.of(context).pendingReviews,
+            S.of(context).pendingreviews,
             style: TextStyle(
               color: Colors.black,
-              fontSize: Sizes.medium,
+              fontSize: 20,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -37,7 +37,7 @@ class ReviewsTab extends StatelessWidget {
               final docs = snapshot.data?.docs ?? [];
 
               if (docs.isEmpty) {
-                return Center(child: Text(S.of(context).noPendingReviews));
+                return Center(child: Text(S.of(context).nopendingreviews));
               }
 
               return ListView.builder(

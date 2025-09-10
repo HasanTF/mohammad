@@ -2,6 +2,7 @@ import 'package:beuty_support/core/constants/themes.dart';
 import 'package:beuty_support/core/widget/custom_input_field.dart';
 import 'package:beuty_support/core/widget/my_button.dart';
 import 'package:beuty_support/features/providers/user_provider.dart';
+import 'package:beuty_support/generated/l10n.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class _UpdateUsernameState extends State<UpdateUsername> {
 
     if (username.isEmpty) {
       setState(() {
-        errorMessage = "Field is required.";
+        errorMessage = S.of(context).allfieldsrequired;
         isLoading = false;
       });
       return;
@@ -45,7 +46,7 @@ class _UpdateUsernameState extends State<UpdateUsername> {
 
     if (userId == null) {
       setState(() {
-        errorMessage = "User not logged in.";
+        errorMessage = S.of(context).usernotlogged;
         isLoading = false;
       });
       return;
@@ -83,8 +84,8 @@ class _UpdateUsernameState extends State<UpdateUsername> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("Username is updated in profile and reviews."),
+          SnackBar(
+            content: Text(S.of(context).usernameupdated),
             backgroundColor: Colors.green,
             duration: Duration(seconds: 3),
           ),
@@ -93,7 +94,7 @@ class _UpdateUsernameState extends State<UpdateUsername> {
       }
     } on FirebaseAuthException catch (error) {
       setState(() {
-        errorMessage = error.message ?? "An error occurred.";
+        errorMessage = error.message ?? S.of(context).error;
         isLoading = false;
       });
     } catch (e) {
@@ -112,7 +113,7 @@ class _UpdateUsernameState extends State<UpdateUsername> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, semanticLabel: "Go back"),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
         elevation: 0,
@@ -129,17 +130,16 @@ class _UpdateUsernameState extends State<UpdateUsername> {
                   Icons.person_outline,
                   size: screenWidth * 0.2,
                   color: AppColors.primary,
-                  semanticLabel: "User icon",
                 ),
                 SizedBox(height: screenHeight * 0.03),
                 Text(
-                  "Update Username",
+                  S.of(context).updateusername,
                   style: Theme.of(context).textTheme.bodyLarge,
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: screenHeight * 0.01),
                 Text(
-                  "Enter your new username\nto update your profile and reviews",
+                  S.of(context).enternewusername,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
@@ -168,7 +168,7 @@ class _UpdateUsernameState extends State<UpdateUsername> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomInputField(
-                  label: "New Username",
+                  label: S.of(context).newusername,
                   controller: _controllerUsername,
                 ),
                 if (errorMessage.isNotEmpty) ...[
@@ -179,18 +179,16 @@ class _UpdateUsernameState extends State<UpdateUsername> {
                       context,
                     ).textTheme.bodySmall?.copyWith(color: Colors.redAccent),
                     textAlign: TextAlign.center,
-                    semanticsLabel: "Error message",
                   ),
                 ],
                 SizedBox(height: screenHeight * 0.03),
                 isLoading
                     ? const CircularProgressIndicator(
-                        semanticsLabel: "Loading",
                         color: AppColors.secondaryDark,
                       )
                     : MyButton(
                         onPressed: updateUsername,
-                        text: "Update Username",
+                        text: S.of(context).updateusername,
                         backgroundColor: AppColors.secondaryDark,
                         textColor: AppColors.textPrimary,
                       ),

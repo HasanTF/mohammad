@@ -1,239 +1,410 @@
 {
-  "@@locale": "ar",
-  "onboardingWelcomeText": "اكتشف أفضل مراكز التجميل القريبة منك",
-  "@onboardingWelcomeText": {
-    "description": "نص الترحيب لشاشة الإعداد"
-  },
-  "register": "تسجيل",
-  "@register": {
-    "description": "تسمية زر التسجيل"
-  },
-  "login": "تسجيل الدخول",
-  "@login": {
-    "description": "تسمية زر تسجيل الدخول"
-  },
-  "createAccount": "إنشاء حساب",
-  "@createAccount": {
-    "description": "نص لإنشاء حساب جديد"
-  },
-  "welcomeBack": "مرحبًا بعودتك",
-  "@welcomeBack": {
-    "description": "رسالة ترحيب للمستخدمين العائدين"
-  },
-  "loginText": "تسجيل الدخول إلى حسابك",
-  "@loginText": {
-    "description": "نص لشاشة تسجيل الدخول"
-  },
-  "email": "البريد الإلكتروني",
-  "@email": {
-    "description": "تسمية حقل البريد الإلكتروني"
-  },
-  "password": "كلمة المرور",
-  "@password": {
-    "description": "تسمية حقل كلمة المرور"
-  },
-  "forgotPassword": "هل نسيت كلمة المرور؟",
-  "@forgotPassword": {
-    "description": "نص رابط نسيان كلمة المرور"
-  },
-  "rememberMe": "تذكرني",
-  "@rememberMe": {
-    "description": "تسمية مربع اختيار التذكر"
-  },
-  "dontHaveAccount": "ليس لديك حساب؟ ",
-  "@dontHaveAccount": {
-    "description": "مطالبة للمستخدمين بدون حساب"
-  },
-  "createNewAccount": "إنشاء حسابك الجديد",
-  "@createNewAccount": {
-    "description": "نص لإنشاء حساب جديد"
-  },
-  "fullName": "الاسم الكامل",
-  "@fullName": {
-    "description": "تسمية حقل الاسم الكامل"
-  },
-  "orContinueWith": "أو تابع باستخدام",
-  "@orContinueWith": {
-    "description": "نص لخيارات تسجيل الدخول البديلة"
-  },
-  "alreadyHaveAccount": "هل لديك حساب بالفعل؟ ",
-  "@alreadyHaveAccount": {
-    "description": "مطالبة للمستخدمين الذين لديهم حساب"
-  },
-  "search": "بحث",
-  "@search": {
-    "description": "تسمية وظيفة البحث"
-  },
-  "beautySupport": "مراكز التجميل",
-  "@beautySupport": {
-    "description": "عنوان التطبيق"
-  },
-  "centers": "مراكز",
-  "@centers": {
-    "description": "تسمية مراكز التجميل"
-  },
-  "center": "مركز",
-  "@center": {
-    "description": "تسمية مفردة لمركز تجميل"
-  },
-  "noCenters": "لا توجد مراكز متاحة",
-  "@noCenters": {
-    "description": "رسالة عندما لا تكون هناك مراكز متاحة"
-  },
-  "addCenter": "إضافة مركز",
-  "@addCenter": {
-    "description": "تسمية لإضافة مركز جديد"
-  },
-  "centerName": "اسم المركز",
-  "@centerName": {
-    "description": "تسمية حقل اسم المركز"
-  },
-  "centerLocation": "موقع المركز",
-  "@centerLocation": {
-    "description": "تسمية حقل موقع المركز"
-  },
-  "centerPhoneNumber": "رقم هاتف المركز",
-  "@centerPhoneNumber": {
-    "description": "تسمية حقل رقم هاتف المركز"
-  },
-  "centerDescription": "وصف المركز",
-  "@centerDescription": {
-    "description": "تسمية حقل وصف المركز"
-  },
-  "centerImage": "صورة المركز",
-  "@centerImage": {
-    "description": "تسمية حقل صورة المركز"
-  },
-  "myProfile": "ملفي الشخصي",
-  "@myProfile": {
-    "description": "تسمية قسم ملف المستخدم"
-  },
-  "settings": "الإعدادات",
-  "@settings": {
-    "description": "تسمية قائمة الإعدادات"
-  },
-  "updateUsername": "تحديث اسم المستخدم",
-  "@updateUsername": {
-    "description": "تسمية تحديث اسم المستخدم"
-  },
-  "changePassword": "تغيير كلمة المرور",
-  "@changePassword": {
-    "description": "تسمية تغيير كلمة المرور"
-  },
-  "currentPassword": "كلمة المرور الحالية",
-  "@currentPassword": {
-    "description": "تسمية حقل كلمة المرور الحالية"
-  },
-  "newPassword": "كلمة المرور الجديدة",
-  "@newPassword": {
-    "description": "تسمية حقل كلمة المرور الجديدة"
-  },
-  "confirmPassword": "تأكيد كلمة المرور",
-  "@confirmPassword": {
-    "description": "تسمية حقل تأكيد كلمة المرور"
-  },
-  "deleteAccount": "حذف الحساب",
-  "@deleteAccount": {
-    "description": "تسمية حذف الحساب"
-  },
-  "aboutApp": "حول التطبيق",
-  "@aboutApp": {
-    "description": "تسمية قسم حول التطبيق"
-  },
-  "logout": "تسجيل الخروج",
-  "@logout": {
-    "description": "تسمية زر تسجيل الخروج"
-  },
-  "profileTab": "الملف الشخصي",
-  "@profileTab": {
-    "description": "تسمية علامة تبويب الملف الشخصي"
-  },
-  "searchTab": "البحث",
-  "@searchTab": {
-    "description": "تسمية علامة تبويب البحث"
-  },
-  "resetPassword": "إعادة تعيين كلمة المرور",
-  "@resetPassword": {
-    "description": "تسمية إعادة تعيين كلمة المرور"
-  },
-  "newUsername": "اسم المستخدم الجديد",
-  "@newUsername": {
-    "description": "تسمية حقل اسم المستخدم الجديد"
-  },
-  "newsTab": "الأخبار",
-  "@newsTab": {
-    "description": "تسمية علامة تبويب الأخبار"
-  },
-  "homeTab": "الرئيسية",
-  "@homeTab": {
-    "description": "تسمية علامة تبويب الرئيسية"
-  },
-  "adminDashboard": "لوحة تحكم الإدارة",
-  "@adminDashboard": {
-    "description": "تسمية لوحة تحكم الإدارة"
-  },
-  "adminCenters": "مراكز",
-  "@adminCenters": {
-    "description": "تسمية قسم مراكز الإدارة"
-  },
-  "adminReviews": "التقييمات",
-  "@adminReviews": {
-    "description": "تسمية قسم تقييمات الإدارة"
-  },
-  "pendingReviews": "التقييمات المعلقة",
-  "@pendingReviews": {
-    "description": "تسمية التقييمات المعلقة"
-  },
-  "noPendingReviews": "لا توجد تقييمات معلقة",
-  "@noPendingReviews": {
-    "description": "رسالة عندما لا تكون هناك تقييمات معلقة"
-  },
-  "subCentersPending": "معلق",
-  "@subCentersPending": {
-    "description": "تسمية المراكز الفرعية المعلقة"
-  },
-  "subCentersCurrent": "حالي",
-  "@subCentersCurrent": {
-    "description": "تسمية المراكز الفرعية الحالية"
-  },
-  "addNewCenter": "إضافة مركز جديد",
-  "@addNewCenter": {
-    "description": "تسمية لإضافة مركز جديد"
-  },
-  "reviews": "التقييمات",
-  "@reviews": {
-    "description": "تسمية قسم التقييمات"
-  },
-  "noReviews": "لا توجد تقييمات بعد",
-  "@noReviews": {
-    "description": "رسالة عندما لا تكون هناك تقييمات متاحة"
-  },
-  "writeAReview": "كتابة تقييم",
-  "@writeAReview": {
-    "description": "تسمية كتابة تقييم"
-  },
-  "pending": "معلق",
-  "@pending": {
-    "description": "تسمية حالة المعلق"
-  },
-  "current": "حالي",
-  "@current": {
-    "description": "تسمية الحالة الحالية"
-  },
-  "howWasExperience": "كيف كانت تجربتك؟",
-  "@howWasExperience": {
-    "description": "مطالبة بتعليقات تجربة المستخدم"
-  },
-  "yourReview": "تقييمك",
-  "@yourReview": {
-    "description": "تسمية حقل إدخال تقييم المستخدم"
-  },
-  "writeSomethingAboutVisit": "اكتب شيئًا عن زيارتك",
-  "@writeSomethingAboutVisit": {
-    "description": "مطالبة لكتابة تقييم عن الزيارة"
-  },
-  "submitReview": "إرسال التقييم",
-  "@submitReview": {
-    "description": "تسمية زر إرسال التقييم"
-  }
+"@@locale": "ar",
+"home": "الرئيسية",
+"@home": { "description": "Label for the home screen button" },
+"search": "بحث",
+"@search": { "description": "Label for the search button" },
+"loading": "جاري التحميل...",
+"@loading": { "description": "Text shown while content is loading" },
+"error": "خطأ",
+"@error": { "description": "Generic error message" },
+"ok": "موافق",
+"@ok": { "description": "OK confirmation button" },
+"cancel": "إلغاء",
+"@cancel": { "description": "Cancel button" },
+"retry": "إعادة المحاولة",
+"@retry": { "description": "Retry button label" },
+"goback": "العودة",
+"@goback": { "description": "Button to go back to the previous screen" },
+"approve": "الموافقة",
+"@approve": { "description": "Button to approve an item" },
+"reject": "رفض",
+"@reject": { "description": "Button to reject an item" },
+"decline": "رفض",
+"@decline": { "description": "Button to decline an action" },
+"delete": "حذف",
+"@delete": { "description": "Delete button label" },
+"areyousure": "هل أنت متأكد؟",
+"@areyousure": { "description": "Confirmation dialog question" },
+"email": "البريد الإلكتروني",
+"@email": { "description": "Email field label" },
+"password": "كلمة المرور",
+"@password": { "description": "Password field label" },
+"confirmpassword": "تأكيد كلمة المرور",
+"@confirmpassword": { "description": "Confirm password field label" },
+"forgotpassword": "نسيت كلمة المرور؟",
+"@forgotpassword": { "description": "Forgot password link text" },
+"login": "تسجيل الدخول",
+"@login": { "description": "Login button label" },
+"loginapple": "تسجيل الدخول باستخدام Apple",
+"@loginapple": { "description": "Login with Apple button" },
+"logingoogle": "تسجيل الدخول باستخدام Google",
+"@logingoogle": { "description": "Login with Google button" },
+"noaccount": "ليس لديك حساب؟",
+"@noaccount": { "description": "Prompt for users without an account" },
+"signup": "التسجيل",
+"@signup": { "description": "Sign up button label" },
+"letscreateaccount": "دعنا ننشئ حساباً لك",
+"@letscreateaccount": { "description": "Onboarding text for account creation" },
+"username": "اسم المستخدم",
+"@username": { "description": "Username field label" },
+"agreement": "أوافق على شروط الخدمة وسياسة الخصوصية",
+"@agreement": { "description": "Agreement text for terms and privacy" },
+"emailAlreadyInUse": "هذا البريد الإلكتروني مسجل بالفعل",
+"@emailAlreadyInUse": {
+"description": "Error message shown when the email is already registered"
+},
+"invalidEmail": "تنسيق بريد إلكتروني غير صالح",
+"@invalidEmail": {
+"description": "Error message shown when the email format is invalid"
+},
+"weakPassword": "كلمة المرور ضعيفة جداً",
+"@weakPassword": {
+"description": "Error message shown when the password does not meet strength requirements"
+},
+"pleaseEnterUsername": "يرجى إدخال اسم المستخدم الخاص بك",
+"@pleaseEnterUsername": {
+"description": "Validation message when username field is empty"
+},
+"usernameTooShort": "يجب أن يكون اسم المستخدم 3 أحرف على الأقل",
+"@usernameTooShort": {
+"description": "Validation message when username is less than 3 characters"
+},
+"pleaseConfirmPassword": "يرجى تأكيد كلمة المرور الخاصة بك",
+"@pleaseConfirmPassword": {
+"description": "Validation message when confirm password field is empty"
+},
+"passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+"@passwordsDoNotMatch": {
+"description": "Validation message when password and confirm password do not match"
+},
+"usernameLabel": "اسم المستخدم",
+"@usernameLabel": {
+"description": "Label text for username input field"
+},
+"confirmPasswordLabel": "تأكيد كلمة المرور",
+"@confirmPasswordLabel": {
+"description": "Label text for confirm password input field"
+},
+"appName": "CLINICLY",
+"@appName": {
+"description": "App name displayed in the header"
+},
+"createAccountHeader": "دعنا\nننشئ حسابك\n",
+"@createAccountHeader": {
+"description": "Header text shown on the registration screen"
+},
+"pleaseEnterEmail": "يرجى إدخال بريدك الإلكتروني",
+"@pleaseEnterEmail": {
+"description": "Validation message when email field is empty"
+},
+"invalidEmailAddress": "يرجى إدخال عنوان بريد إلكتروني صالح",
+"@invalidEmailAddress": {
+"description": "Validation message when email or phone is not valid"
+},
+"pleaseEnterPassword": "يرجى إدخال كلمة المرور الخاصة بك",
+"@pleaseEnterPassword": {
+"description": "Validation message when password field is empty"
+},
+"passwordTooShort": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
+"@passwordTooShort": {
+"description": "Validation message when password is shorter than 6 characters"
+},
+"noAccountFound": "لم يتم العثور على حساب بهذا البريد الإلكتروني أو الهاتف",
+"@noAccountFound": {
+"description": "Error message when user does not exist in Firebase"
+},
+"incorrectPassword": "كلمة مرور غير صحيحة",
+"@incorrectPassword": {
+"description": "Error message when user enters wrong password"
+},
+"invalidEmailOrPhoneFormat": "تنسيق بريد إلكتروني أو هاتف غير صالح",
+"@invalidEmailOrPhoneFormat": {
+"description": "Error message when email or phone format is invalid"
+},
+"tooManyAttempts": "محاولات كثيرة جداً. يرجى المحاولة لاحقاً",
+"@tooManyAttempts": {
+"description": "Error message when too many login attempts are made"
+},
+"accountDisabled": "تم تعطيل هذا الحساب",
+"@accountDisabled": {
+"description": "Error message when the account is disabled by an administrator"
+},
+"emailLabel": "البريد الإلكتروني",
+"@emailLabel": {
+"description": "Label text for email input field"
+},
+"passwordLabel": "كلمة المرور",
+"@passwordLabel": {
+"description": "Label text for password input field"
+},
+"forgotPassword": "نسيت كلمة المرور؟",
+"@forgotPassword": {
+"description": "Clickable text for navigating to password reset screen"
+},
+"loginButton": "تسجيل الدخول",
+"@loginButton": {
+"description": "Text for login button"
+},
+"orText": "أو",
+"@orText": {
+"description": "Separator text between login options"
+},
+"appleSignInDisabledTitle": "تسجيل الدخول بـ Apple معطل",
+"@appleSignInDisabledTitle": {
+"description": "Dialog title when Apple login is disabled"
+},
+"appleSignInDisabledMessage": "تسجيل الدخول بـ Apple معطل حالياً لهذا العرض التوضيحي.",
+"@appleSignInDisabledMessage": {
+"description": "Dialog message when Apple login is disabled"
+},
+"googleSignInDisabledTitle": "تسجيل الدخول بـ Google معطل",
+"@googleSignInDisabledTitle": {
+"description": "Dialog title when Google login is disabled"
+},
+"googleSignInDisabledMessage": "تسجيل الدخول بـ Google معطل حالياً لهذا العرض التوضيحي.",
+"@googleSignInDisabledMessage": {
+"description": "Dialog message when Google login is disabled"
+},
+"okButton": "موافق",
+"@okButton": {
+"description": "Text for confirming dialog"
+},
+"loginWithApple": "تسجيل الدخول بـ Apple",
+"@loginWithApple": {
+"description": "Button text for Apple sign-in option"
+},
+"loginWithGoogle": "تسجيل الدخول بـ Google",
+"@loginWithGoogle": {
+"description": "Button text for Google sign-in option"
+},
+"dontHaveAccount": "ليس لديك حساب؟ ",
+"@dontHaveAccount": {
+"description": "Text shown before the signup link"
+},
+"signupText": "التسجيل",
+"@signupText": {
+"description": "Clickable text to navigate to signup screen"
+},
+"tooManyRequests": "محاولات كثيرة جداً. يرجى المحاولة لاحقاً",
+"@tooManyRequests": {
+"description": "Error message shown when the user exceeds the allowed number of attempts"
+},
+"genericError": "حدث خطأ. يرجى المحاولة مرة أخرى",
+"@genericError": {
+"description": "Generic error message shown when registration fails"
+},
+"alreadyhaveaccount": "لديك حساب بالفعل؟ ",
+"@alreadyhaveaccount": { "description": "Prompt for users who already have an account" },
+"welcome": "مرحباً بعودتك!",
+"@welcome": { "description": "Welcome back message after login" },
+"usernotlogged": "المستخدم غير مسجل الدخول.",
+"@usernotlogged": { "description": "Message shown when the user is not logged in" },
+"allfieldsrequired": "جميع الحقول مطلوبة.",
+"@allfieldsrequired": { "description": "Error shown when form fields are empty" },
+"passwordsdonotmatch": "كلمات المرور غير متطابقة.",
+"@passwordsdonotmatch": { "description": "Error when password and confirm password do not match" },
+"passworddontmatch": "كلمة المرور غير متطابقة.",
+"@passworddontmatch": { "description": "Error when entered password is incorrect" },
+"passwordisshort": "كلمة المرور قصيرة جداً.",
+"@passwordisshort": { "description": "Error when password length is too short" },
+"passwordsuccessfullychanged": "تم تغيير كلمة المرور بنجاح.",
+"@passwordsuccessfullychanged": { "description": "Success message for password change" },
+"enternewpassword": "أدخل كلمة المرور الجديدة",
+"@enternewpassword": { "description": "Instruction to enter a new password" },
+"currentpassword": "كلمة المرور الحالية",
+"@currentpassword": { "description": "Label for current password field" },
+"newpassword": "كلمة المرور الجديدة",
+"@newpassword": { "description": "Label for new password field" },
+"confirmnewpassword": "تأكيد كلمة المرور الجديدة",
+"@confirmnewpassword": { "description": "Label for confirm new password field" },
+"updatepassword": "تحديث كلمة المرور",
+"@updatepassword": { "description": "Button to update password" },
+"changeyourpassword": "تغيير كلمة المرور الخاصة بك",
+"@changeyourpassword": { "description": "Title for change password screen" },
+"checkemail": "تحقق من بريدك الإلكتروني للحصول على تعليمات إعادة تعيين كلمة المرور.",
+"@checkemail": { "description": "Instruction to check email for reset link" },
+"passwordreseterror": "حدث خطأ أثناء إعادة تعيين كلمة المرور.",
+"@passwordreseterror": { "description": "Error message for password reset" },
+"unexpectederror": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
+"@unexpectederror": { "description": "Generic unexpected error message" },
+"forgotpasswordpage": "نسيت كلمة المرور",
+"@forgotpasswordpage": { "description": "Title for forgot password screen" },
+"enteremailreset": "أدخل عنوان بريدك الإلكتروني لتلقي\nتعليمات إعادة تعيين كلمة المرور.",
+"@enteremailreset": { "description": "Instruction for entering email to reset password" },
+"resetpassword": "إعادة تعيين كلمة المرور",
+"@resetpassword": { "description": "Button to reset password" },
+"relogin": "يرجى تسجيل الدخول مرة أخرى للمتابعة.",
+"@relogin": { "description": "Instruction to re-login after password change" },
+"profile": "الملف الشخصي",
+"@profile": { "description": "Profile tab label" },
+"myprofile": "ملفي الشخصي",
+"@myprofile": { "description": "Label for user's profile" },
+"settings": "الإعدادات",
+"@settings": { "description": "Settings tab label" },
+"updateusername": "تحديث اسم المستخدم",
+"@updateusername": { "description": "Button to update username" },
+"enternewusername": "أدخل اسم المستخدم الجديد\nلتحديث ملفك الشخصي والتقييمات",
+"@enternewusername": { "description": "Instruction to enter a new username" },
+"newusername": "اسم المستخدم الجديد",
+"@newusername": { "description": "Label for new username field" },
+"usernameupdated": "تم تحديث اسم المستخدم بنجاح.",
+"@usernameupdated": { "description": "Success message for username update" },
+"deleteaccount": "حذف حسابك",
+"@deleteaccount": { "description": "Button to delete account" },
+"entertodelete": "أدخل بريدك الإلكتروني وكلمة المرور\nلحذف حسابك نهائياً.",
+"@entertodelete": { "description": "Instruction to confirm account deletion" },
+"accountdeleted": "تم حذف الحساب بنجاح.",
+"@accountdeleted": { "description": "Success message after account deletion" },
+"logout": "تسجيل الخروج",
+"@logout": { "description": "Logout button label" },
+"confirmlogout": "تأكيد تسجيل الخروج",
+"@confirmlogout": { "description": "Title for confirm logout dialog" },
+"confirmlogoutmsg": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+"@confirmlogoutmsg": { "description": "Confirmation message for logout" },
+"clinics": "العيادات",
+"@clinics": { "description": "Clinics section label" },
+"clinicly": "Clinicly",
+"@clinicly": { "description": "App name / branding text" },
+"addclinic": "إضافة عيادة",
+"@addclinic": { "description": "Button to add a clinic" },
+"addnewclinic": "إضافة عيادة جديدة",
+"@addnewclinic": { "description": "Title for adding a new clinic" },
+"clinicname": "اسم العيادة",
+"@clinicname": { "description": "Label for clinic name field" },
+"cliniclocation": "موقع العيادة",
+"@cliniclocation": { "description": "Label for clinic location field" },
+"clinicphonenumber": "رقم هاتف العيادة",
+"@clinicphonenumber": { "description": "Label for clinic phone number field" },
+"clinicdescription": "وصف العيادة",
+"@clinicdescription": { "description": "Label for clinic description field" },
+"clinicimage": "صورة العيادة",
+"@clinicimage": { "description": "Label for clinic image upload" },
+"unknownclinic": "عيادة غير معروفة",
+"@unknownclinic": { "description": "Fallback text for unknown clinic" },
+"failedtoaddclinic": "فشل في إضافة العيادة. يرجى المحاولة مرة أخرى.",
+"@failedtoaddclinic": { "description": "Error message when failing to add clinic" },
+"filltoaddclinic": "يرجى ملء جميع الحقول لإضافة عيادة.",
+"@filltoaddclinic": { "description": "Instruction to complete clinic form" },
+"noclinicsfound": "لم يتم العثور على عيادات.",
+"@noclinicsfound": { "description": "Message when no clinics are found" },
+"noclinics": "لا توجد عيادات متاحة.",
+"@noclinics": { "description": "Message when no clinics are available" },
+"confirmdeletionclinic": "تأكيد الحذف",
+"@confirmdeletionclinic": { "description": "Title for confirm clinic deletion dialog" },
+"confirmdeletionclinicmsg": "هل أنت متأكد أنك تريد حذف هذه العيادة؟",
+"@confirmdeletionclinicmsg": { "description": "Confirmation message for clinic deletion" },
+"invalidclinicid": "معرف عيادة غير صالح.",
+"@invalidclinicid": { "description": "Error for invalid clinic ID" },
+"clinicrejected": "تم رفض العيادة",
+"@clinicrejected": { "description": "Message when clinic is rejected" },
+"services": "الخدمات",
+"@services": { "description": "Services section label" },
+"haircut": "قص الشعر",
+"@haircut": { "description": "Service option for haircut" },
+"makeup": "مكياج",
+"@makeup": { "description": "Service option for makeup" },
+"massage": "تدليك",
+"@massage": { "description": "Service option for massage" },
+"nails": "أظافر",
+"@nails": { "description": "Service option for nails" },
+"skincare": "العناية بالبشرة",
+"@skincare": { "description": "Service option for skincare" },
+"offers": "العروض",
+"@offers": { "description": "Offers section label" },
+"hotoffers": "عروض ساخنة",
+"@hotoffers": { "description": "Label for hot offers section" },
+"favorites": "المفضلات",
+"@favorites": { "description": "Favorites section label" },
+"myfavorites": "مفضلاتي",
+"@myfavorites": { "description": "User's favorites list" },
+"nofavorites": "لا توجد مفضلات بعد.",
+"@nofavorites": { "description": "Message when no favorites are available" },
+"removedfromfavorites": "تم إزالته من المفضلات",
+"@removedfromfavorites": { "description": "Message when item removed from favorites" },
+"addedtofavorites": "تم إضافته إلى المفضلات",
+"@addedtofavorites": { "description": "Message when item added to favorites" },
+"comingsoon": "قريباً",
+"@comingsoon": { "description": "Label for upcoming features" },
+"reviews": "التقييمات",
+"@reviews": { "description": "Reviews section label" },
+"noreviews": "لا توجد تقييمات بعد",
+"@noreviews": { "description": "Message when no reviews exist" },
+"writereview": "كتابة تقييم",
+"@writereview": { "description": "Button to write a new review" },
+"tellusexperience": "أخبرنا عن تجربتك مع هذه العيادة.",
+"@tellusexperience": { "description": "Prompt to share experience in review" },
+"yourrating": "تقييمك",
+"@yourrating": { "description": "Label for rating selection" },
+"pleaserate": "يرجى تقييم تجربتك",
+"@pleaserate": { "description": "Prompt asking user to rate" },
+"writereviewhere": "اكتب تقييمك هنا...",
+"@writereviewhere": { "description": "Placeholder for review input field" },
+"submitreview": "إرسال التقييم",
+"@submitreview": { "description": "Button to submit review" },
+"failedtoresubmitreview": "فشل في إعادة إرسال التقييم.",
+"@failedtoresubmitreview": { "description": "Error when failing to resubmit review" },
+"pleaseselectrating": "يرجى اختيار تقييم وكتابة تقييم.",
+"@pleaseselectrating": { "description": "Error when review is incomplete" },
+"mustbelogged": "يجب أن تكون مسجلاً الدخول لإرسال تقييم.",
+"@mustbelogged": { "description": "Error when user not logged in tries to review" },
+"reviewsubmitted": "تم إرسال التقييم بنجاح!\nسيظهر بمجرد موافقة الإدارة عليه.",
+"@reviewsubmitted": { "description": "Success message after submitting review" },
+"reviewnotsubmitted": "فشل في إرسال التقييم. يرجى المحاولة مرة أخرى.",
+"@reviewnotsubmitted": { "description": "Error when failing to submit review" },
+"resubmittedforapproval": "تم إعادة إرسال تقييمك لموافقة الإدارة.",
+"@resubmittedforapproval": { "description": "Message when review is resubmitted" },
+"editandresubmit": "تحرير وإعادة إرسال تقييمك.",
+"@editandresubmit": { "description": "Instruction to edit and resubmit review" },
+"editreview": "تحرير التقييم",
+"@editreview": { "description": "Button to edit review" },
+"resubmitforapproval": "إعادة إرسال تقييمك لموافقة الإدارة",
+"@resubmitforapproval": { "description": "Instruction to resubmit review for approval" },
+"rejectionreason": "مرفوض بسبب: ",
+"@rejectionreason": { "description": "Label for rejection reason" },
+"yourreview": "تقييمك",
+"@yourreview": { "description": "Label for user's review" },
+"resubmitreview": "إعادة إرسال التقييم",
+"@resubmitreview": { "description": "Button to resubmit review" },
+"deletingreview": "جاري حذف التقييم...",
+"@deletingreview": { "description": "Message shown while deleting review" },
+"reviewdeleted": "تم حذف التقييم بنجاح.",
+"@reviewdeleted": { "description": "Success message after deleting review" },
+"failedtodeletereview": "فشل في حذف التقييم",
+"@failedtodeletereview": { "description": "Error message when failing to delete review" },
+"confirmdeleting": "تأكيد الحذف",
+"@confirmdeleting": { "description": "Title for confirm deleting dialog" },
+"confirmdeletingmsg": "هل أنت متأكد أنك تريد حذف هذا التقييم؟",
+"@confirmdeletingmsg": { "description": "Confirmation message for review deletion" },
+"deletereview": "حذف التقييم",
+"@deletereview": { "description": "Button to delete review" },
+"adminpanel": "لوحة الإدارة",
+"@adminpanel": { "description": "Label for admin panel section" },
+"pendingreviews": "التقييمات المعلقة",
+"@pendingreviews": { "description": "Label for pending reviews section" },
+"nopendingreviews": "لا توجد تقييمات معلقة.",
+"@nopendingreviews": { "description": "Message when no pending reviews exist" },
+"pending": "معلق",
+"@pending": { "description": "Label for pending status" },
+"currents": "الحالي",
+"@currents": { "description": "Label for current status" },
+"aboutapp": "عن هذا التطبيق",
+"@aboutapp": { "description": "Label for about app section" },
+"centerapproved": "تمت الموافقة على المركز",
+"@centerapproved": { "description": "Message when center is approved" },
+"erroraprrovingcenter": "خطأ في الموافقة على المركز",
+"@erroraprrovingcenter": { "description": "Error message when failing to approve center" },
+"failedtoapprovecenter": "فشل في الموافقة على المركز",
+"@failedtoapprovecenter": { "description": "Failure message for center approval" },
+"doyoureallywanttodecline": "هل تريد حقاً رفض هذا المركز؟\nلا يمكن التراجع عن هذا الإجراء.",
+"@doyoureallywanttodecline": { "description": "Confirmation to decline a center" },
+"centerrejected": "تم رفض المركز",
+"@centerrejected": { "description": "Message when center is rejected" },
+"errorrejectingcenter": "خطأ في رفض المركز",
+"@errorrejectingcenter": { "description": "Error message for rejecting center" },
+"failedtorejectcenter": "فشل في رفض المركز",
+"@failedtorejectcenter": { "description": "Failure message for rejecting center" },
+"confirmdeletingreview": "هل أنت متأكد أنك تريد\nحذف هذا التقييم؟",
+"@confirmdeletingreview": { "description": "رسالة تأكيد لحذف التقييم" }
+
 }

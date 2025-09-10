@@ -2,7 +2,11 @@ import 'package:beuty_support/core/constants/themes.dart';
 import 'package:beuty_support/core/services/auth_sevices.dart';
 import 'package:beuty_support/core/widget/custom_input_field.dart';
 import 'package:beuty_support/core/widget/my_button.dart';
+import 'package:beuty_support/features/providers/user_provider.dart';
+import 'package:beuty_support/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -16,7 +20,12 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  // ignore: unused_field
+  GoogleSignInAccount? _user;
+
   bool isLoading = false;
+  bool isGoogleLoading = false;
+  bool isAppleLoading = false;
   String errorMessage = "";
 
   @override
@@ -28,12 +37,12 @@ class _SignInScreenState extends State<SignInScreen> {
 
   String? _validateEmailOrPhone(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Please enter your email or phone';
+      return S.of(context).pleaseEnterEmail;
     }
     final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     if (!emailRegex.hasMatch(value) &&
         !RegExp(r'^\+?[1-9]\d{9,14}$').hasMatch(value)) {
-      return 'Please enter a valid email or phone number';
+      return S.of(context).invalidEmailAddress;
     }
     return null;
   }
@@ -41,10 +50,10 @@ class _SignInScreenState extends State<SignInScreen> {
   // Validate password
   String? _validatePassword(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Please enter your password';
+      return S.of(context).pleaseEnterPassword;
     }
     if (value.length < 6) {
-      return 'Password must be at least 6 characters';
+      return S.of(context).passwordTooShort;
     }
     return null;
   }
@@ -76,22 +85,27 @@ class _SignInScreenState extends State<SignInScreen> {
       String errorMsg;
       switch (error.toString()) {
         case '[firebase_auth/user-not-found] There is no user record corresponding to this identifier. The user may have been deleted.':
-          errorMsg = 'No account found with this email or phone';
+          // ignore: use_build_context_synchronously
+          errorMsg = S.of(context).noAccountFound;
           break;
         case '[firebase_auth/wrong-password] The password is invalid or the user does not have a password.':
-          errorMsg = 'Incorrect password';
+          // ignore: use_build_context_synchronously
+          errorMsg = S.of(context).incorrectPassword;
           break;
         case '[firebase_auth/invalid-email] The email address is badly formatted.':
-          errorMsg = 'Invalid email or phone format';
+          // ignore: use_build_context_synchronously
+          errorMsg = S.of(context).invalidEmailOrPhoneFormat;
           break;
         case '[firebase_auth/too-many-requests] We have blocked all requests from this device due to unusual activity. Try again later.':
-          errorMsg = 'Too many attempts. Please try again later';
+          // ignore: use_build_context_synchronously
+          errorMsg = S.of(context).tooManyRequests;
           break;
         case '[firebase_auth/user-disabled] The user account has been disabled by an administrator.':
-          errorMsg = 'This account has been disabled';
+          // ignore: use_build_context_synchronously
+          errorMsg = S.of(context).accountDisabled;
           break;
         default:
-          errorMsg = 'An error occurred. Please try again';
+          errorMsg = S.of(context).genericError;
           debugPrint('Login error: $error');
       }
       if (mounted) {
@@ -109,6 +123,59 @@ class _SignInScreenState extends State<SignInScreen> {
     } finally {
       setState(() {
         isLoading = false;
+      });
+    }
+  }
+
+  Future<void> _loginWithGoogle() async {
+    setState(() {
+      isGoogleLoading = true;
+    });
+
+    try {
+      final userCredential = await authServices.value.signInWithGoogle();
+      if (userCredential != null && mounted) {
+        // تحديث UserProvider
+        final userProvider = Provider.of<UserProvider>(context, listen: false);
+        userProvider.setDisplayName(userCredential.user?.displayName ?? "User");
+        userProvider.setPhotoURL(userCredential.user?.photoURL ?? "");
+
+        // التنقل إلى TabsLayout
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          "/",
+          (Route<dynamic> route) => false,
+        );
+      } else {
+        setState(() {
+          errorMessage = S.of(context).error;
+        });
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(S.of(context).error),
+              backgroundColor: AppColors.error,
+              duration: const Duration(seconds: 4),
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      setState(() {
+        errorMessage = S.of(context).genericError;
+      });
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("Google Signin failed. Please try again."),
+            backgroundColor: AppColors.error,
+            duration: const Duration(milliseconds: 1500),
+          ),
+        );
+      }
+    } finally {
+      setState(() {
+        isGoogleLoading = false;
       });
     }
   }
@@ -138,7 +205,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     child: Column(
                       children: [
                         CustomInputField(
-                          label: "Email",
+                          label: S.of(context).emailLabel,
                           prefixIcon: const Icon(
                             Icons.person,
                             color: Colors.green,
@@ -150,7 +217,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         SizedBox(height: screenHeight * 0.02),
                         CustomInputField(
-                          label: "Password",
+                          label: S.of(context).passwordLabel,
                           prefixIcon: const Icon(
                             Icons.lock,
                             color: Colors.green,
@@ -166,7 +233,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             Navigator.pushNamed(context, "/resetpassword");
                           },
                           child: Text(
-                            "Forgot Password?",
+                            S.of(context).forgotPassword,
                             style: Theme.of(context).textTheme.labelSmall!
                                 .copyWith(fontWeight: FontWeight.w900),
                           ),
@@ -185,7 +252,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             ? const Center(child: CircularProgressIndicator())
                             : MyButton(
                                 onPressed: _login,
-                                text: "Login",
+                                text: S.of(context).loginButton,
                                 backgroundColor: const Color(
                                   0xFFFFD700,
                                 ), // Yellow
@@ -193,26 +260,55 @@ class _SignInScreenState extends State<SignInScreen> {
                               ),
                         SizedBox(height: screenHeight * 0.02),
                         Text(
-                          "Or",
+                          S.of(context).orText,
                           style: Theme.of(context).textTheme.labelMedium!
                               .copyWith(color: AppColors.textPrimary),
                         ),
                         SizedBox(height: screenHeight * 0.02),
                         MyButton(
-                          onPressed: () {},
-                          text: "Login with Apple",
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text(
+                                    S.of(context).appleSignInDisabledTitle,
+                                  ),
+                                  content: Text(
+                                    S.of(context).appleSignInDisabledMessage,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.black87,
+                                    ),
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text(S.of(context).okButton),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          text: S.of(context).loginWithApple,
                           backgroundColor: AppColors.secondaryLight,
                           textColor: AppColors.textPrimary,
                           icon: Icons.apple,
                         ),
+
                         SizedBox(height: screenHeight * 0.015),
-                        MyButton(
-                          onPressed: () {},
-                          text: "Login with Google",
-                          backgroundColor: AppColors.textPrimary,
-                          textColor: Colors.white,
-                          icon: Icons.g_mobiledata,
-                        ),
+                        isGoogleLoading
+                            ? const Center(child: CircularProgressIndicator())
+                            : MyButton(
+                                onPressed: _loginWithGoogle,
+                                text: S.of(context).loginWithGoogle,
+                                backgroundColor: AppColors.textPrimary,
+                                textColor: AppColors.background,
+                                icon: Icons.g_mobiledata,
+                              ),
 
                         SizedBox(height: screenHeight * 0.02),
 
@@ -220,17 +316,22 @@ class _SignInScreenState extends State<SignInScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Dont have an account? ",
-                              style: Theme.of(context).textTheme.labelSmall,
+                              S.of(context).dontHaveAccount,
+                              style: Theme.of(
+                                context,
+                              ).textTheme.labelSmall!.copyWith(fontSize: 14),
                             ),
                             GestureDetector(
                               onTap: () {
                                 Navigator.pushNamed(context, "/signup");
                               },
                               child: Text(
-                                "Signup",
+                                S.of(context).signupText,
                                 style: Theme.of(context).textTheme.labelSmall!
-                                    .copyWith(fontWeight: FontWeight.w900),
+                                    .copyWith(
+                                      fontWeight: FontWeight.w900,
+                                      fontSize: 14,
+                                    ),
                               ),
                             ),
                           ],
