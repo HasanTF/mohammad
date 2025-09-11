@@ -46,11 +46,33 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 
+	<!-- Localizations -->
 	<key>CFBundleLocalizations</key>
-<array>
-    <string>en</string>
-    <string>ar</string>
-    <string>es</string>
-</array>
+	<array>
+		<string>en</string>
+		<string>ar</string>
+		<string>es</string>
+	</array>
+
+	<!-- 👇 Google Sign-In URL scheme (must match REVERSED_CLIENT_ID from GoogleService-Info.plist) -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.904006621832-ndntvft86q8v7sq4lfjn56m90m28u4nj</string>
+			</array>
+		</dict>
+	</array>
+
+	<!-- 👇 Allow Google Sign-In to query other apps -->
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>google</string>
+		<string>com.google</string>
+		<string>gplus</string>
+	</array>
 </dict>
 </plist>

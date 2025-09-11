@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.beuty_support"
+    namespace = "com.yourcompany.beuty_support" // غيرت التطبيق ليكون فريد
     compileSdk = flutter.compileSdkVersion
     ndkVersion = "27.0.12077973"
 
@@ -23,22 +23,29 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.beuty_support"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        applicationId = "com.yourcompany.beuty_support" // معرف التطبيق الفريد
         minSdk = 23
-        multiDexEnabled = true
         targetSdk = flutter.targetSdkVersion
-        versionCode = flutter.versionCode
-        versionName = flutter.versionName
+        multiDexEnabled = true
+
+        versionCode 1         // عدد صحيح فقط
+        versionName "1.0.0"  // النسخة الظاهرة للمستخدم
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'my-key-alias'              // ضع هنا alias من keystore
+            keyPassword 'key-password'           // ضع هنا كلمة المرور لل key
+            storeFile file('path/to/my-release-key.jks')  // مسار keystore
+            storePassword 'store-password'       // كلمة مرور keystore
+        }
     }
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            shrinkResources false
         }
     }
 }
